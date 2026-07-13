@@ -61,12 +61,42 @@ const plantilla = (pedido) => `
 </div>`;
 
 const cargarConfig = () => {
+  // En producción (Render) la configuración viene de variables de entorno,
+  // así las credenciales nunca están en el código ni en el repositorio.
+  if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+    return {
+      activo: true,
+      host: process.env.EMAIL_HOST ?? 'smtp.gmail.com',
+      port: Number(process.env.EMAIL_PORT ?? 465),
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+      from: process.env.EMAIL_FROM ?? `ChargeUp <${process.env.EMAIL_USER}>`,
+      avisos: process.env.EMAIL_AVISOS ?? null,
+    };
+  }
+  // En local se lee del archivo (que está en .gitignore).
   if (!existsSync(RUTA_CONFIG)) return null;
   try {
     return JSON.parse(readFileSync(RUTA_CONFIG, 'utf-8'));
   } catch {
     return null;
   }
+};
+
+const crearTransporte = (config) =>
+  nodemailer.createTransport({
+    host: config.host,
+    port: config.port,
+    secure: config.port === 465,
+    auth: { user: config.user, pass: config.pass },
+  });
+
+// Guarda un correo como HTML en data/emails/ (modo desarrollo).
+const guardarEnArchivo = (nombre, destinatario, asunto, html) => {
+  mkdirSync(CARPETA_DEV, { recursive: true });
+  const archivo = join(CARPETA_DEV, `${nombre}.html`);
+  writeFileSync(archivo, `<!-- Para: ${destinatario} | Asunto: ${asunto} -->\n${html}`);
+  return archivo;
 };
 
 // Envía la confirmación al cliente. Si el envío real no está activado
@@ -78,13 +108,7 @@ export async function enviarConfirmacion(pedido) {
   const config = cargarConfig();
 
   if (config?.activo) {
-    const transporter = nodemailer.createTransport({
-      host: config.host,
-      port: config.port,
-      secure: config.port === 465,
-      auth: { user: config.user, pass: config.pass },
-    });
-    await transporter.sendMail({
+    await crearTransporte(config).sendMail({
       from: config.from,
       to: pedido.cliente.email,
       subject: asunto,
@@ -93,8 +117,44 @@ export async function enviarConfirmacion(pedido) {
     return { enviado: true, destino: pedido.cliente.email };
   }
 
-  mkdirSync(CARPETA_DEV, { recursive: true });
-  const archivo = join(CARPETA_DEV, `${pedido.id}.html`);
-  writeFileSync(archivo, `<!-- Para: ${pedido.cliente.email} | Asunto: ${asunto} -->\n${html}`);
+  const archivo = guardarEnArchivo(pedido.id, pedido.cliente.email, asunto, html);
+  return { enviado: false, archivo };
+}
+
+// Aviso de nueva venta para el dueño de la tienda (campo "avisos" de la
+// configuración o variable de entorno EMAIL_AVISOS).
+export async function enviarAvisoVenta(pedido) {
+  const config = cargarConfig();
+  const destino = config?.avisos;
+  const asunto = `💰 Nueva venta ${pedido.id} — ${euros(pedido.total)}`;
+  const html = `
+<div style="max-width:520px;margin:0 auto;font-family:Segoe UI,Arial,sans-serif;color:#0f172a;">
+  <h1 style="font-size:19px;">💰 ¡Nueva venta en ChargeUp!</h1>
+  <p style="font-size:14px;color:#64748b;">
+    Pedido <b style="color:#2563eb;">${pedido.id}</b> ·
+    ${new Date(pedido.fecha).toLocaleString('es-ES')} ·
+    Total <b style="color:#0f172a;">${euros(pedido.total)}</b>
+  </p>
+  <ul style="font-size:14px;padding-left:18px;">
+    ${pedido.lineas.map((l) => `<li>${l.qty} × ${l.nombre} — ${euros(l.subtotal)}</li>`).join('')}
+  </ul>
+  <p style="font-size:13.5px;color:#64748b;">
+    <b style="color:#0f172a;">Cliente:</b> ${pedido.cliente.nombre} · ${pedido.cliente.email}
+    ${pedido.cliente.telefono ? `· ${pedido.cliente.telefono}` : ''}<br>
+    <b style="color:#0f172a;">Envío:</b> ${pedido.cliente.direccion}, ${pedido.cliente.cp} ${pedido.cliente.ciudad}
+  </p>
+</div>`;
+
+  if (config?.activo && destino) {
+    await crearTransporte(config).sendMail({
+      from: config.from,
+      to: destino,
+      subject: asunto,
+      html,
+    });
+    return { enviado: true, destino };
+  }
+
+  const archivo = guardarEnArchivo(`AVISO-${pedido.id}`, destino ?? 'sin configurar', asunto, html);
   return { enviado: false, archivo };
 }

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { randomBytes, timingSafeEqual } from 'crypto';
-import { enviarConfirmacion } from './email.js';
+import { enviarConfirmacion, enviarAvisoVenta } from './email.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -146,6 +146,19 @@ app.post('/api/orders', (req, res) => {
     )
     .catch((err) =>
       console.error(`No se pudo enviar el email de ${pedido.id}:`, err.message)
+    );
+
+  // Aviso de venta al dueño de la tienda (notificación en el móvil vía Gmail)
+  enviarAvisoVenta(pedido)
+    .then((r) =>
+      console.log(
+        r.enviado
+          ? `Aviso de venta enviado a ${r.destino} (${pedido.id})`
+          : `Aviso de venta de ${pedido.id} guardado en ${r.archivo} (envío real desactivado)`
+      )
+    )
+    .catch((err) =>
+      console.error(`No se pudo enviar el aviso de venta de ${pedido.id}:`, err.message)
     );
 
   res.status(201).json({ id: pedido.id, total: pedido.total });

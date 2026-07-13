@@ -44,6 +44,12 @@ Estos archivos se crean en `server/data/` y están en `.gitignore`:
 Con `"activo": false` (o sin el archivo), los emails se guardan como HTML
 en `server/data/emails/` en lugar de enviarse.
 
+El campo `"avisos"` es el correo del dueño: recibe un email con cada venta.
+
+En producción (Render) la configuración de email se define con variables
+de entorno en lugar del archivo: `EMAIL_USER`, `EMAIL_PASS` (obligatorias),
+y opcionalmente `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_FROM` y `EMAIL_AVISOS`.
+
 ## Editar el catálogo
 
 - Productos y precios: `server/data/products.json`
