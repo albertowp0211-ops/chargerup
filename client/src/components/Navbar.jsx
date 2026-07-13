@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import { useSearch } from '../context/SearchContext.jsx';
@@ -5,6 +6,7 @@ import { useSearch } from '../context/SearchContext.jsx';
 export default function Navbar() {
   const { count } = useCart();
   const { busqueda, setBusqueda } = useSearch();
+  const [buscarAbierto, setBuscarAbierto] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,10 +35,28 @@ export default function Navbar() {
           value={busqueda}
           onChange={onBuscar}
         />
+        <button
+          className="search-toggle"
+          title="Buscar"
+          onClick={() => setBuscarAbierto((o) => !o)}
+        >
+          🔍
+        </button>
         <Link to="/carrito" className="cart-btn" title="Ver carrito">
           🛒<span className="cart-badge">{count}</span>
         </Link>
       </div>
+      {buscarAbierto && (
+        <div className="nav-search-mobile">
+          <input
+            type="text"
+            placeholder="🔍  Buscar cargadores..."
+            value={busqueda}
+            onChange={onBuscar}
+            autoFocus
+          />
+        </div>
+      )}
     </nav>
   );
 }

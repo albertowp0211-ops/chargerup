@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { useSearch, normalizar } from '../context/SearchContext.jsx';
@@ -70,13 +71,15 @@ export default function ProductsSection() {
       <div className="grid">
         {visibles.map((p) => (
           <div className="product" key={p.id}>
-            <div className="img">{p.imagen}</div>
-            <span className={`tag ${p.hot ? 'hot' : ''}`}>{p.tag}</span>
-            <h3>{p.nombre}</h3>
-            <div className="stars">
-              {'★'.repeat(p.rating)}
-              {'☆'.repeat(5 - p.rating)} <small>({p.reviews})</small>
-            </div>
+            <Link className="product-link" to={`/producto/${p.id}`}>
+              <div className="img">{p.imagen}</div>
+              <span className={`tag ${p.hot ? 'hot' : ''}`}>{p.tag}</span>
+              <h3>{p.nombre}</h3>
+              <div className="stars">
+                {'★'.repeat(p.rating)}
+                {'☆'.repeat(5 - p.rating)} <small>({p.reviews})</small>
+              </div>
+            </Link>
             <div className="price-row">
               <div className="price">
                 {euros(p.precio)}

@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx';
 import CartPage from './pages/CartPage.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
+import ProductPage from './pages/ProductPage.jsx';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/producto/:id" element={<ProductPage />} />
         <Route path="/carrito" element={<CartPage />} />
         <Route path="/pedido" element={<CheckoutPage />} />
         <Route path="/admin" element={<AdminPage />} />

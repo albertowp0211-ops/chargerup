@@ -1,10 +1,162 @@
 [
-  { "id": 1, "imagen": "🔌", "tag": "Más vendido", "hot": true,  "nombre": "Cargador GaN 65W USB-C",             "rating": 5, "reviews": 412, "precio": 27.99, "precioAntes": 39.99, "categoria": "USB-C" },
-  { "id": 2, "imagen": "⚡", "tag": "Nuevo",       "hot": false, "nombre": "Cargador rápido 20W iPhone",         "rating": 4, "reviews": 238, "precio": 14.99, "precioAntes": 19.99, "categoria": "USB-C" },
-  { "id": 3, "imagen": "🧲", "tag": "Oferta",      "hot": true,  "nombre": "Cargador inalámbrico MagSafe 15W",   "rating": 5, "reviews": 189, "precio": 22.50, "precioAntes": 29.99, "categoria": "Inalámbricos" },
-  { "id": 4, "imagen": "🚗", "tag": "Nuevo",       "hot": false, "nombre": "Cargador de coche dual 45W",         "rating": 4, "reviews": 97,  "precio": 16.99, "precioAntes": null,  "categoria": "Coche" },
-  { "id": 5, "imagen": "🔋", "tag": "Popular",     "hot": false, "nombre": "Powerbank 20.000mAh PD",             "rating": 5, "reviews": 523, "precio": 32.99, "precioAntes": 44.99, "categoria": "Powerbanks" },
-  { "id": 6, "imagen": "🪢", "tag": "Pack x2",     "hot": false, "nombre": "Cable USB-C trenzado 2m 100W",       "rating": 4, "reviews": 341, "precio": 9.99,  "precioAntes": null,  "categoria": "Cables" },
-  { "id": 7, "imagen": "💻", "tag": "Potente",     "hot": false, "nombre": "Cargador GaN 100W portátiles",       "rating": 5, "reviews": 156, "precio": 44.99, "precioAntes": 59.99, "categoria": "USB-C" },
-  { "id": 8, "imagen": "🛏️", "tag": "Oferta",      "hot": true,  "nombre": "Base de carga 3 en 1 mesilla",       "rating": 4, "reviews": 88,  "precio": 29.99, "precioAntes": 39.99, "categoria": "Inalámbricos" }
+  {
+    "id": 1,
+    "imagen": "🔌",
+    "tag": "Más vendido",
+    "hot": true,
+    "nombre": "Cargador GaN 65W USB-C",
+    "rating": 5,
+    "reviews": 412,
+    "precio": 27.99,
+    "precioAntes": 39.99,
+    "categoria": "USB-C",
+    "descripcion": "El cargador que lo carga todo. Gracias a la tecnología GaN es un 40% más pequeño que un cargador convencional de la misma potencia, se calienta menos y cabe en cualquier bolsillo. Ideal para portátil, tablet y móvil.",
+    "caracteristicas": [
+      "65W de potencia máxima con Power Delivery 3.0",
+      "2 puertos USB-C + 1 puerto USB-A",
+      "Carga un portátil o dos móviles a la vez",
+      "Tecnología GaN: más compacto y sin sobrecalentamiento",
+      "Compatible con iPhone, Android, iPad, MacBook y más"
+    ]
+  },
+  {
+    "id": 2,
+    "imagen": "⚡",
+    "tag": "Nuevo",
+    "hot": false,
+    "nombre": "Cargador rápido 20W iPhone",
+    "rating": 4,
+    "reviews": 238,
+    "precio": 14.99,
+    "precioAntes": 19.99,
+    "categoria": "USB-C",
+    "descripcion": "Carga rápida certificada para iPhone: del 0 al 50% en unos 30 minutos. Tamaño mini para llevarlo siempre encima, con protección contra sobrecarga y sobrecalentamiento.",
+    "caracteristicas": [
+      "20W con Power Delivery",
+      "Puerto USB-C",
+      "50% de batería en ~30 minutos (iPhone 13 o posterior)",
+      "Protección contra sobrecarga, cortocircuito y temperatura",
+      "Compatible también con Android y AirPods"
+    ]
+  },
+  {
+    "id": 3,
+    "imagen": "🧲",
+    "tag": "Oferta",
+    "hot": true,
+    "nombre": "Cargador inalámbrico MagSafe 15W",
+    "rating": 5,
+    "reviews": 189,
+    "precio": 22.5,
+    "precioAntes": 29.99,
+    "categoria": "Inalámbricos",
+    "descripcion": "Se alinea solo gracias a los imanes: apoyas el iPhone y empieza a cargar a máxima velocidad inalámbrica. Perfecto para la mesilla o el escritorio, sin pelearte con cables.",
+    "caracteristicas": [
+      "Carga inalámbrica magnética de hasta 15W",
+      "Alineación magnética perfecta con iPhone 12 o posterior",
+      "Funciona también con fundas MagSafe",
+      "Cable USB-C de 1,5 m incluido",
+      "Superficie antideslizante que no raya el móvil"
+    ]
+  },
+  {
+    "id": 4,
+    "imagen": "🚗",
+    "tag": "Nuevo",
+    "hot": false,
+    "nombre": "Cargador de coche dual 45W",
+    "rating": 4,
+    "reviews": 97,
+    "precio": 16.99,
+    "precioAntes": null,
+    "categoria": "Coche",
+    "descripcion": "Dos dispositivos cargando a la vez en el coche, con carga rápida de verdad en el puerto USB-C. Cuerpo de aluminio con LED tenue para encontrarlo de noche sin distracciones.",
+    "caracteristicas": [
+      "45W en total: USB-C 30W + USB-A 15W",
+      "Carga dos dispositivos simultáneamente",
+      "Para toma de mechero de 12/24V (coche y camión)",
+      "LED indicador de funcionamiento",
+      "Protección contra picos de tensión del vehículo"
+    ]
+  },
+  {
+    "id": 5,
+    "imagen": "🔋",
+    "tag": "Popular",
+    "hot": false,
+    "nombre": "Powerbank 20.000mAh PD",
+    "rating": 5,
+    "reviews": 523,
+    "precio": 32.99,
+    "precioAntes": 44.99,
+    "categoria": "Powerbanks",
+    "descripcion": "Batería para varios días fuera de casa: hasta 4 cargas completas de móvil. Con pantalla LED que muestra el porcentaje exacto restante y carga rápida tanto de entrada como de salida.",
+    "caracteristicas": [
+      "20.000 mAh: unas 4 cargas completas de un móvil",
+      "Carga rápida Power Delivery de 22,5W",
+      "2 salidas USB-A + 1 USB-C de entrada/salida",
+      "Pantalla LED con porcentaje de batería",
+      "Carga 3 dispositivos a la vez · Apta para avión"
+    ]
+  },
+  {
+    "id": 6,
+    "imagen": "🪢",
+    "tag": "Pack x2",
+    "hot": false,
+    "nombre": "Cable USB-C trenzado 2m 100W",
+    "rating": 4,
+    "reviews": 341,
+    "precio": 9.99,
+    "precioAntes": null,
+    "categoria": "Cables",
+    "descripcion": "Pack de dos cables de 2 metros con trenzado de nailon antienredos y conectores reforzados. Soportan hasta 100W, así que sirven igual para el móvil que para el portátil.",
+    "caracteristicas": [
+      "Pack de 2 cables de 2 metros",
+      "Hasta 100W (20V/5A) — apto para portátiles",
+      "Transferencia de datos a 480 Mbps",
+      "Nailon trenzado antienredos",
+      "Conectores reforzados: +30.000 flexiones"
+    ]
+  },
+  {
+    "id": 7,
+    "imagen": "💻",
+    "tag": "Potente",
+    "hot": false,
+    "nombre": "Cargador GaN 100W portátiles",
+    "rating": 5,
+    "reviews": 156,
+    "precio": 44.99,
+    "precioAntes": 59.99,
+    "categoria": "USB-C",
+    "descripcion": "Potencia de sobra para portátiles exigentes y todos tus dispositivos a la vez. Reparte la energía de forma inteligente entre sus 4 puertos según lo que conectes.",
+    "caracteristicas": [
+      "100W de potencia máxima",
+      "3 puertos USB-C + 1 USB-A",
+      "Reparto inteligente de potencia entre puertos",
+      "Carga MacBook Pro, portátiles gaming, tablets y móviles",
+      "GaN III: tamaño de bolsillo pese a los 100W"
+    ]
+  },
+  {
+    "id": 8,
+    "imagen": "🛏️",
+    "tag": "Oferta",
+    "hot": true,
+    "nombre": "Base de carga 3 en 1 mesilla",
+    "rating": 4,
+    "reviews": 88,
+    "precio": 29.99,
+    "precioAntes": 39.99,
+    "categoria": "Inalámbricos",
+    "descripcion": "Móvil, auriculares y reloj cargando en un solo enchufe. Diseño plegable que ocupa lo mínimo en la mesilla y se lleva de viaje plano en la maleta.",
+    "caracteristicas": [
+      "Carga 3 dispositivos a la vez: móvil, auriculares y smartwatch",
+      "Hasta 15W de carga inalámbrica para el móvil",
+      "Plegable: ideal para viajes",
+      "Luz nocturna tenue regulable",
+      "Compatible con iPhone y Android con carga inalámbrica"
+    ]
+  }
 ]
