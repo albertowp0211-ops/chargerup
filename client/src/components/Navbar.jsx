@@ -1,8 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
+import { useSearch } from '../context/SearchContext.jsx';
 
 export default function Navbar() {
   const { count } = useCart();
+  const { busqueda, setBusqueda } = useSearch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const onBuscar = (e) => {
+    setBusqueda(e.target.value);
+    // El catálogo vive en la portada: si se busca desde otra página, vamos a ella
+    if (location.pathname !== '/') navigate('/');
+    document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <nav>
@@ -15,7 +26,13 @@ export default function Navbar() {
           <a href="/#ofertas">Ofertas</a>
           <a href="#">Contacto</a>
         </div>
-        <input className="nav-search" type="text" placeholder="🔍  Buscar cargadores..." />
+        <input
+          className="nav-search"
+          type="text"
+          placeholder="🔍  Buscar cargadores..."
+          value={busqueda}
+          onChange={onBuscar}
+        />
         <Link to="/carrito" className="cart-btn" title="Ver carrito">
           🛒<span className="cart-badge">{count}</span>
         </Link>
