@@ -1,0 +1,15 @@
+# Dependencias
+node_modules/
+
+# Build de producción
+client/dist/
+
+# Datos privados: nunca subir al repositorio
+server/data/orders.json
+server/data/emails/
+server/data/email-config.json
+server/data/admin-password.txt
+
+# Sistema
+.DS_Store
+Thumbs.db

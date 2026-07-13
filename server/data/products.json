@@ -1,0 +1,10 @@
+[
+  { "id": 1, "imagen": "🔌", "tag": "Más vendido", "hot": true,  "nombre": "Cargador GaN 65W USB-C",             "rating": 5, "reviews": 412, "precio": 27.99, "precioAntes": 39.99, "categoria": "USB-C" },
+  { "id": 2, "imagen": "⚡", "tag": "Nuevo",       "hot": false, "nombre": "Cargador rápido 20W iPhone",         "rating": 4, "reviews": 238, "precio": 14.99, "precioAntes": 19.99, "categoria": "USB-C" },
+  { "id": 3, "imagen": "🧲", "tag": "Oferta",      "hot": true,  "nombre": "Cargador inalámbrico MagSafe 15W",   "rating": 5, "reviews": 189, "precio": 22.50, "precioAntes": 29.99, "categoria": "Inalámbricos" },
+  { "id": 4, "imagen": "🚗", "tag": "Nuevo",       "hot": false, "nombre": "Cargador de coche dual 45W",         "rating": 4, "reviews": 97,  "precio": 16.99, "precioAntes": null,  "categoria": "Coche" },
+  { "id": 5, "imagen": "🔋", "tag": "Popular",     "hot": false, "nombre": "Powerbank 20.000mAh PD",             "rating": 5, "reviews": 523, "precio": 32.99, "precioAntes": 44.99, "categoria": "Powerbanks" },
+  { "id": 6, "imagen": "🪢", "tag": "Pack x2",     "hot": false, "nombre": "Cable USB-C trenzado 2m 100W",       "rating": 4, "reviews": 341, "precio": 9.99,  "precioAntes": null,  "categoria": "Cables" },
+  { "id": 7, "imagen": "💻", "tag": "Potente",     "hot": false, "nombre": "Cargador GaN 100W portátiles",       "rating": 5, "reviews": 156, "precio": 44.99, "precioAntes": 59.99, "categoria": "USB-C" },
+  { "id": 8, "imagen": "🛏️", "tag": "Oferta",      "hot": true,  "nombre": "Base de carga 3 en 1 mesilla",       "rating": 4, "reviews": 88,  "precio": 29.99, "precioAntes": 39.99, "categoria": "Inalámbricos" }
+]
