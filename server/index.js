@@ -72,8 +72,8 @@ const requiereAdmin = (req, res, next) => {
 
 // Diagnóstico de la configuración de email (protegido): comprueba la
 // conexión SMTP sin enviar ningún correo.
-app.get('/api/email-test', requiereAdmin, async (_req, res) => {
-  res.json(await probarEmail());
+app.get('/api/email-test', requiereAdmin, async (req, res) => {
+  res.json(await probarEmail(req.query.port));
 });
 
 // Listado de pedidos para el panel de administración (protegido).

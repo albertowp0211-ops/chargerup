@@ -101,14 +101,15 @@ const guardarEnArchivo = (nombre, destinatario, asunto, html) => {
 
 // Prueba la conexión SMTP sin enviar nada. Para diagnosticar la
 // configuración de email desde /api/email-test.
-export async function probarEmail() {
-  const config = cargarConfig();
+export async function probarEmail(puerto) {
+  let config = cargarConfig();
   if (!config?.activo) {
     return {
       ok: false,
       motivo: 'Configuración no activa: faltan EMAIL_USER/EMAIL_PASS (o email-config.json con "activo": true)',
     };
   }
+  if (puerto) config = { ...config, port: Number(puerto) };
   try {
     await crearTransporte(config).verify();
     return {
