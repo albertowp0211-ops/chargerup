@@ -61,8 +61,18 @@ const plantilla = (pedido) => `
 </div>`;
 
 const cargarConfig = () => {
-  // En producción (Render) la configuración viene de variables de entorno,
-  // así las credenciales nunca están en el código ni en el repositorio.
+  // Vía preferida en producción: API de Brevo (HTTP), porque Render
+  // bloquea los puertos SMTP en el plan gratuito.
+  if (process.env.BREVO_API_KEY && process.env.EMAIL_USER) {
+    return {
+      activo: true,
+      brevoKey: process.env.BREVO_API_KEY,
+      user: process.env.EMAIL_USER,
+      from: process.env.EMAIL_FROM ?? `ChargeUp <${process.env.EMAIL_USER}>`,
+      avisos: process.env.EMAIL_AVISOS ?? process.env.EMAIL_USER,
+    };
+  }
+  // Vía SMTP clásica (funciona en local y en hostings sin bloqueo).
   if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
     return {
       activo: true,
@@ -71,7 +81,7 @@ const cargarConfig = () => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
       from: process.env.EMAIL_FROM ?? `ChargeUp <${process.env.EMAIL_USER}>`,
-      avisos: process.env.EMAIL_AVISOS ?? null,
+      avisos: process.env.EMAIL_AVISOS ?? process.env.EMAIL_USER,
     };
   }
   // En local se lee del archivo (que está en .gitignore).
@@ -90,6 +100,25 @@ const crearTransporte = (config) =>
     secure: config.port === 465,
     auth: { user: config.user, pass: config.pass },
   });
+
+// Envía un correo por la vía disponible: API de Brevo o SMTP.
+const enviarCorreo = async (config, { to, subject, html }) => {
+  if (config.brevoKey) {
+    const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'api-key': config.brevoKey, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'ChargeUp', email: config.user },
+        to: [{ email: to }],
+        subject,
+        htmlContent: html,
+      }),
+    });
+    if (!res.ok) throw new Error(`Brevo respondió ${res.status}: ${await res.text()}`);
+    return;
+  }
+  await crearTransporte(config).sendMail({ from: config.from, to, subject, html });
+};
 
 // Guarda un correo como HTML en data/emails/ (modo desarrollo).
 const guardarEnArchivo = (nombre, destinatario, asunto, html) => {
@@ -111,9 +140,24 @@ export async function probarEmail(puerto) {
   }
   if (puerto) config = { ...config, port: Number(puerto) };
   try {
+    if (config.brevoKey) {
+      const res = await fetch('https://api.brevo.com/v3/account', {
+        headers: { 'api-key': config.brevoKey },
+      });
+      if (!res.ok) throw new Error(`Brevo respondió ${res.status}: ${await res.text()}`);
+      const cuenta = await res.json();
+      return {
+        ok: true,
+        via: 'Brevo API',
+        motivo: `Clave válida (cuenta ${cuenta.email})`,
+        remite: config.user,
+        avisosA: config.avisos,
+      };
+    }
     await crearTransporte(config).verify();
     return {
       ok: true,
+      via: 'SMTP',
       motivo: `Conexión SMTP correcta con ${config.host} como ${config.user}`,
       avisosA: config.avisos ?? '(sin destinatario de avisos configurado)',
     };
@@ -131,12 +175,7 @@ export async function enviarConfirmacion(pedido) {
   const config = cargarConfig();
 
   if (config?.activo) {
-    await crearTransporte(config).sendMail({
-      from: config.from,
-      to: pedido.cliente.email,
-      subject: asunto,
-      html,
-    });
+    await enviarCorreo(config, { to: pedido.cliente.email, subject: asunto, html });
     return { enviado: true, destino: pedido.cliente.email };
   }
 
@@ -169,12 +208,7 @@ export async function enviarAvisoVenta(pedido) {
 </div>`;
 
   if (config?.activo && destino) {
-    await crearTransporte(config).sendMail({
-      from: config.from,
-      to: destino,
-      subject: asunto,
-      html,
-    });
+    await enviarCorreo(config, { to: destino, subject: asunto, html });
     return { enviado: true, destino };
   }
 
