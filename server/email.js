@@ -99,6 +99,28 @@ const guardarEnArchivo = (nombre, destinatario, asunto, html) => {
   return archivo;
 };
 
+// Prueba la conexión SMTP sin enviar nada. Para diagnosticar la
+// configuración de email desde /api/email-test.
+export async function probarEmail() {
+  const config = cargarConfig();
+  if (!config?.activo) {
+    return {
+      ok: false,
+      motivo: 'Configuración no activa: faltan EMAIL_USER/EMAIL_PASS (o email-config.json con "activo": true)',
+    };
+  }
+  try {
+    await crearTransporte(config).verify();
+    return {
+      ok: true,
+      motivo: `Conexión SMTP correcta con ${config.host} como ${config.user}`,
+      avisosA: config.avisos ?? '(sin destinatario de avisos configurado)',
+    };
+  } catch (e) {
+    return { ok: false, motivo: e.message, usuario: config.user, host: config.host, puerto: config.port };
+  }
+}
+
 // Envía la confirmación al cliente. Si el envío real no está activado
 // en email-config.json, guarda el correo como HTML en data/emails/
 // para poder revisarlo durante el desarrollo.

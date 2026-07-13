@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { randomBytes, timingSafeEqual } from 'crypto';
-import { enviarConfirmacion, enviarAvisoVenta } from './email.js';
+import { enviarConfirmacion, enviarAvisoVenta, probarEmail } from './email.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -69,6 +69,12 @@ const requiereAdmin = (req, res, next) => {
   }
   next();
 };
+
+// Diagnóstico de la configuración de email (protegido): comprueba la
+// conexión SMTP sin enviar ningún correo.
+app.get('/api/email-test', requiereAdmin, async (_req, res) => {
+  res.json(await probarEmail());
+});
 
 // Listado de pedidos para el panel de administración (protegido).
 app.get('/api/orders', requiereAdmin, (_req, res) => {
