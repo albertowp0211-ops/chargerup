@@ -1,9 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 import Stripe from 'stripe';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { randomBytes, timingSafeEqual } from 'crypto';
 import { enviarConfirmacion, enviarAvisoVenta, probarEmail } from './email.js';
+import {
+  usandoBd,
+  inicializarBd,
+  guardarPedidoBd,
+  listarPedidos,
+  buscarPorStripeSession,
+} from './db.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -83,9 +90,13 @@ app.get('/api/email-test', requiereAdmin, async (req, res) => {
 });
 
 // Listado de pedidos para el panel de administración (protegido).
-app.get('/api/orders', requiereAdmin, (_req, res) => {
-  const rutaPedidos = join(__dirname, 'data', 'orders.json');
-  res.json(existsSync(rutaPedidos) ? loadJson('orders.json') : []);
+app.get('/api/orders', requiereAdmin, async (_req, res) => {
+  try {
+    res.json(await listarPedidos());
+  } catch (err) {
+    console.error('Error listando pedidos:', err.message);
+    res.status(500).json({ error: 'No se pudieron cargar los pedidos' });
+  }
 });
 
 // Valida cliente e items y calcula las líneas con los precios del
@@ -122,11 +133,9 @@ const validarPedido = (cliente = {}, items = []) => {
   return { lineas, subtotal, envio, total };
 };
 
-// Guarda el pedido en orders.json y lanza los emails en segundo plano.
-const guardarPedido = ({ cliente, lineas, subtotal, envio, total, pago, stripeSession }) => {
-  const rutaPedidos = join(__dirname, 'data', 'orders.json');
-  const pedidos = existsSync(rutaPedidos) ? loadJson('orders.json') : [];
-
+// Guarda el pedido (en PostgreSQL si hay BD, si no en orders.json)
+// y lanza los emails en segundo plano.
+const guardarPedido = async ({ cliente, lineas, subtotal, envio, total, pago, stripeSession }) => {
   const pedido = {
     id: 'CU-' + Date.now().toString(36).toUpperCase(),
     fecha: new Date().toISOString(),
@@ -146,8 +155,7 @@ const guardarPedido = ({ cliente, lineas, subtotal, envio, total, pago, stripeSe
     total,
   };
 
-  pedidos.push(pedido);
-  writeFileSync(rutaPedidos, JSON.stringify(pedidos, null, 2));
+  await guardarPedidoBd(pedido);
 
   // Los emails se envían en segundo plano: si fallan, el pedido ya
   // está guardado y el cliente no ve ningún error.
@@ -246,9 +254,7 @@ app.post('/api/orders/confirm', async (req, res) => {
       return res.status(402).json({ error: 'El pago no está completado' });
     }
 
-    const rutaPedidos = join(__dirname, 'data', 'orders.json');
-    const pedidos = existsSync(rutaPedidos) ? loadJson('orders.json') : [];
-    const existente = pedidos.find((p) => p.stripeSession === session.id);
+    const existente = await buscarPorStripeSession(session.id);
     if (existente) {
       return res.json({ id: existente.id, total: existente.total });
     }
@@ -258,7 +264,7 @@ app.post('/api/orders/confirm', async (req, res) => {
     const v = validarPedido(cliente, items);
     if (v.error) return res.status(400).json({ error: v.error });
 
-    const pedido = guardarPedido({ cliente, ...v, pago: 'tarjeta', stripeSession: session.id });
+    const pedido = await guardarPedido({ cliente, ...v, pago: 'tarjeta', stripeSession: session.id });
     res.status(201).json({ id: pedido.id, total: pedido.total });
   } catch (err) {
     console.error('Error confirmando el pago:', err.message);
@@ -266,6 +272,18 @@ app.post('/api/orders/confirm', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`ChargeUp API escuchando en http://localhost:${PORT}`);
-});
+inicializarBd()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`ChargeUp API escuchando en http://localhost:${PORT}`);
+      console.log(
+        usandoBd
+          ? 'Pedidos guardados en PostgreSQL'
+          : 'Pedidos guardados en orders.json (sin base de datos configurada)'
+      );
+    });
+  })
+  .catch((err) => {
+    console.error('No se pudo inicializar la base de datos:', err.message);
+    process.exit(1);
+  });

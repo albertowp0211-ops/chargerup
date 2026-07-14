@@ -263,6 +263,13 @@ footer a:hover { color: #fff; }
 .form-note { font-size: 13px; color: var(--muted); margin: 16px 0 12px; }
 .checkout-form .btn[disabled] { opacity: .6; cursor: default; }
 
+/* ===== Páginas legales ===== */
+.legal { max-width: 760px; }
+.legal section { margin-bottom: 26px; }
+.legal h2 { font-size: 18px; margin-bottom: 10px; }
+.legal p { font-size: 14.5px; line-height: 1.7; color: var(--muted); margin-bottom: 10px; }
+.legal-update { font-size: 13px; color: var(--muted); margin-top: 32px; font-style: italic; }
+
 /* ===== Buscador móvil ===== */
 .search-toggle {
   display: none; background: var(--bg);

@@ -7,6 +7,7 @@ import CheckoutPage from './pages/CheckoutPage.jsx';
 import PaymentSuccessPage from './pages/PaymentSuccessPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
+import LegalPage from './pages/LegalPage.jsx';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/pedido" element={<CheckoutPage />} />
         <Route path="/pedido/exito" element={<PaymentSuccessPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/legal/:slug" element={<LegalPage />} />
       </Routes>
       <Footer />
     </>

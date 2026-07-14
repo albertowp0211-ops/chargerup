@@ -10,6 +10,7 @@ server/data/emails/
 server/data/email-config.json
 server/data/admin-password.txt
 server/data/stripe-config.json
+server/data/db-config.json
 
 # Sistema
 .DS_Store

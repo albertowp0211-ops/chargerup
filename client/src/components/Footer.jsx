@@ -25,10 +25,9 @@ export default function Footer() {
         <div>
           <h4>Ayuda</h4>
           <ul>
-            <li><a href="#">Envíos</a></li>
-            <li><a href="#">Devoluciones</a></li>
-            <li><a href="#">Garantía</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><Link to="/legal/devoluciones">Envíos y devoluciones</Link></li>
+            <li><Link to="/legal/aviso-legal">Aviso legal</Link></li>
+            <li><Link to="/legal/privacidad">Privacidad</Link></li>
           </ul>
         </div>
         <div>
