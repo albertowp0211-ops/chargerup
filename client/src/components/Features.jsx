@@ -1,8 +1,7 @@
 const FEATURES = [
   { ico: '🚚', titulo: 'Envío 24/48h', detalle: 'Gratis desde 25€' },
   { ico: '🛡️', titulo: 'Garantía 3 años', detalle: 'En todos los productos' },
-  { ico: '↩️', titulo: 'Devolución fácil', detalle: '30 días sin preguntas' },
-  { ico: '🔒', titulo: 'Pago seguro', detalle: 'Visa, Mastercard, PayPal' },
+  { ico: '🔒', titulo: 'Pago seguro', detalle: 'Visa, Mastercard, Apple Pay' },
 ];
 
 export default function Features() {

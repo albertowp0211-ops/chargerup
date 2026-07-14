@@ -86,7 +86,7 @@ nav {
 /* ===== Ventajas ===== */
 .features { background: var(--card); border-bottom: 1px solid var(--border); }
 .features-inner {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 24px; padding: 28px 24px;
 }
 .feature { display: flex; align-items: center; gap: 12px; }
