@@ -4,18 +4,18 @@
     "imagen": "🔌",
     "tag": "Más vendido",
     "hot": true,
-    "nombre": "Cargador GaN 65W USB-C",
+    "nombre": "Cargador 65W USB-C",
     "rating": 5,
     "reviews": 412,
     "precio": 27.99,
     "precioAntes": 39.99,
     "categoria": "USB-C",
-    "descripcion": "El cargador que lo carga todo. Gracias a la tecnología GaN es un 40% más pequeño que un cargador convencional de la misma potencia, se calienta menos y cabe en cualquier bolsillo. Ideal para portátil, tablet y móvil.",
+    "descripcion": "El cargador que lo carga todo. Es un 40% más pequeño que un cargador convencional de la misma potencia, se calienta menos y cabe en cualquier bolsillo. Ideal para portátil, tablet y móvil.",
     "caracteristicas": [
       "65W de potencia máxima con Power Delivery 3.0",
       "2 puertos USB-C + 1 puerto USB-A",
       "Carga un portátil o dos móviles a la vez",
-      "Tecnología GaN: más compacto y sin sobrecalentamiento",
+      "Más compacto y sin sobrecalentamiento",
       "Compatible con iPhone, Android, iPad, MacBook y más"
     ]
   },
@@ -124,7 +124,7 @@
     "imagen": "💻",
     "tag": "Potente",
     "hot": false,
-    "nombre": "Cargador GaN 100W portátiles",
+    "nombre": "Cargador 100W portátiles",
     "rating": 5,
     "reviews": 156,
     "precio": 44.99,
@@ -136,7 +136,7 @@
       "3 puertos USB-C + 1 USB-A",
       "Reparto inteligente de potencia entre puertos",
       "Carga MacBook Pro, portátiles gaming, tablets y móviles",
-      "GaN III: tamaño de bolsillo pese a los 100W"
+      "Tamaño de bolsillo pese a los 100W"
     ]
   },
   {

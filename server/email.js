@@ -54,7 +54,7 @@ const plantilla = (pedido) => `
       ${pedido.cliente.direccion}, ${pedido.cliente.cp} ${pedido.cliente.ciudad}
     </div>
     <p style="color:#94a3b8;font-size:12.5px;margin:22px 0 0;">
-      Envío en 24/48h · Devoluciones en 30 días · Garantía de 2 años<br>
+      Envío en 24/48h · Devoluciones en 30 días · Garantía de 3 años<br>
       ¿Dudas? Responde a este correo o escribe a hola@chargeup.es
     </p>
   </div>

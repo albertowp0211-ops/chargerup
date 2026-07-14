@@ -102,7 +102,7 @@ export default function ProductPage() {
           </div>
 
           <p className="detail-envio">
-            🚚 Envío 24/48h — gratis a partir de 25€ · ↩️ Devolución en 30 días · 🛡️ Garantía 2 años
+            🚚 Envío 24/48h — gratis a partir de 25€ · ↩️ Devolución en 30 días · 🛡️ Garantía 3 años
           </p>
         </div>
       </div>

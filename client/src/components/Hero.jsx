@@ -3,12 +3,12 @@ export default function Hero() {
     <section className="hero">
       <div className="container hero-inner">
         <div className="hero-text">
-          <span className="pill">⚡ Nueva generación GaN — hasta 30% más eficiente</span>
+          <span className="pill">⚡ Carga rápida de nueva generación</span>
           <h1>
             Carga tus dispositivos <em>a máxima velocidad</em>
           </h1>
           <p>
-            Cargadores rápidos, inalámbricos y powerbanks con garantía de 2 años.
+            Cargadores rápidos, inalámbricos y powerbanks con garantía de 3 años.
             Compatibles con iPhone, Android, tablets y portátiles.
           </p>
           <a className="btn btn-primary" href="/#catalogo">
