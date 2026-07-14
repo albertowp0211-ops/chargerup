@@ -47,8 +47,21 @@ en `server/data/emails/` en lugar de enviarse.
 El campo `"avisos"` es el correo del dueño: recibe un email con cada venta.
 
 En producción (Render) la configuración de email se define con variables
-de entorno en lugar del archivo: `EMAIL_USER`, `EMAIL_PASS` (obligatorias),
-y opcionalmente `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_FROM` y `EMAIL_AVISOS`.
+de entorno en lugar del archivo: `BREVO_API_KEY` + `EMAIL_USER` (vía API
+de Brevo, recomendada), o `EMAIL_USER` + `EMAIL_PASS` (SMTP), y
+opcionalmente `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_FROM` y `EMAIL_AVISOS`.
+
+Otras variables de entorno del servidor:
+
+- `STRIPE_SECRET_KEY` — clave secreta de Stripe (pago con tarjeta).
+- `STRIPE_WEBHOOK_SECRET` — firma del webhook `checkout.session.completed`
+  apuntando a `/api/stripe-webhook`; registra el pedido aunque el cliente
+  no vuelva a la web tras pagar.
+- `DATABASE_URL` — PostgreSQL para los pedidos (sin ella, orders.json).
+- `NTFY_TOPIC` — canal de ntfy.sh para avisos de venta en el móvil.
+
+El login del panel bloquea la IP durante 15 minutos tras 5 intentos
+fallidos.
 
 ## Editar el catálogo
 

@@ -26,14 +26,15 @@ const ADMIN_PASSWORD =
   process.env.ADMIN_PASSWORD ??
   (existsSync(rutaPassword) ? readFileSync(rutaPassword, 'utf-8').trim() : 'chargeup123');
 
-// Clave secreta de Stripe: variable de entorno o archivo local (gitignored).
-// Sin ella, el pago con tarjeta queda desactivado y solo hay contra reembolso.
+// Claves de Stripe: variables de entorno o archivo local (gitignored).
+// Sin la clave secreta, el pago con tarjeta queda desactivado.
 const rutaStripe = join(__dirname, 'data', 'stripe-config.json');
-const STRIPE_SECRET =
-  process.env.STRIPE_SECRET_KEY ??
-  (existsSync(rutaStripe)
-    ? JSON.parse(readFileSync(rutaStripe, 'utf-8')).secretKey
-    : null);
+const configStripe = existsSync(rutaStripe)
+  ? JSON.parse(readFileSync(rutaStripe, 'utf-8'))
+  : {};
+const STRIPE_SECRET = process.env.STRIPE_SECRET_KEY ?? configStripe.secretKey ?? null;
+const STRIPE_WEBHOOK_SECRET =
+  process.env.STRIPE_WEBHOOK_SECRET ?? configStripe.webhookSecret ?? null;
 const stripe = STRIPE_SECRET ? new Stripe(STRIPE_SECRET) : null;
 
 // Sesiones en memoria: token -> fecha de caducidad (8 horas).
@@ -42,7 +43,50 @@ const SESION_MS = 8 * 60 * 60 * 1000;
 const sesiones = new Map();
 
 const app = express();
+app.set('trust proxy', 1);
 app.use(cors());
+
+// Webhook de Stripe: avisa directamente al servidor cuando un pago se
+// completa, aunque el cliente cierre el navegador sin volver a la web.
+// Se registra ANTES de express.json() porque la verificación de la
+// firma necesita el cuerpo crudo de la petición.
+app.post(
+  '/api/stripe-webhook',
+  express.raw({ type: 'application/json' }),
+  async (req, res) => {
+    if (!stripe || !STRIPE_WEBHOOK_SECRET) {
+      return res.status(503).json({ error: 'Webhook no configurado' });
+    }
+    let evento;
+    try {
+      evento = stripe.webhooks.constructEvent(
+        req.body,
+        req.headers['stripe-signature'],
+        STRIPE_WEBHOOK_SECRET
+      );
+    } catch (err) {
+      console.error('Webhook con firma no válida:', err.message);
+      return res.status(400).json({ error: 'Firma no válida' });
+    }
+
+    try {
+      const session = evento.data.object;
+      if (evento.type === 'checkout.session.completed' && session.payment_status === 'paid') {
+        const r = await crearPedidoDesdeSesion(session);
+        console.log(
+          r.creado
+            ? `Pedido ${r.id} registrado por webhook (${session.id})`
+            : `Webhook de ${session.id}: el pedido ${r.id} ya existía`
+        );
+      }
+      res.json({ received: true });
+    } catch (err) {
+      console.error('Error procesando el webhook:', err.message);
+      res.status(500).json({ error: 'Error interno' });
+    }
+  }
+);
+
 app.use(express.json());
 
 // Los datos se leen en cada petición para que editar los JSON
@@ -59,15 +103,38 @@ app.get('/api/products', (_req, res) => {
   res.json(loadJson('products.json'));
 });
 
+// Bloqueo de fuerza bruta del login: tras 5 intentos fallidos la IP
+// queda bloqueada 15 minutos.
+const INTENTOS_MAX = 5;
+const BLOQUEO_MS = 15 * 60 * 1000;
+const intentosPorIp = new Map();
+
 // Inicio de sesión del panel: si la contraseña es correcta devuelve
 // un token que el cliente debe enviar en la cabecera Authorization.
 app.post('/api/login', (req, res) => {
+  const ip = req.ip;
+  const registro = intentosPorIp.get(ip) ?? { fallos: 0, bloqueadoHasta: 0 };
+  if (registro.bloqueadoHasta > Date.now()) {
+    const minutos = Math.ceil((registro.bloqueadoHasta - Date.now()) / 60000);
+    return res
+      .status(429)
+      .json({ error: `Demasiados intentos fallidos. Prueba de nuevo en ${minutos} min` });
+  }
+
   const intento = Buffer.from(String(req.body?.password ?? ''));
   const real = Buffer.from(ADMIN_PASSWORD);
   const valida = intento.length === real.length && timingSafeEqual(intento, real);
   if (!valida) {
+    registro.fallos += 1;
+    if (registro.fallos >= INTENTOS_MAX) {
+      registro.bloqueadoHasta = Date.now() + BLOQUEO_MS;
+      registro.fallos = 0;
+    }
+    intentosPorIp.set(ip, registro);
     return res.status(401).json({ error: 'Contraseña incorrecta' });
   }
+
+  intentosPorIp.delete(ip);
   const token = randomBytes(32).toString('hex');
   sesiones.set(token, Date.now() + SESION_MS);
   res.json({ token });
@@ -200,6 +267,24 @@ const guardarPedido = async ({ cliente, lineas, subtotal, envio, total, pago, st
   return pedido;
 };
 
+// Crea (o recupera, si ya existía) el pedido de una sesión de Stripe
+// pagada. Lo usan el webhook y la página de éxito: llegue quien llegue
+// primero, el pedido se registra una sola vez.
+const crearPedidoDesdeSesion = async (session) => {
+  const existente = await buscarPorStripeSession(session.id);
+  if (existente) {
+    return { creado: false, id: existente.id, total: existente.total };
+  }
+
+  const cliente = JSON.parse(session.metadata.cliente);
+  const items = JSON.parse(session.metadata.items).map(([id, qty]) => ({ id, qty }));
+  const v = validarPedido(cliente, items);
+  if (v.error) throw new Error(v.error);
+
+  const pedido = await guardarPedido({ cliente, ...v, pago: 'tarjeta', stripeSession: session.id });
+  return { creado: true, id: pedido.id, total: pedido.total };
+};
+
 // Iniciar un pago con tarjeta: crea una sesión de Stripe Checkout y
 // devuelve la URL de la página de pago segura de Stripe.
 app.post('/api/checkout', async (req, res) => {
@@ -268,18 +353,8 @@ app.post('/api/orders/confirm', async (req, res) => {
       return res.status(402).json({ error: 'El pago no está completado' });
     }
 
-    const existente = await buscarPorStripeSession(session.id);
-    if (existente) {
-      return res.json({ id: existente.id, total: existente.total });
-    }
-
-    const cliente = JSON.parse(session.metadata.cliente);
-    const items = JSON.parse(session.metadata.items).map(([id, qty]) => ({ id, qty }));
-    const v = validarPedido(cliente, items);
-    if (v.error) return res.status(400).json({ error: v.error });
-
-    const pedido = await guardarPedido({ cliente, ...v, pago: 'tarjeta', stripeSession: session.id });
-    res.status(201).json({ id: pedido.id, total: pedido.total });
+    const r = await crearPedidoDesdeSesion(session);
+    res.status(r.creado ? 201 : 200).json({ id: r.id, total: r.total });
   } catch (err) {
     console.error('Error confirmando el pago:', err.message);
     res.status(500).json({ error: 'No se pudo confirmar el pago' });
