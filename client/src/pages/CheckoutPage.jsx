@@ -16,6 +16,7 @@ export default function CheckoutPage() {
   const { items, total, clearCart } = useCart();
   const showToast = useToast();
   const [cliente, setCliente] = useState(CAMPOS_INICIALES);
+  const [metodoPago, setMetodoPago] = useState('tarjeta');
   const [enviando, setEnviando] = useState(false);
   const [confirmacion, setConfirmacion] = useState(null);
 
@@ -28,6 +29,22 @@ export default function CheckoutPage() {
     e.preventDefault();
     setEnviando(true);
     try {
+      if (metodoPago === 'tarjeta') {
+        // Crea la sesión de pago y redirige a la página segura de Stripe
+        const res = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cliente,
+            items: items.map(({ id, qty }) => ({ id, qty })),
+          }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'No se pudo iniciar el pago');
+        window.location.href = data.url;
+        return; // seguimos "enviando" mientras redirige
+      }
+
       const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -42,7 +59,6 @@ export default function CheckoutPage() {
       clearCart();
     } catch (err) {
       showToast(`⚠️ ${err.message}`);
-    } finally {
       setEnviando(false);
     }
   };
@@ -113,11 +129,43 @@ export default function CheckoutPage() {
               <input name="cp" required pattern="[0-9]{5}" title="5 dígitos" value={cliente.cp} onChange={onChange} />
             </label>
           </div>
-          <p className="form-note">
-            💳 El pago se realiza contra reembolso en esta versión de prueba.
-          </p>
+
+          <h3 className="pay-title">Método de pago</h3>
+          <div className="pay-methods">
+            <label className={metodoPago === 'tarjeta' ? 'active' : ''}>
+              <input
+                type="radio"
+                name="metodoPago"
+                value="tarjeta"
+                checked={metodoPago === 'tarjeta'}
+                onChange={() => setMetodoPago('tarjeta')}
+              />
+              <div>
+                <b>💳 Tarjeta</b>
+                <small>Visa, Mastercard, Apple Pay, Google Pay — pago seguro con Stripe</small>
+              </div>
+            </label>
+            <label className={metodoPago === 'contrareembolso' ? 'active' : ''}>
+              <input
+                type="radio"
+                name="metodoPago"
+                value="contrareembolso"
+                checked={metodoPago === 'contrareembolso'}
+                onChange={() => setMetodoPago('contrareembolso')}
+              />
+              <div>
+                <b>💶 Contra reembolso</b>
+                <small>Pagas en efectivo al recibir el pedido</small>
+              </div>
+            </label>
+          </div>
+
           <button className="btn btn-primary btn-block" type="submit" disabled={enviando}>
-            {enviando ? 'Enviando…' : `Confirmar pedido · ${euros(total + envio)}`}
+            {enviando
+              ? 'Procesando…'
+              : metodoPago === 'tarjeta'
+                ? `Continuar al pago · ${euros(total + envio)}`
+                : `Confirmar pedido · ${euros(total + envio)}`}
           </button>
         </form>
 

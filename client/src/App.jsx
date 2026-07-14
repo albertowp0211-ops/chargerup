@@ -4,6 +4,7 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import CartPage from './pages/CartPage.jsx';
 import CheckoutPage from './pages/CheckoutPage.jsx';
+import PaymentSuccessPage from './pages/PaymentSuccessPage.jsx';
 import AdminPage from './pages/AdminPage.jsx';
 import ProductPage from './pages/ProductPage.jsx';
 
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/producto/:id" element={<ProductPage />} />
         <Route path="/carrito" element={<CartPage />} />
         <Route path="/pedido" element={<CheckoutPage />} />
+        <Route path="/pedido/exito" element={<PaymentSuccessPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
       <Footer />
