@@ -11,6 +11,7 @@ import {
   listarPedidos,
   buscarPorStripeSession,
 } from './db.js';
+import { notificarVenta } from './notify.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -169,6 +170,19 @@ const guardarPedido = async ({ cliente, lineas, subtotal, envio, total, pago, st
     )
     .catch((err) =>
       console.error(`No se pudo enviar el email de ${pedido.id}:`, err.message)
+    );
+
+  // Notificación push al móvil (ntfy), independiente del email.
+  notificarVenta(pedido)
+    .then((r) =>
+      console.log(
+        r.enviado
+          ? `Notificación push enviada (${pedido.id})`
+          : `Sin notificación push de ${pedido.id}: ${r.motivo}`
+      )
+    )
+    .catch((err) =>
+      console.error(`No se pudo enviar la notificación push de ${pedido.id}:`, err.message)
     );
 
   enviarAvisoVenta(pedido)
