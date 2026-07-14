@@ -35,11 +35,6 @@ app.get('/api/health', (_req, res) => {
   res.json({ ok: true, service: 'chargeup-server' });
 });
 
-// Oferta destacada que muestra el banner de la web
-app.get('/api/offer', (_req, res) => {
-  res.json(loadJson('offer.json'));
-});
-
 // Catálogo de productos
 app.get('/api/products', (_req, res) => {
   res.json(loadJson('products.json'));

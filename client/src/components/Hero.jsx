@@ -14,9 +14,6 @@ export default function Hero() {
           <a className="btn btn-primary" href="/#catalogo">
             Ver catálogo
           </a>
-          <a className="btn btn-ghost" href="/#ofertas">
-            Ofertas de la semana
-          </a>
         </div>
         <div className="hero-visual">🔌</div>
       </div>

@@ -53,6 +53,5 @@ y opcionalmente `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_FROM` y `EMAIL_AVISOS`.
 ## Editar el catálogo
 
 - Productos y precios: `server/data/products.json`
-- Banner de oferta: `server/data/offer.json`
 
 Los cambios se aplican sin reiniciar el servidor.

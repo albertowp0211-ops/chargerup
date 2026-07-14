@@ -25,7 +25,6 @@ export default function Navbar() {
         </Link>
         <div className="nav-links">
           <a href="/#catalogo">Catálogo</a>
-          <a href="/#ofertas">Ofertas</a>
           <a href="#">Contacto</a>
         </div>
         <input
