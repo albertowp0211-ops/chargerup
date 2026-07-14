@@ -58,7 +58,8 @@ Otras variables de entorno del servidor:
   apuntando a `/api/stripe-webhook`; registra el pedido aunque el cliente
   no vuelva a la web tras pagar.
 - `DATABASE_URL` — PostgreSQL para los pedidos (sin ella, orders.json).
-- `NTFY_TOPIC` — canal de ntfy.sh para avisos de venta en el móvil.
+- `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` — bot de Telegram para
+  avisos de venta en el móvil.
 
 El login del panel bloquea la IP durante 15 minutos tras 5 intentos
 fallidos.

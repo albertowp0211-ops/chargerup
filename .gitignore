@@ -11,7 +11,7 @@ server/data/email-config.json
 server/data/admin-password.txt
 server/data/stripe-config.json
 server/data/db-config.json
-server/data/ntfy-config.json
+server/data/telegram-config.json
 
 # Sistema
 .DS_Store
