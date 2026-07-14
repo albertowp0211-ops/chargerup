@@ -13,12 +13,10 @@ const CAMPOS_INICIALES = {
 };
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCart();
+  const { items, total } = useCart();
   const showToast = useToast();
   const [cliente, setCliente] = useState(CAMPOS_INICIALES);
-  const [metodoPago, setMetodoPago] = useState('tarjeta');
   const [enviando, setEnviando] = useState(false);
-  const [confirmacion, setConfirmacion] = useState(null);
 
   const envio = total >= 25 ? 0 : 4.99;
 
@@ -29,23 +27,8 @@ export default function CheckoutPage() {
     e.preventDefault();
     setEnviando(true);
     try {
-      if (metodoPago === 'tarjeta') {
-        // Crea la sesión de pago y redirige a la página segura de Stripe
-        const res = await fetch('/api/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            cliente,
-            items: items.map(({ id, qty }) => ({ id, qty })),
-          }),
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'No se pudo iniciar el pago');
-        window.location.href = data.url;
-        return; // seguimos "enviando" mientras redirige
-      }
-
-      const res = await fetch('/api/orders', {
+      // Crea la sesión de pago y redirige a la página segura de Stripe
+      const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -54,32 +37,14 @@ export default function CheckoutPage() {
         }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'No se pudo crear el pedido');
-      setConfirmacion(data);
-      clearCart();
+      if (!res.ok) throw new Error(data.error || 'No se pudo iniciar el pago');
+      window.location.href = data.url;
+      // seguimos en estado "enviando" mientras el navegador redirige
     } catch (err) {
       showToast(`⚠️ ${err.message}`);
       setEnviando(false);
     }
   };
-
-  if (confirmacion) {
-    return (
-      <div className="container page">
-        <div className="empty-state">
-          <div className="empty-ico">✅</div>
-          <h1 className="page-title">¡Pedido confirmado!</h1>
-          <p>
-            Tu número de pedido es <b>{confirmacion.id}</b> por un total de{' '}
-            <b>{euros(confirmacion.total)}</b>. Guárdalo para cualquier consulta.
-          </p>
-          <Link className="btn btn-primary" to="/">
-            Volver a la tienda
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   if (items.length === 0) {
     return (
@@ -130,42 +95,13 @@ export default function CheckoutPage() {
             </label>
           </div>
 
-          <h3 className="pay-title">Método de pago</h3>
-          <div className="pay-methods">
-            <label className={metodoPago === 'tarjeta' ? 'active' : ''}>
-              <input
-                type="radio"
-                name="metodoPago"
-                value="tarjeta"
-                checked={metodoPago === 'tarjeta'}
-                onChange={() => setMetodoPago('tarjeta')}
-              />
-              <div>
-                <b>💳 Tarjeta</b>
-                <small>Visa, Mastercard, Apple Pay, Google Pay — pago seguro con Stripe</small>
-              </div>
-            </label>
-            <label className={metodoPago === 'contrareembolso' ? 'active' : ''}>
-              <input
-                type="radio"
-                name="metodoPago"
-                value="contrareembolso"
-                checked={metodoPago === 'contrareembolso'}
-                onChange={() => setMetodoPago('contrareembolso')}
-              />
-              <div>
-                <b>💶 Contra reembolso</b>
-                <small>Pagas en efectivo al recibir el pedido</small>
-              </div>
-            </label>
-          </div>
+          <p className="form-note">
+            💳 Pago seguro con tarjeta a través de Stripe — Visa, Mastercard, Apple Pay y
+            Google Pay. Tus datos de tarjeta nunca pasan por nuestra web.
+          </p>
 
           <button className="btn btn-primary btn-block" type="submit" disabled={enviando}>
-            {enviando
-              ? 'Procesando…'
-              : metodoPago === 'tarjeta'
-                ? `Continuar al pago · ${euros(total + envio)}`
-                : `Confirmar pedido · ${euros(total + envio)}`}
+            {enviando ? 'Procesando…' : `Continuar al pago · ${euros(total + envio)}`}
           </button>
         </form>
 

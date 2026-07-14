@@ -178,16 +178,6 @@ const guardarPedido = ({ cliente, lineas, subtotal, envio, total, pago, stripeSe
   return pedido;
 };
 
-// Crear un pedido contra reembolso.
-app.post('/api/orders', (req, res) => {
-  const { cliente = {}, items = [] } = req.body ?? {};
-  const v = validarPedido(cliente, items);
-  if (v.error) return res.status(400).json({ error: v.error });
-
-  const pedido = guardarPedido({ cliente, ...v, pago: 'contrareembolso' });
-  res.status(201).json({ id: pedido.id, total: pedido.total });
-});
-
 // Iniciar un pago con tarjeta: crea una sesión de Stripe Checkout y
 // devuelve la URL de la página de pago segura de Stripe.
 app.post('/api/checkout', async (req, res) => {
