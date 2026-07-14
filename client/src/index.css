@@ -394,6 +394,16 @@ footer a:hover { color: #fff; }
 .order-datos p { font-size: 13.5px; color: var(--muted); margin-bottom: 5px; }
 .order-datos b { color: var(--text); }
 
+.btn-copiar {
+  margin-top: 6px; padding: 8px 14px;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 9px; font-size: 13px; font-weight: 600;
+  color: var(--text); cursor: pointer;
+}
+.btn-copiar:hover { border-color: var(--primary); color: var(--primary); }
+.ali-link { font-size: 12px; color: var(--primary); text-decoration: none; white-space: nowrap; }
+.ali-link:hover { text-decoration: underline; }
+
 .order-lineas { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .order-lineas th {
   text-align: left; color: var(--muted); font-size: 12px;

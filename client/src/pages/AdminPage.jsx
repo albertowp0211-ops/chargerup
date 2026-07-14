@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { euros } from '../context/CartContext.jsx';
+import { useToast } from '../context/ToastContext.jsx';
 
 const TOKEN_KEY = 'chargeup-admin-token';
 
@@ -13,6 +14,7 @@ const fecha = (iso) =>
   });
 
 export default function AdminPage() {
+  const showToast = useToast();
   const [token, setToken] = useState(() => sessionStorage.getItem(TOKEN_KEY));
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
@@ -96,6 +98,22 @@ export default function AdminPage() {
     );
   }
 
+  // Copia los datos de envío listos para pegar en el checkout de AliExpress
+  const copiarDireccion = (p) => {
+    const texto = [
+      `Nombre: ${p.cliente.nombre}`,
+      `Dirección: ${p.cliente.direccion}`,
+      `Ciudad: ${p.cliente.ciudad}`,
+      `Código postal: ${p.cliente.cp}`,
+      p.cliente.telefono ? `Teléfono: ${p.cliente.telefono}` : null,
+      `Email: ${p.cliente.email}`,
+    ]
+      .filter(Boolean)
+      .join('\n');
+    navigator.clipboard?.writeText(texto);
+    showToast(`📋 Dirección de ${p.id} copiada`);
+  };
+
   const ingresos = (pedidos ?? []).reduce((s, p) => s + p.total, 0);
   const ticketMedio = pedidos?.length ? ingresos / pedidos.length : 0;
 
@@ -163,6 +181,9 @@ export default function AdminPage() {
                         <b>Contacto:</b> {p.cliente.email}
                         {p.cliente.telefono ? ` · ${p.cliente.telefono}` : ''}
                       </p>
+                      <button className="btn-copiar" onClick={() => copiarDireccion(p)}>
+                        📋 Copiar dirección de envío
+                      </button>
                     </div>
                     <table className="order-lineas">
                       <thead>
@@ -171,7 +192,17 @@ export default function AdminPage() {
                       <tbody>
                         {p.lineas.map((l) => (
                           <tr key={l.id}>
-                            <td>{l.nombre}</td>
+                            <td>
+                              {l.nombre}{' '}
+                              <a
+                                className="ali-link"
+                                href={`https://es.aliexpress.com/wholesale?SearchText=${encodeURIComponent(l.nombre)}`}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                AliExpress ↗
+                              </a>
+                            </td>
                             <td>{l.qty}</td>
                             <td>{euros(l.precio)}</td>
                             <td>{euros(l.subtotal)}</td>
