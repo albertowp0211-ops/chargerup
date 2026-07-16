@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
-import { envioPara, MARCA } from '../config.js';
+import { envioPara, MARCA, PLAZO_ENTREGA } from '../config.js';
 
 const CAMPOS_INICIALES = {
   nombre: '',
@@ -223,8 +223,7 @@ export default function CheckoutPage() {
           </div>
           <p className="iva-nota">IVA incluido</p>
           <p className="entrega-nota">
-            📦 Entrega estimada: 5-10 días naturales. Los productos se envían
-            desde un proveedor internacional (fuera de la UE).
+            📦 Entrega estimada: {PLAZO_ENTREGA} desde la confirmación del pedido.
           </p>
           <Link className="btn-link" to="/carrito">
             ← Volver al carrito

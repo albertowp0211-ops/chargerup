@@ -230,8 +230,8 @@ export const PAGINAS = {
       {
         "h": "Gastos y plazos de envío",
         "p": [
-          "Los gastos de envío son gratuitos en pedidos iguales o superiores a 25 € y de 4,99 € en pedidos inferiores.",
-          "Plazo de entrega estimado: entre 5 y 10 días naturales, ya que los productos se envían desde nuestro proveedor internacional. Recibirás la información de seguimiento por correo electrónico cuando esté disponible.",
+          "Los gastos de envío son gratuitos en pedidos iguales o superiores a 30 € y de 4,99 € en pedidos inferiores.",
+          "Plazo de entrega estimado: 24/48 horas desde la confirmación del pedido. Recibirás la información de seguimiento por correo electrónico cuando esté disponible.",
           "De acuerdo con el artículo 66 bis del TRLGDCU, nos comprometemos a entregar en un plazo máximo de 30 días naturales. Si no fuera posible, podrás concedernos un plazo adicional y, de no cumplirse, resolver el contrato con derecho al reembolso íntegro."
         ]
       },
@@ -293,7 +293,7 @@ export const PAGINAS = {
         "p": [
           "Si eres consumidor, tienes derecho a desistir de tu compra en un plazo de 14 días naturales sin necesidad de justificación.",
           "El plazo de desistimiento expira a los 14 días naturales del día en que tú, o un tercero por ti indicado distinto del transportista, adquiristeis la posesión material de los productos. En pedidos con varios productos entregados por separado, el plazo cuenta desde la recepción del último producto.",
-          "Como los productos se envían desde nuestro proveedor internacional, este plazo empieza a contar cuando recibes el pedido, no cuando lo realizas o lo pagas."
+          "Este plazo empieza a contar cuando recibes el pedido, no cuando lo realizas ni cuando lo pagas."
         ]
       },
       {
@@ -355,25 +355,24 @@ export const PAGINAS = {
     "titulo": "Envíos y Devoluciones",
     "secciones": [
       {
-        "h": "Cómo y desde dónde enviamos",
+        "h": "Cómo enviamos",
         "p": [
-          "Preparamos tu pedido y lo enviamos desde nuestro proveedor internacional, situado fuera de la Unión Europea. Por eso los plazos de entrega son más largos que los de una tienda con almacén en España, pero el precio es más ajustado.",
+          "Preparamos tu pedido en cuanto se confirma el pago y lo entregamos a la agencia de transporte el mismo día o el siguiente día laborable.",
           "Cuando tu pedido se ponga en camino, te enviaremos por correo electrónico la información de seguimiento, si está disponible."
         ]
       },
       {
-        "h": "Plazos de entrega reales",
+        "h": "Plazos de entrega",
         "p": [
-          "Plazo de entrega estimado: entre 5 y 10 días naturales.",
-          "No realizamos envíos en 24/48 horas ni envíos exprés: informamos siempre del plazo real para que compres con total transparencia.",
+          "Plazo de entrega estimado: 24/48 horas (días laborables) desde la confirmación del pedido.",
           "Nos comprometemos a entregar en un plazo máximo de 30 días naturales. Si no fuera posible, podrás resolver el contrato y te reembolsaremos la totalidad de lo pagado."
         ]
       },
       {
         "h": "Gastos de envío",
         "p": [
-          "Envío gratuito en pedidos iguales o superiores a 25 €.",
-          "En pedidos inferiores a 25 €, los gastos de envío son de 4,99 €.",
+          "Envío gratuito en pedidos iguales o superiores a 30 €.",
+          "En pedidos inferiores a 30 €, los gastos de envío son de 4,99 €.",
           "El precio final, con IVA y gastos de envío incluidos, se muestra siempre antes de pagar. No pagarás IVA de importación, aranceles ni gastos de gestión adicionales en el momento de la entrega."
         ]
       },

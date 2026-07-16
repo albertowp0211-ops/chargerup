@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
-import { ENVIO_GRATIS_DESDE, MARCA } from '../config.js';
+import { ENVIO_GRATIS_DESDE, PLAZO_ENTREGA, MARCA } from '../config.js';
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -201,7 +201,7 @@ export default function ProductPage() {
 
           <p className="detail-envio">
             🚚 Envío gratis a partir de {ENVIO_GRATIS_DESDE} € · ↩️ Devolución en 30 días · 🛡️ Garantía legal de 3 años
-            <br />📦 Entrega estimada: 5-10 días (envío desde proveedor internacional)
+            <br />📦 Entrega estimada: {PLAZO_ENTREGA}
           </p>
         </div>
       </div>

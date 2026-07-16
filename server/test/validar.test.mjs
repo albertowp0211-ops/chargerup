@@ -88,22 +88,21 @@ test('rechaza un código postal que no tiene 5 dígitos', () => {
   assert.match(r.error, /código postal/);
 });
 
-test('cobra envío cuando el subtotal es 24,99 (por debajo del umbral)', () => {
-  // 1 cable (9,99) + ... ajustamos con cantidades: 2 cables + 1 cable = no exacto.
-  // Usamos precios directos: forzamos subtotal 24,99 con un producto artificial.
-  const catalogo = [{ id: 3, nombre: 'Artículo', precio: 24.99 }];
+test('cobra envío cuando el subtotal es 29,99 (por debajo del umbral)', () => {
+  // Forzamos el subtotal justo por debajo del umbral con un producto artificial.
+  const catalogo = [{ id: 3, nombre: 'Artículo', precio: 29.99 }];
   const r = validarPedido(CLIENTE_OK, [{ id: 3, qty: 1 }], catalogo);
-  assert.equal(r.subtotal, 24.99);
+  assert.equal(r.subtotal, 29.99);
   assert.equal(r.envio, 4.99);
-  assert.equal(r.total, 29.98);
+  assert.equal(r.total, 34.98);
 });
 
-test('envío gratis cuando el subtotal alcanza justo 25,00', () => {
-  const catalogo = [{ id: 3, nombre: 'Artículo', precio: 25 }];
+test('envío gratis cuando el subtotal alcanza justo 30,00', () => {
+  const catalogo = [{ id: 3, nombre: 'Artículo', precio: 30 }];
   const r = validarPedido(CLIENTE_OK, [{ id: 3, qty: 1 }], catalogo);
-  assert.equal(r.subtotal, 25);
+  assert.equal(r.subtotal, 30);
   assert.equal(r.envio, 0);
-  assert.equal(r.total, 25);
+  assert.equal(r.total, 30);
 });
 
 test('rechaza más de 30 productos distintos', () => {

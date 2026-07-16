@@ -68,7 +68,9 @@ export const validarPedido = (cliente = {}, items = [], catalogo = []) => {
   }
 
   const subtotal = +lineas.reduce((s, l) => s + l.subtotal, 0).toFixed(2);
-  const envio = subtotal >= 25 ? 0 : 4.99;
+  // Mismo umbral que ENVIO_GRATIS_DESDE en client/src/config.js: si se
+  // cambia aquí hay que cambiarlo también allí (y viceversa).
+  const envio = subtotal >= 30 ? 0 : 4.99;
   const total = +(subtotal + envio).toFixed(2);
   return { lineas, subtotal, envio, total };
 };
