@@ -342,6 +342,35 @@ footer a:hover { color: #fff; }
 .envio-conseguido {
   color: #047857; font-weight: 700; font-size: 14px; margin-bottom: 18px;
 }
+/* ===== Código promocional ===== */
+.promo-form { margin-bottom: 16px; }
+.promo-form label {
+  display: block; font-size: 13px; font-weight: 600;
+  color: var(--muted); margin-bottom: 6px;
+}
+.promo-campos { display: flex; gap: 8px; }
+.promo-campos input {
+  flex: 1; min-width: 0; padding: 10px 12px;
+  border: 1px solid var(--border); border-radius: 10px;
+  font-size: 14px; background: var(--bg); color: var(--text);
+  text-transform: uppercase;
+}
+.promo-campos input:focus { border-color: var(--primary); }
+.promo-campos .btn { padding: 10px 14px; font-size: 13.5px; }
+.promo-error { color: #b91c1c; font-size: 12.5px; font-weight: 600; margin-top: 6px; }
+.promo-aplicado {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 10px; padding: 10px 12px; margin-bottom: 16px;
+  font-size: 13.5px; color: #166534;
+}
+.promo-aplicado button {
+  background: none; border: none; cursor: pointer;
+  color: #166534; font-size: 14px; line-height: 1; padding: 2px;
+}
+.promo-aplicado button:hover { color: #b91c1c; }
+.summary-descuento, .summary-descuento span { color: #16a34a; font-weight: 600; }
+
 .iva-nota { font-size: 12.5px; color: var(--muted); font-weight: 500; }
 .entrega-nota { font-size: 12.5px; color: var(--muted); margin: 8px 0 4px; line-height: 1.45; }
 .cart-summary .iva-nota { margin: 2px 0 10px; }

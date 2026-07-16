@@ -233,6 +233,12 @@ export default function AdminPage() {
                           <td colSpan="3">Envío</td>
                           <td>{p.envio === 0 ? 'Gratis' : euros(p.envio)}</td>
                         </tr>
+                        {p.descuento > 0 && (
+                          <tr>
+                            <td colSpan="3">Descuento{p.promo ? ` (${p.promo})` : ''}</td>
+                            <td>−{euros(p.descuento)}</td>
+                          </tr>
+                        )}
                         <tr className="order-tfoot-total">
                           <td colSpan="3">Total</td>
                           <td>{euros(p.total)}</td>

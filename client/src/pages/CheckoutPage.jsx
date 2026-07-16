@@ -28,7 +28,7 @@ const leerDatosGuardados = () => {
 };
 
 export default function CheckoutPage() {
-  const { items, total } = useCart();
+  const { items, total, promo, descuento } = useCart();
   const showToast = useToast();
   const [cliente, setCliente] = useState(() => {
     const guardado = leerDatosGuardados();
@@ -82,6 +82,7 @@ export default function CheckoutPage() {
         body: JSON.stringify({
           cliente,
           items: items.map(({ id, qty }) => ({ id, qty })),
+          ...(promo ? { promo: promo.codigo } : {}),
         }),
       });
       // Parseamos antes de mirar res.ok: un 502 del proxy devuelve HTML
@@ -192,7 +193,7 @@ export default function CheckoutPage() {
             type="submit"
             disabled={enviando || !acepta}
           >
-            {enviando ? 'Procesando…' : `Pagar ahora · ${euros(total + envio)}`}
+            {enviando ? 'Procesando…' : `Pagar ahora · ${euros(total - descuento + envio)}`}
           </button>
         </form>
 
@@ -206,13 +207,19 @@ export default function CheckoutPage() {
               <span>{euros(i.precio * i.qty)}</span>
             </div>
           ))}
+          {descuento > 0 && (
+            <div className="summary-row summary-descuento">
+              <span>Descuento ({promo.codigo})</span>
+              <span>−{euros(descuento)}</span>
+            </div>
+          )}
           <div className="summary-row">
             <span>Envío</span>
             <span>{envio === 0 ? 'Gratis' : euros(envio)}</span>
           </div>
           <div className="summary-row summary-total">
             <span>Total</span>
-            <span>{euros(total + envio)}</span>
+            <span>{euros(total - descuento + envio)}</span>
           </div>
           <p className="iva-nota">IVA incluido</p>
           <p className="entrega-nota">

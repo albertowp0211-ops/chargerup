@@ -21,6 +21,7 @@ import {
 } from './db.js';
 import { notificarVenta, notificarError } from './notify.js';
 import { validarPedido } from './validar.js';
+import { validarPromo } from './promos.js';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -340,7 +341,7 @@ app.get('/api/orders', requiereAdmin, async (_req, res) => {
 
 // Guarda el pedido (en PostgreSQL si hay BD, si no en orders.json)
 // y lanza los emails en segundo plano.
-const guardarPedido = async ({ cliente, lineas, subtotal, envio, total, descuento, pago, stripeSession }) => {
+const guardarPedido = async ({ cliente, lineas, subtotal, envio, total, descuento, promo, pago, stripeSession }) => {
   const pedido = {
     // Sufijo aleatorio además del timestamp: evita ids idénticos para
     // dos pedidos creados en el mismo milisegundo (colisión de PK).
@@ -364,6 +365,7 @@ const guardarPedido = async ({ cliente, lineas, subtotal, envio, total, descuent
     subtotal,
     envio,
     ...(descuento > 0 ? { descuento } : {}),
+    ...(promo ? { promo } : {}),
     total,
   };
 
@@ -457,11 +459,24 @@ const crearPedidoDesdeSesion = async (session) => {
     ...v,
     total: totalCobrado,
     ...(descuento > 0 ? { descuento } : {}),
+    ...(session.metadata.promo ? { promo: session.metadata.promo } : {}),
     pago: 'tarjeta',
     stripeSession: session.id,
   });
   return { creado: pedido.creado, id: pedido.id, total: pedido.total };
 };
+
+// Validación de un código promocional desde el carrito. Comparte el
+// rate-limit del checkout para que nadie pueda adivinar códigos por
+// fuerza bruta, y la respuesta de fallo es genérica (no distingue entre
+// "no existe" y "desactivado").
+app.post('/api/promo', limiteCheckout, (req, res) => {
+  const promo = validarPromo(req.body?.codigo);
+  if (!promo) {
+    return res.status(404).json({ error: 'Este código no es válido' });
+  }
+  res.json(promo);
+});
 
 // Iniciar un pago con tarjeta: crea una sesión de Stripe Checkout y
 // devuelve la URL de la página de pago segura de Stripe.
@@ -472,6 +487,25 @@ app.post('/api/checkout', limiteCheckout, async (req, res) => {
   const { cliente = {}, items = [] } = req.body ?? {};
   const v = validarPedido(cliente, items, cargarProducts());
   if (v.error) return res.status(400).json({ error: v.error });
+
+  // Código promocional: SIEMPRE se revalida en el servidor (el pct que
+  // calculó el carrito no se acepta jamás del cliente). Si el código dejó
+  // de ser válido entre el carrito y el pago, se avisa en vez de cobrar
+  // un precio distinto del que el cliente vio en pantalla.
+  let promo = null;
+  if (req.body?.promo) {
+    promo = validarPromo(req.body.promo);
+    if (!promo) {
+      return res.status(400).json({
+        error: 'El código promocional ya no es válido. Quítalo del carrito e inténtalo de nuevo',
+      });
+    }
+  }
+  // El descuento se aplica solo a los productos (no al envío), redondeado
+  // al céntimo. Con él, Stripe cobra exactamente el total que vio el
+  // cliente; el webhook lo registrará como "descuento" al comparar con el
+  // precio de catálogo.
+  const descuentoCents = promo ? Math.round(v.subtotal * promo.pct) : 0;
 
   // Origen de las URLs de vuelta: si hay allowlist, solo se acepta un
   // origin que esté en ella (evita que un atacante genere un Checkout
@@ -513,14 +547,37 @@ app.post('/api/checkout', limiteCheckout, async (req, res) => {
   }
 
   try {
+    // Con código propio se pasa como cupón de importe fijo (calculado
+    // sobre los productos, sin el envío) y aparece con su nombre en la
+    // página de pago. Stripe no permite combinar `discounts` con
+    // `allow_promotion_codes`, así que el campo de Stripe solo se ofrece
+    // cuando no hay código de la tienda aplicado.
+    const descuento = descuentoCents > 0
+      ? {
+          discounts: [
+            {
+              coupon: (
+                await stripe.coupons.create({
+                  amount_off: descuentoCents,
+                  currency: 'eur',
+                  duration: 'once',
+                  name: `Código ${promo.codigo}`,
+                })
+              ).id,
+            },
+          ],
+        }
+      : { allow_promotion_codes: true };
+
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items,
       customer_email: String(cliente.email).trim(),
-      allow_promotion_codes: true,
+      ...descuento,
       metadata: {
         cliente: metaCliente,
         items: metaItems,
+        ...(promo ? { promo: promo.codigo } : {}),
       },
       success_url: `${origen}/pedido/exito?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origen}/pedido`,
