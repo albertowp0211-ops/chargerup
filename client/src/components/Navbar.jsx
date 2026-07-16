@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import { useSearch } from '../context/SearchContext.jsx';
+import { MARCA, EMAIL_CONTACTO } from '../config.js';
 
 export default function Navbar() {
   const { count } = useCart();
@@ -21,27 +22,34 @@ export default function Navbar() {
     <nav>
       <div className="container nav-inner">
         <Link to="/" className="logo">
-          Charge<span>Up</span> ⚡
+          {MARCA} ⚡
         </Link>
         <div className="nav-links">
           <a href="/#catalogo">Catálogo</a>
-          <a href="#">Contacto</a>
+          <a href={`mailto:${EMAIL_CONTACTO}`}>Contacto</a>
         </div>
         <input
           className="nav-search"
           type="text"
           placeholder="🔍  Buscar cargadores..."
+          aria-label="Buscar productos"
           value={busqueda}
           onChange={onBuscar}
         />
         <button
           className="search-toggle"
           title="Buscar"
+          aria-label="Abrir buscador"
           onClick={() => setBuscarAbierto((o) => !o)}
         >
           🔍
         </button>
-        <Link to="/carrito" className="cart-btn" title="Ver carrito">
+        <Link
+          to="/carrito"
+          className="cart-btn"
+          title="Ver carrito"
+          aria-label={`Ver carrito (${count} artículos)`}
+        >
           🛒<span className="cart-badge">{count}</span>
         </Link>
       </div>
@@ -50,6 +58,7 @@ export default function Navbar() {
           <input
             type="text"
             placeholder="🔍  Buscar cargadores..."
+            aria-label="Buscar productos"
             value={busqueda}
             onChange={onBuscar}
             autoFocus

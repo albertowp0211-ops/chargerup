@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Características de Cable USB-C trenzado 2m 100W">
+  <rect width="800" height="800" fill="#ffffff"/>
+  <rect x="0" y="0" width="800" height="200" fill="#f1f5f9"/>
+  <text x="60" y="115" font-size="88" dominant-baseline="central">🪢</text>
+  <text x="180" y="100" font-size="34" font-weight="800" fill="#0f172a" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Características</text>
+  <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cable USB-C trenzado 2m 100W</text>
+  
+    <circle cx="90" cy="318" r="7" fill="#e11d48"/>
+    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Pack de 2 cables de 2 metros</text>
+    <circle cx="90" cy="410" r="7" fill="#e11d48"/>
+    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Hasta 100W (20V/5A) — apto para portátiles</text>
+    <circle cx="90" cy="502" r="7" fill="#e11d48"/>
+    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Transferencia de datos a 480 Mbps</text>
+    <circle cx="90" cy="594" r="7" fill="#e11d48"/>
+    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Nailon trenzado antienredos</text>
+</svg>

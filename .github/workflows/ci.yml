@@ -1,0 +1,45 @@
+# Integración continua: en cada push o PR compila el cliente, pasa los
+# tests del servidor y comprueba que la API arranca y responde.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependencias del servidor
+        working-directory: server
+        run: npm ci
+
+      - name: Instalar dependencias del cliente
+        working-directory: client
+        run: npm ci
+
+      - name: Tests del servidor
+        working-directory: server
+        run: npm test
+
+      - name: Build del cliente
+        working-directory: client
+        run: npm run build
+
+      - name: Arrancar la API y comprobar /api/health
+        working-directory: server
+        run: |
+          node index.js &
+          for i in $(seq 1 20); do
+            if curl -sf http://localhost:3001/api/health; then exit 0; fi
+            sleep 1
+          done
+          echo "La API no respondió a /api/health" >&2
+          exit 1

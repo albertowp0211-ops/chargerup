@@ -51,6 +51,8 @@ de entorno en lugar del archivo: `BREVO_API_KEY` + `EMAIL_USER` (vía API
 de Brevo, recomendada), o `EMAIL_USER` + `EMAIL_PASS` (SMTP), y
 opcionalmente `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_FROM` y `EMAIL_AVISOS`.
 
+Todas las variables están documentadas en `server/.env.example`.
+
 Otras variables de entorno del servidor:
 
 - `STRIPE_SECRET_KEY` — clave secreta de Stripe (pago con tarjeta).
@@ -58,11 +60,39 @@ Otras variables de entorno del servidor:
   apuntando a `/api/stripe-webhook`; registra el pedido aunque el cliente
   no vuelva a la web tras pagar.
 - `DATABASE_URL` — PostgreSQL para los pedidos (sin ella, orders.json).
+- `CLIENT_URL` — URL pública de la tienda. Si se define, CORS y las URLs
+  de vuelta de Stripe se restringen a ese origen (más el localhost de
+  Vite). Sin ella, CORS queda abierto con un aviso al arrancar.
+- `ALLOW_JSON_ORDERS` — pon `1` para permitir guardar pedidos en
+  `orders.json` en producción (no recomendado; ver más abajo).
 - `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` — bot de Telegram para
-  avisos de venta en el móvil.
+  avisos de venta y de error en el móvil.
 
-El login del panel bloquea la IP durante 15 minutos tras 5 intentos
-fallidos.
+### Protecciones de seguridad
+
+- **Contraseña de admin obligatoria en producción**: si `ADMIN_PASSWORD`
+  falta o tiene menos de 12 caracteres, el servidor no arranca (en
+  desarrollo solo avisa y usa una contraseña temporal). Una contraseña
+  vacía nunca autentica.
+- **Base de datos obligatoria en producción**: sin `DATABASE_URL` el
+  servidor no arranca (los pedidos se perderían al reiniciar Render),
+  salvo que se fuerce con `ALLOW_JSON_ORDERS=1`.
+- **Cabeceras HTTP** con `helmet`, y **límite de peticiones** por IP:
+  10 logins y 30 pagos cada 15 minutos, además del bloqueo de fuerza
+  bruta (la IP se bloquea 15 min tras 5 intentos fallidos de login).
+- Los precios se recalculan siempre en el servidor a partir del
+  catálogo; el cliente nunca envía importes. Los datos del cliente se
+  escapan antes de meterlos en emails o en Telegram.
+
+## Tests
+
+```bash
+npm test            # tests unitarios del servidor (node:test)
+npm run test:e2e    # compra de prueba real contra la tienda (Stripe test)
+```
+
+`npm run test:e2e` necesita `npx playwright install chromium` la primera
+vez y la variable `TIENDA_URL` si no apuntas a la web por defecto.
 
 ## Editar el catálogo
 

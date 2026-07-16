@@ -6,6 +6,7 @@ import { useSearch, normalizar } from '../context/SearchContext.jsx';
 
 export default function ProductsSection() {
   const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
   const [categoria, setCategoria] = useState('Todos');
   const { addItem } = useCart();
@@ -16,7 +17,8 @@ export default function ProductsSection() {
     fetch('/api/products')
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
       .then(setProductos)
-      .catch(() => setError(true));
+      .catch(() => setError(true))
+      .finally(() => setCargando(false));
   }, []);
 
   const categorias = useMemo(
@@ -24,13 +26,71 @@ export default function ProductsSection() {
     [productos]
   );
 
+  // La búsqueda cubre también descripción y características ("GaN", "MacBook"…)
   const termino = normalizar(busqueda.trim());
   const visibles = productos.filter(
     (p) =>
       (categoria === 'Todos' || p.categoria === categoria) &&
       (termino === '' ||
-        normalizar(`${p.nombre} ${p.categoria} ${p.tag}`).includes(termino))
+        normalizar(
+          `${p.nombre} ${p.categoria} ${p.tag} ${p.descripcion ?? ''} ${(p.caracteristicas ?? []).join(' ')}`
+        ).includes(termino))
   );
+
+  // Sugerencias cuando el filtro no devuelve nada: los más vendidos
+  const bestsellers = useMemo(() => {
+    const destacados = productos.filter((p) => p.hot);
+    return (destacados.length > 0 ? destacados : productos).slice(0, 3);
+  }, [productos]);
+
+  const tarjeta = (p) => {
+    const dto =
+      p.precioAntes && p.precioAntes > p.precio
+        ? Math.round((1 - p.precio / p.precioAntes) * 100)
+        : 0;
+    const agotado = p.disponible === false;
+    return (
+    <div className={`product ${agotado ? 'agotado' : ''}`} key={p.id}>
+      <Link className="product-link" to={`/producto/${p.id}`}>
+        <div className="img">
+          {agotado ? (
+            <span className="agotado-badge">Agotado</span>
+          ) : (
+            dto > 0 && <span className="dto-badge">−{dto}%</span>
+          )}
+          <span className="img-emoji">{p.imagen}</span>
+        </div>
+        <span className={`tag ${p.hot ? 'hot' : ''}`}>{p.tag}</span>
+        <h3>{p.nombre}</h3>
+        {p.descripcion && <p className="product-desc">{p.descripcion}</p>}
+      </Link>
+      <div className="price-row">
+        <div className="price">
+          {euros(p.precio)}
+          {p.precioAntes ? <small>{euros(p.precioAntes)}</small> : null}
+        </div>
+        {agotado ? (
+          <button className="add-btn" disabled>
+            Agotado
+          </button>
+        ) : (
+          <button
+            className="add-btn"
+            onClick={() => {
+              addItem(p);
+              showToast(`✓ Añadido al carrito: ${p.nombre}`, {
+                label: 'Ver carrito',
+                to: '/carrito',
+              });
+            }}
+          >
+            Añadir
+          </button>
+        )}
+      </div>
+    </div>
+    );
+  };
 
   return (
     <section className="catalog container" id="catalogo">
@@ -62,42 +122,34 @@ export default function ProductsSection() {
         </p>
       )}
 
-      {!error && productos.length > 0 && visibles.length === 0 && (
-        <p className="catalog-empty">
-          No hay productos que coincidan con tu búsqueda.
-        </p>
+      {cargando && !error && (
+        <div className="grid" aria-hidden="true">
+          {Array.from({ length: 6 }, (_, i) => (
+            <div className="product skeleton" key={i}>
+              <div className="sk-img" />
+              <div className="sk-line sk-tag" />
+              <div className="sk-line" />
+              <div className="sk-line sk-corta" />
+            </div>
+          ))}
+        </div>
       )}
 
-      <div className="grid">
-        {visibles.map((p) => (
-          <div className="product" key={p.id}>
-            <Link className="product-link" to={`/producto/${p.id}`}>
-              <div className="img">{p.imagen}</div>
-              <span className={`tag ${p.hot ? 'hot' : ''}`}>{p.tag}</span>
-              <h3>{p.nombre}</h3>
-              <div className="stars">
-                {'★'.repeat(p.rating)}
-                {'☆'.repeat(5 - p.rating)} <small>({p.reviews})</small>
-              </div>
-            </Link>
-            <div className="price-row">
-              <div className="price">
-                {euros(p.precio)}
-                {p.precioAntes ? <small>{euros(p.precioAntes)}</small> : null}
-              </div>
-              <button
-                className="add-btn"
-                onClick={() => {
-                  addItem(p);
-                  showToast(`✓ Añadido al carrito: ${p.nombre}`);
-                }}
-              >
-                Añadir
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+      {!error && !cargando && productos.length > 0 && visibles.length === 0 && (
+        <>
+          <p className="catalog-empty">
+            No hay productos que coincidan con tu búsqueda.
+          </p>
+          {bestsellers.length > 0 && (
+            <>
+              <p className="catalog-sugerencias">Quizá te interesen nuestros más vendidos:</p>
+              <div className="grid grid-3">{bestsellers.map(tarjeta)}</div>
+            </>
+          )}
+        </>
+      )}
+
+      <div className="grid">{visibles.map(tarjeta)}</div>
     </section>
   );
 }

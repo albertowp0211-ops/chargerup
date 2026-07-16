@@ -1,0 +1,41 @@
+# Copia de seguridad semanal de la base de datos de pedidos (Render
+# PostgreSQL). El dump contiene datos personales de clientes, así que se
+# CIFRA antes de subirlo como artifact.
+#
+# Secrets necesarios en el repositorio:
+#   DATABASE_URL       — cadena de conexión a la base de datos.
+#   BACKUP_PASSPHRASE  — frase para cifrar el dump (gpg simétrico).
+# Si falta alguno, el job termina sin error avisando de ello.
+name: Backup de pedidos
+
+on:
+  schedule:
+    - cron: '0 5 * * 1' # lunes a las 05:00 UTC
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Volcar y cifrar la base de datos
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          BACKUP_PASSPHRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          if [ -z "$DATABASE_URL" ] || [ -z "$BACKUP_PASSPHRASE" ]; then
+            echo "::notice::Falta DATABASE_URL o BACKUP_PASSPHRASE — backup omitido"
+            echo "omitido=1" >> "$GITHUB_ENV"
+            exit 0
+          fi
+          sudo apt-get update -q && sudo apt-get install -y -q postgresql-client
+          pg_dump "$DATABASE_URL" --no-owner --no-privileges | gzip \
+            | gpg --batch --yes --symmetric --cipher-algo AES256 \
+                  --passphrase "$BACKUP_PASSPHRASE" -o pedidos.sql.gz.gpg
+
+      - name: Subir el dump cifrado como artifact
+        if: env.omitido != '1'
+        uses: actions/upload-artifact@v4
+        with:
+          name: backup-pedidos-${{ github.run_id }}
+          path: pedidos.sql.gz.gpg
+          retention-days: 30

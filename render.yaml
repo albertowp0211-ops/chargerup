@@ -1,0 +1,38 @@
+# Infraestructura como código para el despliegue de la API en Render.
+# Hace el build reproducible y fija `npm ci` (respeta package-lock.json)
+# en vez de `npm install`, para que un paquete comprometido no se cuele
+# en un redeploy. Las variables marcadas sync:false se configuran en el
+# panel de Render (nunca en el repositorio): ver server/.env.example.
+services:
+  - type: web
+    name: chargerup-api
+    runtime: node
+    region: frankfurt
+    plan: free
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: '20'
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: BREVO_API_KEY
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_AVISOS
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false

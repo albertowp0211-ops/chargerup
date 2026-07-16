@@ -1,6 +1,8 @@
+import { ENVIO_GRATIS_DESDE } from '../config.js';
+
 const FEATURES = [
-  { ico: '🚚', titulo: 'Envío 24/48h', detalle: 'Gratis desde 25€' },
-  { ico: '🛡️', titulo: 'Garantía 3 años', detalle: 'En todos los productos' },
+  { ico: '🚚', titulo: 'Envío a toda España', detalle: `Gratis a partir de ${ENVIO_GRATIS_DESDE} €` },
+  { ico: '🛡️', titulo: 'Garantía legal de 3 años', detalle: 'En todos los productos' },
   { ico: '🔒', titulo: 'Pago seguro', detalle: 'Visa, Mastercard, Apple Pay' },
 ];
 

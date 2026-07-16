@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
+import { usePageMeta } from '../hooks/usePageMeta.js';
+import { MARCA, EMAIL_CONTACTO } from '../config.js';
 
 export default function PaymentSuccessPage() {
   const [params] = useSearchParams();
@@ -11,7 +13,14 @@ export default function PaymentSuccessPage() {
   const [mensajeError, setMensajeError] = useState('');
   const confirmado = useRef(false);
 
-  useEffect(() => {
+  usePageMeta(
+    `Confirmando tu pago — ${MARCA}`,
+    `Estamos verificando tu pago y preparando tu pedido en ${MARCA}.`
+  );
+
+  // El endpoint es idempotente: podemos reintentar la confirmación con el
+  // mismo session_id sin que se duplique el pedido
+  const confirmar = useCallback(() => {
     if (!sessionId || confirmado.current) return;
     confirmado.current = true;
 
@@ -21,17 +30,37 @@ export default function PaymentSuccessPage() {
       body: JSON.stringify({ session_id: sessionId }),
     })
       .then(async (res) => {
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'No se pudo confirmar el pago');
+        // Parseamos antes de mirar res.ok: un 502 del proxy devuelve HTML
+        // y no queremos enseñar «Unexpected token '<'» al cliente
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.error || `No se pudo confirmar el pago (error ${res.status})`);
+        }
         setPedido(data);
         setEstado('exito');
         clearCart();
+        // Quitamos el session_id de la URL una vez confirmado: es el
+        // secreto que acepta /api/orders/confirm y no debe quedar en el
+        // historial, en el Referer ni en la analítica.
+        window.history.replaceState(null, '', '/pedido/exito');
       })
       .catch((err) => {
         setMensajeError(err.message);
         setEstado('error');
       });
   }, [sessionId, clearCart]);
+
+  useEffect(() => {
+    confirmar();
+  }, [confirmar]);
+
+  // Rearma el intento y vuelve a lanzar la misma confirmación
+  const reintentar = () => {
+    confirmado.current = false;
+    setMensajeError('');
+    setEstado('confirmando');
+    confirmar();
+  };
 
   if (!sessionId) {
     return (
@@ -63,8 +92,11 @@ export default function PaymentSuccessPage() {
         <div className="empty-state">
           <div className="empty-ico">⚠️</div>
           <h1 className="page-title">No se pudo confirmar el pago</h1>
-          <p>{mensajeError} — Si el cargo aparece en tu tarjeta, escríbenos a hola@chargeup.es con la fecha y hora.</p>
-          <Link className="btn btn-primary" to="/pedido">Volver a intentarlo</Link>
+          <p>{mensajeError} — Si el cargo aparece en tu tarjeta, escríbenos a {EMAIL_CONTACTO} con la fecha y hora.</p>
+          <button className="btn btn-primary" onClick={reintentar}>
+            Reintentar confirmación
+          </button>
+          <Link className="btn-link" to="/">Volver a la tienda</Link>
         </div>
       </div>
     );

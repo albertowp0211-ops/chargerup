@@ -17,6 +17,11 @@
       "Carga un portátil o dos móviles a la vez",
       "Más compacto y sin sobrecalentamiento",
       "Compatible con iPhone, Android, iPad, MacBook y más"
+    ],
+    "imagenes": [
+      "/img/prod-1-1.svg",
+      "/img/prod-1-2.svg",
+      "/img/prod-1-3.svg"
     ]
   },
   {
@@ -37,6 +42,11 @@
       "50% de batería en ~30 minutos (iPhone 13 o posterior)",
       "Protección contra sobrecarga, cortocircuito y temperatura",
       "Compatible también con Android y AirPods"
+    ],
+    "imagenes": [
+      "/img/prod-2-1.svg",
+      "/img/prod-2-2.svg",
+      "/img/prod-2-3.svg"
     ]
   },
   {
@@ -57,6 +67,11 @@
       "Funciona también con fundas MagSafe",
       "Cable USB-C de 1,5 m incluido",
       "Superficie antideslizante que no raya el móvil"
+    ],
+    "imagenes": [
+      "/img/prod-3-1.svg",
+      "/img/prod-3-2.svg",
+      "/img/prod-3-3.svg"
     ]
   },
   {
@@ -77,6 +92,11 @@
       "Para toma de mechero de 12/24V (coche y camión)",
       "LED indicador de funcionamiento",
       "Protección contra picos de tensión del vehículo"
+    ],
+    "imagenes": [
+      "/img/prod-4-1.svg",
+      "/img/prod-4-2.svg",
+      "/img/prod-4-3.svg"
     ]
   },
   {
@@ -97,6 +117,11 @@
       "2 salidas USB-A + 1 USB-C de entrada/salida",
       "Pantalla LED con porcentaje de batería",
       "Carga 3 dispositivos a la vez · Apta para avión"
+    ],
+    "imagenes": [
+      "/img/prod-5-1.svg",
+      "/img/prod-5-2.svg",
+      "/img/prod-5-3.svg"
     ]
   },
   {
@@ -117,6 +142,11 @@
       "Transferencia de datos a 480 Mbps",
       "Nailon trenzado antienredos",
       "Conectores reforzados: +30.000 flexiones"
+    ],
+    "imagenes": [
+      "/img/prod-6-1.svg",
+      "/img/prod-6-2.svg",
+      "/img/prod-6-3.svg"
     ]
   },
   {
@@ -137,6 +167,11 @@
       "Reparto inteligente de potencia entre puertos",
       "Carga MacBook Pro, portátiles gaming, tablets y móviles",
       "Tamaño de bolsillo pese a los 100W"
+    ],
+    "imagenes": [
+      "/img/prod-7-1.svg",
+      "/img/prod-7-2.svg",
+      "/img/prod-7-3.svg"
     ]
   },
   {
@@ -157,6 +192,105 @@
       "Plegable: ideal para viajes",
       "Luz nocturna tenue regulable",
       "Compatible con iPhone y Android con carga inalámbrica"
+    ],
+    "imagenes": [
+      "/img/prod-8-1.svg",
+      "/img/prod-8-2.svg",
+      "/img/prod-8-3.svg"
+    ]
+  },
+  {
+    "id": 9,
+    "imagen": "⌚",
+    "tag": "Oferta",
+    "hot": true,
+    "nombre": "Cargador 2 en 1 para reloj y auriculares",
+    "precio": 19.99,
+    "precioAntes": 26.99,
+    "categoria": "Inalámbricos",
+    "descripcion": "Carga el smartwatch y los auriculares en el mismo sitio, sin cables por medio. Diseño plegable de aluminio que cabe en cualquier maleta y deja el escritorio despejado.",
+    "caracteristicas": [
+      "Carga inalámbrica para reloj y auriculares a la vez",
+      "Compatible con Apple Watch, AirPods y estuches con carga inalámbrica",
+      "Plegable y ligero: ideal para viajes",
+      "Cable USB-C incluido",
+      "Base antideslizante que no raya los dispositivos"
+    ],
+    "imagenes": [
+      "/img/prod-9-1.svg",
+      "/img/prod-9-2.svg",
+      "/img/prod-9-3.svg"
+    ]
+  },
+  {
+    "id": 10,
+    "imagen": "🌍",
+    "tag": "Nuevo",
+    "hot": false,
+    "nombre": "Adaptador de viaje internacional 35W",
+    "precio": 24.99,
+    "precioAntes": 32.99,
+    "categoria": "USB-C",
+    "descripcion": "Un solo adaptador para más de 150 países. Enchufa y carga en Europa, EE. UU., Reino Unido o Australia con carga rápida USB-C, sin llevar media mochila de adaptadores.",
+    "caracteristicas": [
+      "Compatible con enchufes de EE. UU., Reino Unido, Europa y Australia",
+      "35W con Power Delivery: carga rápida de móvil y tablet",
+      "2 puertos USB-C + 1 puerto USB-A",
+      "Protección contra sobrecarga y sobrecalentamiento",
+      "Fusible de recambio incluido · válido en más de 150 países"
+    ],
+    "imagenes": [
+      "/img/prod-10-1.svg",
+      "/img/prod-10-2.svg",
+      "/img/prod-10-3.svg"
+    ]
+  },
+  {
+    "id": 11,
+    "imagen": "🖥️",
+    "tag": "Potente",
+    "hot": false,
+    "nombre": "Estación de carga 6 puertos 120W",
+    "precio": 39.99,
+    "precioAntes": 54.99,
+    "categoria": "USB-C",
+    "descripcion": "Carga toda la casa desde un solo enchufe: móviles, tablets y portátil a la vez. Reparte los 120W de forma inteligente entre sus seis puertos según lo que conectes.",
+    "caracteristicas": [
+      "120W en total repartidos entre 6 puertos",
+      "4 puertos USB-C + 2 puertos USB-A",
+      "Carga a la vez portátil, tablet y varios móviles",
+      "Reparto inteligente de potencia y protección contra sobrecarga",
+      "Cable de alimentación de 1,5 m incluido"
+    ],
+    "imagenes": [
+      "/img/prod-11-1.svg",
+      "/img/prod-11-2.svg",
+      "/img/prod-11-3.svg"
+    ]
+  },
+  {
+    "id": 12,
+    "imagen": "📍",
+    "tag": "Novedad",
+    "hot": true,
+    "nombre": "Localizador Bluetooth ChargeTag",
+    "rating": 5,
+    "reviews": 74,
+    "precio": 19.99,
+    "precioAntes": 29.99,
+    "categoria": "Localizadores",
+    "descripcion": "Nunca vuelvas a perder las llaves, la cartera o la maleta. Engánchalo a lo que quieras y míralo en el mapa desde el móvil. Suena a todo volumen para encontrarlo al instante y te avisa si te alejas y te lo dejas olvidado.",
+    "caracteristicas": [
+      "Localízalo en el mapa desde tu móvil en tiempo real",
+      "Timbre de 90 dB para encontrarlo aunque esté bajo el sofá",
+      "Aviso automático en el móvil si te alejas y lo olvidas",
+      "Batería reemplazable con hasta 1 año de duración",
+      "Resistente al agua y al polvo (IP67) · iPhone y Android"
+    ],
+    "imagenes": [
+      "/img/prod-12-1.svg",
+      "/img/prod-12-2.svg",
+      "/img/prod-12-3.svg"
     ]
   }
 ]

@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
+import { usePageMeta } from '../hooks/usePageMeta.js';
+import { MARCA } from '../config.js';
 
 const TOKEN_KEY = 'chargeup-admin-token';
 
@@ -22,7 +24,18 @@ export default function AdminPage() {
   const [pedidos, setPedidos] = useState(null);
   const [error, setError] = useState(false);
 
+  usePageMeta(`Panel de pedidos — ${MARCA}`);
+
   const cerrarSesion = useCallback(() => {
+    const t = sessionStorage.getItem(TOKEN_KEY);
+    // Invalida el token también en el servidor; si falla (p. ej. ya
+    // caducado), el borrado local basta.
+    if (t) {
+      fetch('/api/logout', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${t}` },
+      }).catch(() => {});
+    }
     sessionStorage.removeItem(TOKEN_KEY);
     setToken(null);
     setPedidos(null);
@@ -33,12 +46,16 @@ export default function AdminPage() {
     if (!token) return;
     setError(false);
     fetch('/api/orders', { headers: { Authorization: `Bearer ${token}` } })
-      .then((res) => {
+      .then(async (res) => {
         if (res.status === 401) {
           cerrarSesion();
           return Promise.reject(401);
         }
-        return res.ok ? res.json() : Promise.reject(res.status);
+        // Parseamos con red de seguridad: si el proxy devuelve HTML (502)
+        // no dejamos que reviente con «Unexpected token '<'»
+        const data = await res.json().catch(() => null);
+        if (!res.ok || !Array.isArray(data)) return Promise.reject(res.status);
+        return data;
       })
       .then((data) => setPedidos([...data].reverse()))
       .catch((e) => {
@@ -60,8 +77,10 @@ export default function AdminPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'No se pudo iniciar sesión');
+      // Parseamos antes de mirar res.ok: un 502 del proxy devuelve HTML
+      // y no queremos enseñar «Unexpected token '<'» al cliente
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `No se pudo iniciar sesión (error ${res.status})`);
       sessionStorage.setItem(TOKEN_KEY, data.token);
       setToken(data.token);
       setPassword('');

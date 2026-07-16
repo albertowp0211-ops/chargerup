@@ -9,6 +9,12 @@ import { chromium } from 'playwright';
 const TIENDA = process.env.TIENDA_URL ?? 'https://chargerup-buse.vercel.app';
 
 console.log('1. Creando la sesión de pago en la tienda…');
+// Coge el primer producto real del catálogo en vez de un id fijo, para
+// que la prueba no dependa de que exista el producto 5.
+const catalogo = await (await fetch(`${TIENDA}/api/products`)).json();
+const primerId = catalogo[0]?.id;
+if (!primerId) throw new Error('El catálogo está vacío: no hay ningún producto que comprar');
+
 const res = await fetch(`${TIENDA}/api/checkout`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json', Origin: TIENDA },
@@ -21,7 +27,7 @@ const res = await fetch(`${TIENDA}/api/checkout`, {
       ciudad: 'Barcelona',
       cp: '08001',
     },
-    items: [{ id: 5, qty: 1 }],
+    items: [{ id: primerId, qty: 1 }],
   }),
 });
 const { url, error } = await res.json();
@@ -56,9 +62,11 @@ console.log('6. Esperando la vuelta a la tienda…');
 await page.waitForURL('**/pedido/exito**', { timeout: 90000 });
 await page.waitForTimeout(4000);
 const texto = await page.textContent('body');
-const idPedido = texto.match(/CU-[A-Z0-9]+/)?.[0];
+const idPedido = texto.match(/CU-[A-Z0-9-]+/)?.[0];
 
-if (texto.includes('Pago completado') || texto.includes('Pago completado'.normalize())) {
+// Normalizamos ambos lados para que la comparación no falle por acentos
+// codificados de forma distinta (NFC vs NFD).
+if (texto.normalize().includes('Pago completado'.normalize())) {
   console.log(`✅ Compra completada. Pedido: ${idPedido ?? '(id no visible)'}`);
 } else {
   console.log(`⚠️ Volvimos a la tienda pero sin confirmación clara. Pedido detectado: ${idPedido ?? 'ninguno'}`);

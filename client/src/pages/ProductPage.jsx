@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
+import { usePageMeta } from '../hooks/usePageMeta.js';
+import { ENVIO_GRATIS_DESDE, MARCA } from '../config.js';
 
 export default function ProductPage() {
   const { id } = useParams();
   const [productos, setProductos] = useState(null);
   const [error, setError] = useState(false);
   const [qty, setQty] = useState(1);
+  const [imgActiva, setImgActiva] = useState(0);
   const { addItem } = useCart();
   const showToast = useToast();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/api/products')
@@ -20,8 +24,45 @@ export default function ProductPage() {
 
   useEffect(() => {
     setQty(1);
+    setImgActiva(0);
     window.scrollTo(0, 0);
   }, [id]);
+
+  // Los hooks van antes de los return tempranos: p puede no existir aún
+  const p = productos?.find((prod) => prod.id === Number(id));
+
+  usePageMeta(
+    p ? `${p.nombre} — ${MARCA}` : undefined,
+    p ? p.descripcion : undefined
+  );
+
+  // Datos estructurados Product/Offer para buscadores (sin imagen mientras
+  // los productos usen emojis; se añadirá con las fotos reales)
+  useEffect(() => {
+    if (!p) return;
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: p.nombre,
+      description: p.descripcion,
+      ...(p.imagenes?.length
+        ? { image: p.imagenes.map((src) => window.location.origin + src) }
+        : {}),
+      offers: {
+        '@type': 'Offer',
+        price: p.precio.toFixed(2),
+        priceCurrency: 'EUR',
+        availability:
+          p.disponible === false
+            ? 'https://schema.org/OutOfStock'
+            : 'https://schema.org/InStock',
+      },
+    });
+    document.head.appendChild(script);
+    return () => script.remove();
+  }, [p]);
 
   if (error) {
     return (
@@ -39,8 +80,6 @@ export default function ProductPage() {
     return <div className="container page"><p className="catalog-empty">Cargando…</p></div>;
   }
 
-  const p = productos.find((prod) => prod.id === Number(id));
-
   if (!p) {
     return (
       <div className="container page">
@@ -57,9 +96,24 @@ export default function ProductPage() {
     .filter((r) => r.id !== p.id && r.categoria === p.categoria)
     .slice(0, 3);
 
+  const dto =
+    p.precioAntes && p.precioAntes > p.precio
+      ? Math.round((1 - p.precio / p.precioAntes) * 100)
+      : 0;
+  const agotado = p.disponible === false;
+
   const comprar = () => {
     for (let i = 0; i < qty; i++) addItem(p);
-    showToast(`✓ Añadido al carrito: ${qty} × ${p.nombre}`);
+    showToast(`✓ Añadido al carrito: ${qty} × ${p.nombre}`, {
+      label: 'Ver carrito',
+      to: '/carrito',
+    });
+  };
+
+  // Compra directa: añade el producto y va directo al pago
+  const comprarAhora = () => {
+    for (let i = 0; i < qty; i++) addItem(p);
+    navigate('/pedido');
   };
 
   return (
@@ -67,19 +121,50 @@ export default function ProductPage() {
       <Link className="btn-back" to="/">← Volver al catálogo</Link>
 
       <div className="detail-layout">
-        <div className="detail-img">{p.imagen}</div>
+        <div className="detail-galeria">
+          <div className="detail-img">
+            {agotado ? (
+              <span className="agotado-badge">Agotado</span>
+            ) : (
+              dto > 0 && <span className="dto-badge">−{dto}%</span>
+            )}
+            {p.imagenes?.length ? (
+              <img
+                className="detail-img-foto"
+                src={p.imagenes[imgActiva] ?? p.imagenes[0]}
+                alt={`${p.nombre} — imagen ${imgActiva + 1} de ${p.imagenes.length}`}
+                width="800"
+                height="800"
+              />
+            ) : (
+              <span className="img-emoji">{p.imagen}</span>
+            )}
+          </div>
+          {p.imagenes?.length > 1 && (
+            <div className="detail-thumbs">
+              {p.imagenes.map((src, i) => (
+                <button
+                  key={src}
+                  type="button"
+                  className={`detail-thumb ${i === imgActiva ? 'activa' : ''}`}
+                  onClick={() => setImgActiva(i)}
+                  aria-label={`Ver imagen ${i + 1} de ${p.imagenes.length}`}
+                >
+                  <img src={src} alt="" width="70" height="70" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="detail-info">
           <span className={`tag ${p.hot ? 'hot' : ''}`}>{p.tag}</span>
           <h1>{p.nombre}</h1>
-          <div className="stars">
-            {'★'.repeat(p.rating)}
-            {'☆'.repeat(5 - p.rating)} <small>({p.reviews} valoraciones)</small>
-          </div>
 
           <div className="detail-price">
             {euros(p.precio)}
             {p.precioAntes ? <small>{euros(p.precioAntes)}</small> : null}
+            <span className="iva-nota">IVA incluido</span>
           </div>
 
           <p className="detail-desc">{p.descripcion}</p>
@@ -90,19 +175,33 @@ export default function ProductPage() {
             ))}
           </ul>
 
-          <div className="detail-buy">
-            <div className="qty">
-              <button onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
-              <span>{qty}</span>
-              <button onClick={() => setQty((q) => Math.min(99, q + 1))}>+</button>
+          {agotado ? (
+            <div className="detail-buy">
+              <button className="btn btn-primary" disabled>
+                Producto agotado
+              </button>
             </div>
-            <button className="btn btn-primary" onClick={comprar}>
-              Añadir al carrito · {euros(p.precio * qty)}
-            </button>
-          </div>
+          ) : (
+            <div className="detail-buy">
+              <div className="qty">
+                <button aria-label="Reducir cantidad" onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
+                <span>{qty}</span>
+                <button aria-label="Aumentar cantidad" onClick={() => setQty((q) => Math.min(99, q + 1))}>+</button>
+              </div>
+              <div className="detail-ctas">
+                <button className="btn btn-primary detail-cta" onClick={comprar}>
+                  Añadir al carrito
+                </button>
+                <button className="btn btn-comprar detail-cta" onClick={comprarAhora}>
+                  Comprar ahora · {euros(p.precio * qty)}
+                </button>
+              </div>
+            </div>
+          )}
 
           <p className="detail-envio">
-            🚚 Envío 24/48h — gratis a partir de 25€ · ↩️ Devolución en 30 días · 🛡️ Garantía 3 años
+            🚚 Envío gratis a partir de {ENVIO_GRATIS_DESDE} € · ↩️ Devolución en 30 días · 🛡️ Garantía legal de 3 años
+            <br />📦 Entrega estimada: 5-10 días (envío desde proveedor internacional)
           </p>
         </div>
       </div>
@@ -114,7 +213,9 @@ export default function ProductPage() {
             {relacionados.map((r) => (
               <div className="product" key={r.id}>
                 <Link className="product-link" to={`/producto/${r.id}`}>
-                  <div className="img">{r.imagen}</div>
+                  <div className="img">
+                    <span className="img-emoji">{r.imagen}</span>
+                  </div>
                   <h3>{r.nombre}</h3>
                 </Link>
                 <div className="price-row">

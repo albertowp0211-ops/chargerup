@@ -1,0 +1,7 @@
+# El panel de administración no se lista aquí para no señalar su
+# ubicación; se marca como noindex con la cabecera X-Robots-Tag
+# (ver vercel.json). La protección real es el token de la API.
+User-agent: *
+Allow: /
+
+Sitemap: https://chargerup-buse.vercel.app/sitemap.xml

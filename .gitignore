@@ -13,6 +13,9 @@ server/data/stripe-config.json
 server/data/db-config.json
 server/data/telegram-config.json
 
+# Herramientas locales (config del harness, no compartir)
+.claude/
+
 # Sistema
 .DS_Store
 Thumbs.db
