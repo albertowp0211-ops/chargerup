@@ -79,7 +79,7 @@
     "imagen": "🚗",
     "tag": "Nuevo",
     "hot": false,
-    "nombre": "Cargador de coche dual 45W",
+    "nombre": "Cargador de coche dual 38W",
     "rating": 4,
     "reviews": 97,
     "precio": 16.99,
@@ -87,14 +87,14 @@
     "categoria": "Coche",
     "descripcion": "Dos dispositivos cargando a la vez en el coche, con carga rápida de verdad en el puerto USB-C. Cuerpo de aluminio con LED tenue para encontrarlo de noche sin distracciones.",
     "caracteristicas": [
-      "45W en total: USB-C 30W + USB-A 15W",
+      "38W en total: USB-C 20W + USB-A 18W (QC 3.0)",
       "Carga dos dispositivos simultáneamente",
       "Para toma de mechero de 12/24V (coche y camión)",
       "LED indicador de funcionamiento",
       "Protección contra picos de tensión del vehículo"
     ],
     "imagenes": [
-      "/img/prod-4-1.svg",
+      "/img/prod-4-1.jpg",
       "/img/prod-4-2.svg",
       "/img/prod-4-3.svg"
     ]

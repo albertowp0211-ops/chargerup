@@ -231,7 +231,7 @@ export const PAGINAS = {
         "h": "Gastos y plazos de envío",
         "p": [
           "Los gastos de envío son gratuitos en pedidos iguales o superiores a 30 € y de 4,99 € en pedidos inferiores.",
-          "Plazo de entrega estimado: 24/48 horas desde la confirmación del pedido. Recibirás la información de seguimiento por correo electrónico cuando esté disponible.",
+          "Plazo de entrega estimado: 24/48 horas desde la confirmación del pedido, para pedidos realizados antes de las 14:00 (hora peninsular española); los realizados después de esa hora se envían el siguiente día laborable. Recibirás la información de seguimiento por correo electrónico cuando esté disponible.",
           "De acuerdo con el artículo 66 bis del TRLGDCU, nos comprometemos a entregar en un plazo máximo de 30 días naturales. Si no fuera posible, podrás concedernos un plazo adicional y, de no cumplirse, resolver el contrato con derecho al reembolso íntegro."
         ]
       },
@@ -364,7 +364,7 @@ export const PAGINAS = {
       {
         "h": "Plazos de entrega",
         "p": [
-          "Plazo de entrega estimado: 24/48 horas (días laborables) desde la confirmación del pedido.",
+          "Plazo de entrega estimado: 24/48 horas (días laborables) para los pedidos realizados antes de las 14:00 (hora peninsular española). Los pedidos realizados después de las 14:00 se preparan y envían el siguiente día laborable.",
           "Nos comprometemos a entregar en un plazo máximo de 30 días naturales. Si no fuera posible, podrás resolver el contrato y te reembolsaremos la totalidad de lo pagado."
         ]
       },
