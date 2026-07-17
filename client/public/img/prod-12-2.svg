@@ -6,11 +6,11 @@
   <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Localizador Bluetooth ChargeTag</text>
 
     <circle cx="90" cy="318" r="7" fill="#7c3aed"/>
-    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Localízalo en el mapa desde tu móvil</text>
+    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Red Buscar (Apple Find My): mapa en tiempo real</text>
     <circle cx="90" cy="410" r="7" fill="#7c3aed"/>
-    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Timbre de 90 dB para encontrarlo al instante</text>
+    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Solo compatible con iPhone</text>
     <circle cx="90" cy="502" r="7" fill="#7c3aed"/>
-    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Aviso si te alejas y lo olvidas</text>
+    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Timbre de 90 dB y aviso si lo olvidas</text>
     <circle cx="90" cy="594" r="7" fill="#7c3aed"/>
     <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Batería de hasta 1 año · Resistente al agua IP67</text>
 </svg>

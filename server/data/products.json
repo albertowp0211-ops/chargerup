@@ -279,16 +279,16 @@
     "precio": 19.99,
     "precioAntes": 29.99,
     "categoria": "Localizadores",
-    "descripcion": "Nunca vuelvas a perder las llaves, la cartera o la maleta. Engánchalo a lo que quieras y míralo en el mapa desde el móvil. Suena a todo volumen para encontrarlo al instante y te avisa si te alejas y te lo dejas olvidado.",
+    "descripcion": "Nunca vuelvas a perder las llaves, la cartera o la maleta. Engánchalo a lo que quieras y míralo en el mapa en la app Buscar de tu iPhone, gracias a la enorme red Find My de Apple. Suena a todo volumen para encontrarlo al instante y te avisa si te alejas y te lo dejas olvidado. Solo compatible con iPhone.",
     "caracteristicas": [
-      "Localízalo en el mapa desde tu móvil en tiempo real",
+      "Funciona con la red Buscar (Apple Find My): localízalo en el mapa en tiempo real",
+      "Solo compatible con iPhone (no funciona con Android)",
       "Timbre de 90 dB para encontrarlo aunque esté bajo el sofá",
-      "Aviso automático en el móvil si te alejas y lo olvidas",
-      "Batería reemplazable con hasta 1 año de duración",
-      "Resistente al agua y al polvo (IP67) · iPhone y Android"
+      "Aviso automático en el iPhone si te alejas y lo olvidas",
+      "Batería reemplazable de hasta 1 año · Resistente al agua y al polvo (IP67)"
     ],
     "imagenes": [
-      "/img/prod-12-1.svg",
+      "/img/prod-12-1.jpg",
       "/img/prod-12-2.svg",
       "/img/prod-12-3.svg"
     ]
