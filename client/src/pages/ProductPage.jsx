@@ -210,11 +210,17 @@ export default function ProductPage() {
         <div className="related">
           <h2>También te puede interesar</h2>
           <div className="grid grid-3">
-            {relacionados.map((r) => (
+            {relacionados.map((r) => {
+              const foto = r.imagenes?.find((src) => /\.(jpe?g|png|webp)$/i.test(src));
+              return (
               <div className="product" key={r.id}>
                 <Link className="product-link" to={`/producto/${r.id}`}>
                   <div className="img">
-                    <span className="img-emoji">{r.imagen}</span>
+                    {foto ? (
+                      <img className="img-foto" src={foto} alt="" loading="lazy" />
+                    ) : (
+                      <span className="img-emoji">{r.imagen}</span>
+                    )}
                   </div>
                   <h3>{r.nombre}</h3>
                 </Link>
@@ -223,7 +229,8 @@ export default function ProductPage() {
                   <Link className="add-btn" to={`/producto/${r.id}`}>Ver</Link>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}

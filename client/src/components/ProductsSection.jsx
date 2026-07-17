@@ -49,6 +49,8 @@ export default function ProductsSection() {
         ? Math.round((1 - p.precio / p.precioAntes) * 100)
         : 0;
     const agotado = p.disponible === false;
+    // Foto real si la hay; los .svg de imagenes son placeholders, en la tarjeta se sigue mostrando el emoji
+    const foto = p.imagenes?.find((src) => /\.(jpe?g|png|webp)$/i.test(src));
     return (
     <div className={`product ${agotado ? 'agotado' : ''}`} key={p.id}>
       <Link className="product-link" to={`/producto/${p.id}`}>
@@ -58,7 +60,11 @@ export default function ProductsSection() {
           ) : (
             dto > 0 && <span className="dto-badge">−{dto}%</span>
           )}
-          <span className="img-emoji">{p.imagen}</span>
+          {foto ? (
+            <img className="img-foto" src={foto} alt="" loading="lazy" />
+          ) : (
+            <span className="img-emoji">{p.imagen}</span>
+          )}
         </div>
         <span className={`tag ${p.hot ? 'hot' : ''}`}>{p.tag}</span>
         <h3>{p.nombre}</h3>
