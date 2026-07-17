@@ -292,5 +292,27 @@
       "/img/prod-12-2.svg",
       "/img/prod-12-3.svg"
     ]
+  },
+  {
+    "id": 13,
+    "imagen": "🛴",
+    "tag": "Nuevo",
+    "hot": false,
+    "nombre": "Cargador universal para patinete eléctrico 42V 2A",
+    "precio": 19.99,
+    "precioAntes": 29.99,
+    "categoria": "Patinetes",
+    "descripcion": "Recupera la batería de tu patinete o bici eléctrica con este cargador universal de 42V y 2A, con hasta 84W de potencia. Ligero, pequeño y seguro, con el conector DC estándar que usan la mayoría de patinetes.",
+    "caracteristicas": [
+      "Salida de 42V y 2A: hasta 84W de potencia",
+      "Para baterías de litio de 36V (tensión de carga 42V)",
+      "Conector DC de 5,5x2,1 mm, el estándar en patinetes y bicis eléctricas",
+      "Cable de 120 cm y enchufe europeo",
+      "Ligero, compacto y altamente eficiente"
+    ],
+    "imagenes": [
+      "/img/prod-13-1.jpg",
+      "/img/prod-13-2.jpg"
+    ]
   }
 ]
