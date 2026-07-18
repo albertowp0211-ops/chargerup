@@ -167,12 +167,14 @@ footer a:hover { color: #fff; }
 .cat:hover { border-color: var(--primary); color: var(--primary); }
 .cat.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+/* minmax(0, 1fr): sin el mínimo 0, el contenido de la tarjeta (precio + botón)
+   fija un ancho mínimo y la cuadrícula desborda el viewport en móvil */
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
 .product {
   background: var(--card); border-radius: var(--radius);
   border: 1px solid var(--border); padding: 18px;
   transition: transform .18s, box-shadow .18s;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; min-width: 0;
 }
 .product:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(15,23,42,.09); }
 .product .img {
@@ -232,7 +234,7 @@ footer a:hover { color: #fff; }
 }
 .stars { font-size: 12.5px; color: var(--accent); margin-bottom: 12px; }
 .stars small { color: var(--muted); }
-.price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.price-row { display: flex; justify-content: space-between; align-items: center; margin-top: auto; flex-wrap: wrap; gap: 8px; }
 .price { font-size: 19px; font-weight: 800; }
 .price small { font-size: 13px; color: var(--muted); text-decoration: line-through; font-weight: 400; margin-left: 4px; }
 .add-btn {
@@ -508,7 +510,7 @@ footer a:hover { color: #fff; }
 
 .related { margin-top: 64px; }
 .related h2 { font-size: 22px; margin-bottom: 20px; }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .related .add-btn { text-decoration: none; display: inline-block; }
 
 /* ===== Login del panel ===== */
@@ -601,23 +603,49 @@ footer a:hover { color: #fff; }
   .hero-text h1 { font-size: 36px; }
   .hero-visual { font-size: 110px; }
   .nav-links { display: none; }
-  .grid { grid-template-columns: repeat(3, 1fr); }
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cart-layout { grid-template-columns: 1fr; }
   .cart-summary { position: static; }
 }
 @media (max-width: 640px) {
-  .hero-inner { flex-direction: column; text-align: center; padding: 48px 24px; }
-  .hero-text p { margin-left: auto; margin-right: auto; }
+  /* Márgenes laterales más ajustados en pantallas pequeñas */
+  .container { padding: 0 16px; }
+  .topbar { font-size: 12px; padding: 7px 12px; }
+  /* El logo empuja el buscador y el carrito al borde derecho */
+  .nav-inner { gap: 12px; }
+  .logo { flex: 1; }
+  .hero-inner { flex-direction: column; text-align: center; padding: 44px 16px 40px; gap: 24px; }
+  .hero-text h1 { font-size: 30px; }
+  .hero-text p { margin-left: auto; margin-right: auto; font-size: 15px; }
+  .hero-visual { font-size: 90px; }
+  .features-inner { grid-template-columns: 1fr; gap: 14px; padding: 20px 16px; }
   .nav-search { display: none; }
   .search-toggle { display: inline-flex; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .catalog { padding-top: 40px; }
+  .catalog-head h2 { font-size: 24px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .product { padding: 14px; }
+  .product .img { height: 120px; }
+  .page { padding: 32px 16px 64px; }
+  .page-title { font-size: 24px; }
   .detail-layout { grid-template-columns: 1fr; gap: 24px; }
+  .detail-galeria { position: static; }
   .detail-img { position: static; min-height: 220px; font-size: 100px; }
-  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .detail-info h1 { font-size: 22px; }
+  .detail-price { font-size: 25px; }
+  .related { margin-top: 44px; }
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form-grid { grid-template-columns: 1fr; }
   .form-grid .span-2 { grid-column: span 1; }
+  .checkout-form { padding: 18px; }
+  .cart-summary { padding: 18px; }
   .cart-item { flex-wrap: wrap; }
   .admin-stats { grid-template-columns: 1fr; }
+  /* La tabla de líneas del pedido se desplaza dentro de su caja, sin romper la página */
+  .order-body { overflow-x: auto; }
+  .footer-inner { gap: 28px; padding: 40px 16px 32px; }
+  /* La columna de marca ocupa todo el ancho; debajo, las columnas de enlaces */
+  .footer-inner > div:first-child { grid-column: 1 / -1; }
 }
 
 /* ===== Accesibilidad ===== */
