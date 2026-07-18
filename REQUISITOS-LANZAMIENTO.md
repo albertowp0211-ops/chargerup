@@ -61,7 +61,7 @@ Marca cada punto al completarlo. Los 24 obligatorios son imprescindibles para op
 - [ ] **Aviso Legal (LSSI, art. 10)** — Página propia, accesible de forma permanente desde el pie.
 - [ ] **Política de Cookies / almacenamiento local** — Aunque no se requiere banner (todo es almacenamiento funcional exento y analítica sin cookies), el deber de información del art. 22.2 LSSI obliga a declararlo.
 - [ ] **Condiciones Generales de Contratación** — Página con proceso de compra, precios con IVA, envío y plazos reales, pago, formación del contrato, garantía legal 3 años, desistimiento y reclamaciones. No existe actualmente en la web: hay que crearla.
-- [ ] **Política de Desistimiento y Devoluciones con modelo de formulario** — Derecho legal de 14 días + modelo de formulario del Anexo B + política comercial ampliada de 30 días + quién paga la devolución.
+- [ ] **Política de Desistimiento y Devoluciones con modelo de formulario** — Derecho legal de 14 días + modelo de formulario del Anexo B + quién paga la devolución.
 - [ ] **Página de Envíos y Devoluciones con plazos honestos** — Plazo de dropshipping publicado (5-10 días, verifícalo con tu proveedor), envío gratis desde 25 €, resumen de garantía y devoluciones.
 - [ ] **Botón de pedido con fórmula inequívoca de obligación de pago** — El botón que cierra la compra debe leerse 'Pedido con obligación de pago' o 'Pagar ahora' (art. 98.2). 'Confirmar' o 'Continuar' no valen.
 - [ ] **Cláusula de reclamaciones y resolución alternativa de litigios actualizada** — Informar de hojas de reclamaciones y de las vías ADR. NO enlazar la plataforma ODR europea: está cerrada desde el 20/07/2025 (Reglamento UE 2024/3228). Mantener su enlace sería un riesgo de práctica engañosa.

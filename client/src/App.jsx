@@ -54,7 +54,7 @@ export default function App() {
   return (
     <>
       <div className="topbar">
-        🚚 <b>Envío gratis</b> en pedidos a partir de {ENVIO_GRATIS_DESDE}€ · Devoluciones en 30 días
+        🚚 <b>Envío gratis</b> en pedidos a partir de {ENVIO_GRATIS_DESDE}€ · Devoluciones en 14 días
       </div>
       <Navbar />
       <ScrollToTop />

@@ -63,7 +63,7 @@ const plantilla = (pedido) => `
       ${escapeHtml(pedido.cliente.direccion)}, ${escapeHtml(pedido.cliente.cp)} ${escapeHtml(pedido.cliente.ciudad)}
     </div>
     <p style="color:#94a3b8;font-size:12.5px;margin:22px 0 0;">
-      Envío a toda España · Devoluciones en 30 días · Garantía legal de 3 años<br>
+      Envío a toda España · Devoluciones en 14 días · Garantía legal de 3 años<br>
       ¿Dudas? Responde a este correo o escribe a hola@chargeup.es
     </p>
   </div>

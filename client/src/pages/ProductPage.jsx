@@ -200,7 +200,7 @@ export default function ProductPage() {
           )}
 
           <p className="detail-envio">
-            🚚 Envío gratis a partir de {ENVIO_GRATIS_DESDE} € · ↩️ Devolución en 30 días · 🛡️ Garantía legal de 3 años
+            🚚 Envío gratis a partir de {ENVIO_GRATIS_DESDE} € · ↩️ Devolución en 14 días · 🛡️ Garantía legal de 3 años
             <br />📦 Entrega estimada: {PLAZO_ENTREGA}
           </p>
         </div>

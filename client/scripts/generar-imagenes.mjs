@@ -66,7 +66,7 @@ const specsSvg = (p, acento) => {
 
 // Imagen 3 — confianza: garantías y ventajas
 const trustSvg = (p, acento) => {
-  const badges = ['🛡️ Garantía legal de 3 años', '🚚 Envío desde España', '🔒 Pago seguro con Stripe', '↩️ 30 días para devolver'];
+  const badges = ['🛡️ Garantía legal de 3 años', '🚚 Envío desde España', '🔒 Pago seguro con Stripe', '↩️ 14 días para devolver'];
   const filas = badges
     .map(
       (b, i) => `<text x="400" y="${360 + i * 78}" font-size="30" text-anchor="middle" fill="#0f172a" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">${esc(b)}</text>`

@@ -252,8 +252,7 @@ export const PAGINAS = {
       {
         "h": "Derecho de desistimiento",
         "p": [
-          "Si eres consumidor, dispones de 14 días naturales para desistir de la compra sin justificación, con las condiciones y efectos detallados en la Política de Desistimiento y Devoluciones.",
-          "Además, {{MARCA}} te ofrece de forma voluntaria un plazo ampliado de devolución de 30 días naturales, que no sustituye ni limita tu derecho legal de desistimiento."
+          "Si eres consumidor, dispones de 14 días naturales para desistir de la compra sin justificación, con las condiciones y efectos detallados en la Política de Desistimiento y Devoluciones."
         ]
       },
       {
@@ -328,13 +327,6 @@ export const PAGINAS = {
         ]
       },
       {
-        "h": "Política comercial ampliada de 30 días",
-        "p": [
-          "Además del derecho legal de desistimiento de 14 días, en {{MARCA}} te ofrecemos de forma voluntaria un plazo ampliado de devolución de 30 días naturales desde la recepción del pedido.",
-          "Esta garantía comercial es adicional y no limita ni sustituye tus derechos legales como consumidor: dentro de los primeros 14 días siempre se aplican, como mínimo, las condiciones legales del desistimiento descritas arriba."
-        ]
-      },
-      {
         "h": "Modelo de formulario de desistimiento (Anexo B)",
         "p": [
           "(sólo debe cumplimentar y enviar el presente formulario si desea desistir del contrato)",
@@ -379,7 +371,7 @@ export const PAGINAS = {
       {
         "h": "Devoluciones y desistimiento",
         "p": [
-          "Dispones de 14 días naturales desde la recepción para desistir de tu compra sin justificación, y de un plazo comercial ampliado de 30 días naturales que te ofrecemos de forma voluntaria.",
+          "Dispones de 14 días naturales desde la recepción para desistir de tu compra sin justificación.",
           "Para iniciar una devolución, escríbenos a {{EMAIL}} indicando tu número de pedido y te explicaremos el procedimiento y la dirección de devolución. El coste directo de la devolución corre a tu cargo.",
           "Te reembolsaremos a la misma tarjeta, a través de Stripe, en un máximo de 14 días desde que nos comuniques tu decisión, pudiendo retener el reembolso hasta recibir el producto o la prueba de su envío. Encontrarás el detalle completo y el formulario en la página de Derecho de Desistimiento y Devoluciones."
         ]
