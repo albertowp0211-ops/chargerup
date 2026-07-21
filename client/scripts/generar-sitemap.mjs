@@ -19,7 +19,10 @@ const rutas = [
   ...productos.map((p) => `/producto/${p.id}`),
   '/legal/aviso-legal',
   '/legal/privacidad',
-  '/legal/devoluciones',
+  '/legal/cookies',
+  '/legal/condiciones',
+  '/legal/desistimiento',
+  '/legal/envios-devoluciones',
 ];
 
 const hoy = new Date().toISOString().slice(0, 10);
