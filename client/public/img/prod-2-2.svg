@@ -6,11 +6,11 @@
   <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cargador rápido 20W iPhone</text>
   
     <circle cx="90" cy="318" r="7" fill="#0ea5e9"/>
-    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">20W con Power Delivery</text>
+    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">20W con Power Delivery y Quick Charge 3.0</text>
     <circle cx="90" cy="410" r="7" fill="#0ea5e9"/>
-    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Puerto USB-C</text>
+    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Puerto USB-C + puerto USB-A</text>
     <circle cx="90" cy="502" r="7" fill="#0ea5e9"/>
-    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">50% de batería en ~30 minutos (iPhone 13…</text>
+    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cable USB-C a USB-C de 1 metro incluido</text>
     <circle cx="90" cy="594" r="7" fill="#0ea5e9"/>
-    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Protección contra sobrecarga, cortocircui…</text>
+    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">50% de batería en ~30 minutos (iPhone 13…</text>
 </svg>

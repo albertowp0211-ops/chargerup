@@ -8,9 +8,9 @@
     <circle cx="90" cy="318" r="7" fill="#2563eb"/>
     <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">65W de potencia máxima con Power Delivery…</text>
     <circle cx="90" cy="410" r="7" fill="#2563eb"/>
-    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">2 puertos USB-C + 1 puerto USB-A</text>
+    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">3 puertos: 2 USB-C + 1 USB-A</text>
     <circle cx="90" cy="502" r="7" fill="#2563eb"/>
     <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Carga un portátil o dos móviles a la vez</text>
     <circle cx="90" cy="594" r="7" fill="#2563eb"/>
-    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Más compacto y sin sobrecalentamiento</text>
+    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Compacto y sin sobrecalentamiento</text>
 </svg>

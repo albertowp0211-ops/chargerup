@@ -4,13 +4,13 @@
   <text x="60" y="115" font-size="88" dominant-baseline="central">📍</text>
   <text x="180" y="100" font-size="34" font-weight="800" fill="#0f172a" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Características</text>
   <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Localizador</text>
-
-    <circle cx="90" cy="318" r="7" fill="#7c3aed"/>
-    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Red Buscar (Apple Find My): mapa en tiempo real</text>
-    <circle cx="90" cy="410" r="7" fill="#7c3aed"/>
-    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Solo compatible con iPhone</text>
-    <circle cx="90" cy="502" r="7" fill="#7c3aed"/>
-    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Timbre de 90 dB y aviso si lo olvidas</text>
-    <circle cx="90" cy="594" r="7" fill="#7c3aed"/>
-    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Batería de hasta 1 año · Resistente al agua IP67</text>
+  
+    <circle cx="90" cy="318" r="7" fill="#059669"/>
+    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Funciona con la red Buscar (Apple Find My…</text>
+    <circle cx="90" cy="410" r="7" fill="#059669"/>
+    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Solo compatible con iPhone (no funciona c…</text>
+    <circle cx="90" cy="502" r="7" fill="#059669"/>
+    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Timbre de 90 dB para encontrarlo aunque e…</text>
+    <circle cx="90" cy="594" r="7" fill="#059669"/>
+    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Aviso automático en el iPhone si te aleja…</text>
 </svg>

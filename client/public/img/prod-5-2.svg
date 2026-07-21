@@ -10,7 +10,7 @@
     <circle cx="90" cy="410" r="7" fill="#f59e0b"/>
     <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Carga rápida Power Delivery de 22,5W</text>
     <circle cx="90" cy="502" r="7" fill="#f59e0b"/>
-    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">2 salidas USB-A + 1 USB-C de entrada/sali…</text>
+    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cables integrados: siempre listos, sin ll…</text>
     <circle cx="90" cy="594" r="7" fill="#f59e0b"/>
     <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Pantalla LED con porcentaje de batería</text>
 </svg>

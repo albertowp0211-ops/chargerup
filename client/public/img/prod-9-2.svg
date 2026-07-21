@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Características de Cargador 2 en 1 para reloj y auriculares">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Características de Cargador inalámbrico 2 en 1 para móvil y reloj">
   <rect width="800" height="800" fill="#ffffff"/>
   <rect x="0" y="0" width="800" height="200" fill="#f1f5f9"/>
   <text x="60" y="115" font-size="88" dominant-baseline="central">⌚</text>
   <text x="180" y="100" font-size="34" font-weight="800" fill="#0f172a" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Características</text>
-  <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cargador 2 en 1 para reloj y auriculares</text>
+  <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cargador inalámbrico 2 en 1 para móvil…</text>
   
     <circle cx="90" cy="318" r="7" fill="#2563eb"/>
-    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Carga inalámbrica para reloj y auriculare…</text>
+    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Carga inalámbrica para móvil y reloj a la…</text>
     <circle cx="90" cy="410" r="7" fill="#2563eb"/>
-    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Compatible con Apple Watch, AirPods y est…</text>
+    <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Hasta 15W de potencia</text>
     <circle cx="90" cy="502" r="7" fill="#2563eb"/>
     <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Plegable y ligero: ideal para viajes</text>
     <circle cx="90" cy="594" r="7" fill="#2563eb"/>
-    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Cable USB-C incluido</text>
+    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Conexión USB-C</text>
 </svg>

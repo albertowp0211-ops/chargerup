@@ -6,11 +6,11 @@
   <text x="180" y="140" font-size="24" fill="#64748b" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Base de carga 3 en 1 mesilla</text>
   
     <circle cx="90" cy="318" r="7" fill="#4f46e5"/>
-    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Carga 3 dispositivos a la vez: móvil, aur…</text>
+    <text x="120" y="318" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Carga 3 dispositivos a la vez: móvil, sma…</text>
     <circle cx="90" cy="410" r="7" fill="#4f46e5"/>
     <text x="120" y="410" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Hasta 15W de carga inalámbrica para el mó…</text>
     <circle cx="90" cy="502" r="7" fill="#4f46e5"/>
-    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Plegable: ideal para viajes</text>
+    <text x="120" y="502" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Plegable y compacta: ideal para viajes</text>
     <circle cx="90" cy="594" r="7" fill="#4f46e5"/>
-    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Luz nocturna tenue regulable</text>
+    <text x="120" y="594" font-size="30" fill="#334155" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">Conexión USB-C</text>
 </svg>

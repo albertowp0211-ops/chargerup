@@ -10,16 +10,16 @@
     "precio": 27.99,
     "precioAntes": 39.99,
     "categoria": "USB-C",
-    "descripcion": "El cargador que lo carga todo. Es un 40% más pequeño que un cargador convencional de la misma potencia, se calienta menos y cabe en cualquier bolsillo. Ideal para portátil, tablet y móvil.",
+    "descripcion": "Potencia de 65W con Power Delivery para cargar portátil, tablet y móvil a toda velocidad, con salida máxima de 3,25 A. Triple puerto en un tamaño de bolsillo que se calienta menos y cabe en cualquier parte.",
     "caracteristicas": [
-      "65W de potencia máxima con Power Delivery 3.0",
-      "2 puertos USB-C + 1 puerto USB-A",
+      "65W de potencia máxima con Power Delivery (salida de hasta 3,25 A)",
+      "3 puertos: 2 USB-C + 1 USB-A",
       "Carga un portátil o dos móviles a la vez",
-      "Más compacto y sin sobrecalentamiento",
+      "Compacto y sin sobrecalentamiento",
       "Compatible con iPhone, Android, iPad, MacBook y más"
     ],
     "imagenes": [
-      "/img/prod-1-1.svg",
+      "/img/prod-1-1.jpg",
       "/img/prod-1-2.svg",
       "/img/prod-1-3.svg"
     ]
@@ -35,16 +35,16 @@
     "precio": 14.99,
     "precioAntes": 19.99,
     "categoria": "USB-C",
-    "descripcion": "Carga rápida certificada para iPhone: del 0 al 50% en unos 30 minutos. Tamaño mini para llevarlo siempre encima, con protección contra sobrecarga y sobrecalentamiento.",
+    "descripcion": "Carga rápida para iPhone: del 0 al 50% en unos 30 minutos. Combina Power Delivery y Quick Charge 3.0 en dos puertos, e incluye un cable USB-C a USB-C de 1 metro para empezar a cargar desde el primer día.",
     "caracteristicas": [
-      "20W con Power Delivery",
-      "Puerto USB-C",
+      "20W con Power Delivery y Quick Charge 3.0",
+      "Puerto USB-C + puerto USB-A",
+      "Cable USB-C a USB-C de 1 metro incluido",
       "50% de batería en ~30 minutos (iPhone 13 o posterior)",
-      "Protección contra sobrecarga, cortocircuito y temperatura",
       "Compatible también con Android y AirPods"
     ],
     "imagenes": [
-      "/img/prod-2-1.svg",
+      "/img/prod-2-1.jpg",
       "/img/prod-2-2.svg",
       "/img/prod-2-3.svg"
     ]
@@ -110,16 +110,16 @@
     "precio": 32.99,
     "precioAntes": 44.99,
     "categoria": "Powerbanks",
-    "descripcion": "Batería para varios días fuera de casa: hasta 4 cargas completas de móvil. Con pantalla LED que muestra el porcentaje exacto restante y carga rápida tanto de entrada como de salida.",
+    "descripcion": "Batería de 20.000 mAh con cables integrados: sin llevar nada más encima. Hasta 4 cargas completas de móvil, carga rápida PD de 22,5W y pantalla LED que muestra el porcentaje exacto restante.",
     "caracteristicas": [
       "20.000 mAh: unas 4 cargas completas de un móvil",
       "Carga rápida Power Delivery de 22,5W",
-      "2 salidas USB-A + 1 USB-C de entrada/salida",
+      "Cables integrados: siempre listos, sin llevar accesorios",
       "Pantalla LED con porcentaje de batería",
-      "Carga 3 dispositivos a la vez · Apta para avión"
+      "Carga varios dispositivos a la vez · Apta para avión"
     ],
     "imagenes": [
-      "/img/prod-5-1.svg",
+      "/img/prod-5-1.jpg",
       "/img/prod-5-2.svg",
       "/img/prod-5-3.svg"
     ]
@@ -127,24 +127,24 @@
   {
     "id": 6,
     "imagen": "🪢",
-    "tag": "Pack x2",
+    "tag": "Potente",
     "hot": false,
-    "nombre": "Cable USB-C trenzado 2m 100W",
+    "nombre": "Cable USB-C trenzado 2m 200W",
     "rating": 4,
     "reviews": 341,
     "precio": 9.99,
     "precioAntes": null,
     "categoria": "Cables",
-    "descripcion": "Pack de dos cables de 2 metros con trenzado de nailon antienredos y conectores reforzados. Soportan hasta 100W, así que sirven igual para el móvil que para el portátil.",
+    "descripcion": "Cable USB-C a USB-C de 2 metros con trenzado de nailon antienredos y hasta 200W de potencia con Power Delivery: sirve igual para el móvil que para un portátil exigente.",
     "caracteristicas": [
-      "Pack de 2 cables de 2 metros",
-      "Hasta 100W (20V/5A) — apto para portátiles",
-      "Transferencia de datos a 480 Mbps",
+      "Hasta 200W con Power Delivery — apto para portátiles",
+      "2 metros de longitud",
       "Nailon trenzado antienredos",
-      "Conectores reforzados: +30.000 flexiones"
+      "Conectores reforzados de larga duración",
+      "Carga y transferencia de datos"
     ],
     "imagenes": [
-      "/img/prod-6-1.svg",
+      "/img/prod-6-1.jpg",
       "/img/prod-6-2.svg",
       "/img/prod-6-3.svg"
     ]
@@ -154,22 +154,22 @@
     "imagen": "💻",
     "tag": "Potente",
     "hot": false,
-    "nombre": "Cargador 100W portátiles",
+    "nombre": "Cargador USB-C 96W portátiles",
     "rating": 5,
     "reviews": 156,
     "precio": 44.99,
     "precioAntes": 59.99,
     "categoria": "USB-C",
-    "descripcion": "Potencia de sobra para portátiles exigentes y todos tus dispositivos a la vez. Reparte la energía de forma inteligente entre sus 4 puertos según lo que conectes.",
+    "descripcion": "Potencia de sobra para portátiles exigentes: 96W por USB-C con Power Delivery, ideal para MacBook Pro, MacBook Air y ultrabooks. Incluye cable USB-C a USB-C.",
     "caracteristicas": [
-      "100W de potencia máxima",
-      "3 puertos USB-C + 1 USB-A",
-      "Reparto inteligente de potencia entre puertos",
-      "Carga MacBook Pro, portátiles gaming, tablets y móviles",
-      "Tamaño de bolsillo pese a los 100W"
+      "96W de potencia por USB-C con Power Delivery",
+      "Carga MacBook Pro, MacBook Air y portátiles con USB-C",
+      "Cable USB-C a USB-C incluido",
+      "También carga tablets y móviles a máxima velocidad",
+      "Protección contra sobrecarga y sobrecalentamiento"
     ],
     "imagenes": [
-      "/img/prod-7-1.svg",
+      "/img/prod-7-1.jpg",
       "/img/prod-7-2.svg",
       "/img/prod-7-3.svg"
     ]
@@ -185,16 +185,16 @@
     "precio": 29.99,
     "precioAntes": 39.99,
     "categoria": "Inalámbricos",
-    "descripcion": "Móvil, auriculares y reloj cargando en un solo enchufe. Diseño plegable que ocupa lo mínimo en la mesilla y se lleva de viaje plano en la maleta.",
+    "descripcion": "Móvil, reloj y auriculares cargando a la vez en un solo enchufe. Base plegable de hasta 15W con conexión USB-C: ocupa lo mínimo en la mesilla y viaja plana en la maleta.",
     "caracteristicas": [
-      "Carga 3 dispositivos a la vez: móvil, auriculares y smartwatch",
+      "Carga 3 dispositivos a la vez: móvil, smartwatch y auriculares",
       "Hasta 15W de carga inalámbrica para el móvil",
-      "Plegable: ideal para viajes",
-      "Luz nocturna tenue regulable",
+      "Plegable y compacta: ideal para viajes",
+      "Conexión USB-C",
       "Compatible con iPhone y Android con carga inalámbrica"
     ],
     "imagenes": [
-      "/img/prod-8-1.svg",
+      "/img/prod-8-1.jpg",
       "/img/prod-8-2.svg",
       "/img/prod-8-3.svg"
     ]
@@ -204,20 +204,20 @@
     "imagen": "⌚",
     "tag": "Oferta",
     "hot": true,
-    "nombre": "Cargador 2 en 1 para reloj y auriculares",
+    "nombre": "Cargador inalámbrico 2 en 1 para móvil y reloj",
     "precio": 19.99,
     "precioAntes": 26.99,
     "categoria": "Inalámbricos",
-    "descripcion": "Carga el smartwatch y los auriculares en el mismo sitio, sin cables por medio. Diseño plegable de aluminio que cabe en cualquier maleta y deja el escritorio despejado.",
+    "descripcion": "Carga el móvil y el smartwatch a la vez, sin cables por medio. Diseño plegable de hasta 15W con conexión USB-C que cabe en cualquier maleta y deja el escritorio despejado.",
     "caracteristicas": [
-      "Carga inalámbrica para reloj y auriculares a la vez",
-      "Compatible con Apple Watch, AirPods y estuches con carga inalámbrica",
+      "Carga inalámbrica para móvil y reloj a la vez",
+      "Hasta 15W de potencia",
       "Plegable y ligero: ideal para viajes",
-      "Cable USB-C incluido",
-      "Base antideslizante que no raya los dispositivos"
+      "Conexión USB-C",
+      "Compatible con iPhone y Android con carga inalámbrica"
     ],
     "imagenes": [
-      "/img/prod-9-1.svg",
+      "/img/prod-9-1.jpg",
       "/img/prod-9-2.svg",
       "/img/prod-9-3.svg"
     ]
@@ -227,20 +227,20 @@
     "imagen": "🌍",
     "tag": "Nuevo",
     "hot": false,
-    "nombre": "Adaptador de viaje internacional 35W",
+    "nombre": "Adaptador de viaje universal",
     "precio": 24.99,
     "precioAntes": 32.99,
     "categoria": "USB-C",
-    "descripcion": "Un solo adaptador para más de 150 países. Enchufa y carga en Europa, EE. UU., Reino Unido o Australia con carga rápida USB-C, sin llevar media mochila de adaptadores.",
+    "descripcion": "Un solo adaptador para más de 150 países. Convierte la toma de corriente a los formatos de Europa, Reino Unido, EE. UU. y Australia con un diseño compacto todo en uno, sin piezas sueltas.",
     "caracteristicas": [
       "Compatible con enchufes de EE. UU., Reino Unido, Europa y Australia",
-      "35W con Power Delivery: carga rápida de móvil y tablet",
-      "2 puertos USB-C + 1 puerto USB-A",
-      "Protección contra sobrecarga y sobrecalentamiento",
-      "Fusible de recambio incluido · válido en más de 150 países"
+      "Válido en más de 150 países",
+      "Hasta 250V · 6A",
+      "Diseño compacto todo en uno, sin piezas sueltas",
+      "Adapta el enchufe (no convierte el voltaje)"
     ],
     "imagenes": [
-      "/img/prod-10-1.svg",
+      "/img/prod-10-1.jpg",
       "/img/prod-10-2.svg",
       "/img/prod-10-3.svg"
     ]
@@ -250,20 +250,20 @@
     "imagen": "🖥️",
     "tag": "Potente",
     "hot": false,
-    "nombre": "Estación de carga 6 puertos 120W",
+    "nombre": "Regleta de carga 8 enchufes + 6 USB",
     "precio": 39.99,
     "precioAntes": 54.99,
     "categoria": "USB-C",
-    "descripcion": "Carga toda la casa desde un solo enchufe: móviles, tablets y portátil a la vez. Reparte los 120W de forma inteligente entre sus seis puertos según lo que conectes.",
+    "descripcion": "Carga toda la casa desde un solo punto: 8 enchufes y 6 puertos USB (2 USB-C + 4 USB-A) con hasta 2500W de potencia total, protección contra sobrecargas y cable de 3 metros.",
     "caracteristicas": [
-      "120W en total repartidos entre 6 puertos",
-      "4 puertos USB-C + 2 puertos USB-A",
-      "Carga a la vez portátil, tablet y varios móviles",
-      "Reparto inteligente de potencia y protección contra sobrecarga",
-      "Cable de alimentación de 1,5 m incluido"
+      "8 enchufes + 6 puertos USB (2 USB-C y 4 USB-A)",
+      "Hasta 2500W de potencia total",
+      "Salida USB de 2,4 A para móviles y tablets",
+      "Cable de 3 metros con interruptor",
+      "Protección contra sobrecarga y material ignífugo"
     ],
     "imagenes": [
-      "/img/prod-11-1.svg",
+      "/img/prod-11-1.jpg",
       "/img/prod-11-2.svg",
       "/img/prod-11-3.svg"
     ]
