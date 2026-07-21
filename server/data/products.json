@@ -315,5 +315,59 @@
       "/img/prod-13-1.jpg",
       "/img/prod-13-2.jpg"
     ]
+  },
+  {
+    "id": 14,
+    "imagen": "🧵",
+    "tag": "Original",
+    "hot": false,
+    "nombre": "Cable USB-C original de tela 1 m (60W)",
+    "precio": 10,
+    "precioAntes": null,
+    "categoria": "Cables",
+    "descripcion": "Cable USB-C a USB-C original de Apple, con acabado de tela trenzada de 1 metro y hasta 60W de potencia. El mismo cable que acompaña a los iPhone y iPad más recientes: flexible, resistente y sin enredos.",
+    "caracteristicas": [
+      "Original de Apple",
+      "Tejido trenzado de 1 metro, flexible y duradero",
+      "Hasta 60W de potencia: carga rápida de iPhone y iPad",
+      "USB-C a USB-C, también para Mac y AirPods",
+      "Carga y transferencia de datos"
+    ]
+  },
+  {
+    "id": 15,
+    "imagen": "🍎",
+    "tag": "Original",
+    "hot": false,
+    "nombre": "Adaptador de corriente Apple 20W original (USB-C)",
+    "precio": 14,
+    "precioAntes": null,
+    "categoria": "USB-C",
+    "descripcion": "El adaptador de corriente USB-C de 20W original de Apple: carga rápida para iPhone (50% en unos 30 minutos) y iPad, en el tamaño compacto de siempre.",
+    "caracteristicas": [
+      "Original de Apple",
+      "20W con Power Delivery por USB-C",
+      "50% de batería en ~30 minutos en iPhone",
+      "Compatible con iPhone, iPad, AirPods y Apple Watch",
+      "Enchufe europeo"
+    ]
+  },
+  {
+    "id": 16,
+    "imagen": "🎁",
+    "tag": "Pack",
+    "hot": true,
+    "nombre": "Pack original Apple: adaptador 20W + cable de tela USB-C",
+    "precio": 20,
+    "precioAntes": 24,
+    "categoria": "USB-C",
+    "descripcion": "Todo lo necesario para la carga rápida original de Apple: el adaptador de corriente de 20W y el cable USB-C de tela de 1 metro (60W), juntos por menos que comprándolos por separado.",
+    "caracteristicas": [
+      "Adaptador Apple 20W USB-C original",
+      "Cable USB-C a USB-C de tela, 1 metro (60W)",
+      "Carga rápida: 50% de iPhone en ~30 minutos",
+      "Compatible con iPhone, iPad y AirPods",
+      "Ahorra 4 € frente a comprarlos por separado"
+    ]
   }
 ]
