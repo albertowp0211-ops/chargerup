@@ -52,7 +52,7 @@
     "hot": true,
     "nombre": "Pack original Apple: adaptador 20W + cable de tela USB-C",
     "precio": 20,
-    "precioAntes": 29.99,
+    "precioAntes": 39.99,
     "categoria": "USB-C",
     "descripcion": "Todo lo necesario para la carga rápida original de Apple: el adaptador de corriente de 20W y el cable USB-C de tela de 1 metro (60W), juntos por menos que comprándolos por separado.",
     "caracteristicas": [
@@ -66,56 +66,6 @@
       "/img/prod-16-1.jpg",
       "/img/prod-16-2.svg",
       "/img/prod-16-3.svg"
-    ]
-  },
-  {
-    "id": 1,
-    "imagen": "🔌",
-    "tag": "Más vendido",
-    "hot": true,
-    "nombre": "Cargador 65W USB-C",
-    "rating": 5,
-    "reviews": 412,
-    "precio": 27.99,
-    "precioAntes": 39.99,
-    "categoria": "USB-C",
-    "descripcion": "Potencia de 65W con Power Delivery para cargar portátil, tablet y móvil a toda velocidad, con salida máxima de 3,25 A. Triple puerto en un tamaño de bolsillo que se calienta menos y cabe en cualquier parte.",
-    "caracteristicas": [
-      "65W de potencia máxima con Power Delivery (salida de hasta 3,25 A)",
-      "3 puertos: 2 USB-C + 1 USB-A",
-      "Carga un portátil o dos móviles a la vez",
-      "Compacto y sin sobrecalentamiento",
-      "Compatible con iPhone, Android, iPad, MacBook y más"
-    ],
-    "imagenes": [
-      "/img/prod-1-1.jpg",
-      "/img/prod-1-2.svg",
-      "/img/prod-1-3.svg"
-    ]
-  },
-  {
-    "id": 2,
-    "imagen": "⚡",
-    "tag": "Nuevo",
-    "hot": false,
-    "nombre": "Cargador rápido 20W iPhone",
-    "rating": 4,
-    "reviews": 238,
-    "precio": 14.99,
-    "precioAntes": 19.99,
-    "categoria": "USB-C",
-    "descripcion": "Carga rápida para iPhone: del 0 al 50% en unos 30 minutos. Combina Power Delivery y Quick Charge 3.0 en dos puertos, e incluye un cable USB-C a USB-C de 1 metro para empezar a cargar desde el primer día.",
-    "caracteristicas": [
-      "20W con Power Delivery y Quick Charge 3.0",
-      "Puerto USB-C + puerto USB-A",
-      "Cable USB-C a USB-C de 1 metro incluido",
-      "50% de batería en ~30 minutos (iPhone 13 o posterior)",
-      "Compatible también con Android y AirPods"
-    ],
-    "imagenes": [
-      "/img/prod-2-1.jpg",
-      "/img/prod-2-2.svg",
-      "/img/prod-2-3.svg"
     ]
   },
   {
@@ -166,6 +116,82 @@
       "/img/prod-4-1.jpg",
       "/img/prod-4-2.svg",
       "/img/prod-4-3.svg"
+    ]
+  },
+  {
+    "id": 12,
+    "imagen": "📍",
+    "tag": "Novedad",
+    "hot": true,
+    "nombre": "Localizador",
+    "rating": 5,
+    "reviews": 74,
+    "precio": 19.99,
+    "precioAntes": 29.99,
+    "categoria": "Localizadores",
+    "descripcion": "Nunca vuelvas a perder las llaves, la cartera o la maleta. Engánchalo a lo que quieras y míralo en el mapa en la app Buscar de tu iPhone, gracias a la enorme red Find My de Apple. Suena a todo volumen para encontrarlo al instante y te avisa si te alejas y te lo dejas olvidado. Solo compatible con iPhone.",
+    "caracteristicas": [
+      "Funciona con la red Buscar (Apple Find My): localízalo en el mapa en tiempo real",
+      "Solo compatible con iPhone (no funciona con Android)",
+      "Timbre de 90 dB para encontrarlo aunque esté bajo el sofá",
+      "Aviso automático en el iPhone si te alejas y lo olvidas",
+      "Batería reemplazable de hasta 1 año · Resistente al agua y al polvo (IP67)"
+    ],
+    "imagenes": [
+      "/img/prod-12-1.jpg",
+      "/img/prod-12-2.jpg",
+      "/img/prod-12-2.svg",
+      "/img/prod-12-3.svg"
+    ]
+  },
+  {
+    "id": 1,
+    "imagen": "🔌",
+    "tag": "Más vendido",
+    "hot": true,
+    "nombre": "Cargador 65W USB-C",
+    "rating": 5,
+    "reviews": 412,
+    "precio": 27.99,
+    "precioAntes": 39.99,
+    "categoria": "USB-C",
+    "descripcion": "Potencia de 65W con Power Delivery para cargar portátil, tablet y móvil a toda velocidad, con salida máxima de 3,25 A. Triple puerto en un tamaño de bolsillo que se calienta menos y cabe en cualquier parte.",
+    "caracteristicas": [
+      "65W de potencia máxima con Power Delivery (salida de hasta 3,25 A)",
+      "3 puertos: 2 USB-C + 1 USB-A",
+      "Carga un portátil o dos móviles a la vez",
+      "Compacto y sin sobrecalentamiento",
+      "Compatible con iPhone, Android, iPad, MacBook y más"
+    ],
+    "imagenes": [
+      "/img/prod-1-1.jpg",
+      "/img/prod-1-2.svg",
+      "/img/prod-1-3.svg"
+    ]
+  },
+  {
+    "id": 2,
+    "imagen": "⚡",
+    "tag": "Nuevo",
+    "hot": false,
+    "nombre": "Cargador rápido 20W iPhone",
+    "rating": 4,
+    "reviews": 238,
+    "precio": 14.99,
+    "precioAntes": 19.99,
+    "categoria": "USB-C",
+    "descripcion": "Carga rápida para iPhone: del 0 al 50% en unos 30 minutos. Combina Power Delivery y Quick Charge 3.0 en dos puertos, e incluye un cable USB-C a USB-C de 1 metro para empezar a cargar desde el primer día.",
+    "caracteristicas": [
+      "20W con Power Delivery y Quick Charge 3.0",
+      "Puerto USB-C + puerto USB-A",
+      "Cable USB-C a USB-C de 1 metro incluido",
+      "50% de batería en ~30 minutos (iPhone 13 o posterior)",
+      "Compatible también con Android y AirPods"
+    ],
+    "imagenes": [
+      "/img/prod-2-1.jpg",
+      "/img/prod-2-2.svg",
+      "/img/prod-2-3.svg"
     ]
   },
   {
@@ -335,32 +361,6 @@
       "/img/prod-11-1.jpg",
       "/img/prod-11-2.svg",
       "/img/prod-11-3.svg"
-    ]
-  },
-  {
-    "id": 12,
-    "imagen": "📍",
-    "tag": "Novedad",
-    "hot": true,
-    "nombre": "Localizador",
-    "rating": 5,
-    "reviews": 74,
-    "precio": 19.99,
-    "precioAntes": 29.99,
-    "categoria": "Localizadores",
-    "descripcion": "Nunca vuelvas a perder las llaves, la cartera o la maleta. Engánchalo a lo que quieras y míralo en el mapa en la app Buscar de tu iPhone, gracias a la enorme red Find My de Apple. Suena a todo volumen para encontrarlo al instante y te avisa si te alejas y te lo dejas olvidado. Solo compatible con iPhone.",
-    "caracteristicas": [
-      "Funciona con la red Buscar (Apple Find My): localízalo en el mapa en tiempo real",
-      "Solo compatible con iPhone (no funciona con Android)",
-      "Timbre de 90 dB para encontrarlo aunque esté bajo el sofá",
-      "Aviso automático en el iPhone si te alejas y lo olvidas",
-      "Batería reemplazable de hasta 1 año · Resistente al agua y al polvo (IP67)"
-    ],
-    "imagenes": [
-      "/img/prod-12-1.jpg",
-      "/img/prod-12-2.jpg",
-      "/img/prod-12-2.svg",
-      "/img/prod-12-3.svg"
     ]
   },
   {
