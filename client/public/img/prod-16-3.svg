@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" role="img" aria-label="Garantías de Pack original Apple: adaptador 20W + cable de tela USB-C">
+  <defs><linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient></defs>
+  <rect width="800" height="800" fill="url(#d)"/>
+  <text x="400" y="150" font-size="150" text-anchor="middle" dominant-baseline="central">🎁</text>
+  <rect x="150" y="245" width="500" height="1" fill="#334155"/>
+  <g><text x="400" y="360" font-size="30" text-anchor="middle" fill="#e2e8f0" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">🛡️ Garantía legal de 3 años</text><text x="400" y="438" font-size="30" text-anchor="middle" fill="#e2e8f0" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">🚚 Envío desde España</text><text x="400" y="516" font-size="30" text-anchor="middle" fill="#e2e8f0" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">🔒 Pago seguro con Stripe</text><text x="400" y="594" font-size="30" text-anchor="middle" fill="#e2e8f0" dominant-baseline="central" font-family="Segoe UI, Arial, sans-serif">↩️ 14 días para devolver</text></g>
+</svg>
