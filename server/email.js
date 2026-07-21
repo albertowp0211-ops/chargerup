@@ -64,7 +64,7 @@ const plantilla = (pedido) => `
     </div>
     <p style="color:#94a3b8;font-size:12.5px;margin:22px 0 0;">
       Envío a toda España · Devoluciones en 14 días · Garantía legal de 3 años<br>
-      ¿Dudas? Responde a este correo o escribe a hola@chargeup.es
+      ¿Dudas? Responde a este correo o escribe a atencioncliente.chargeup@gmail.com
     </p>
   </div>
 </div>`;

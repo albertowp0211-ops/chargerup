@@ -11,7 +11,7 @@ export const MARCA = 'ChargeUp';
 // Dominio público y correo de contacto (sin @ delante en EMAIL_CONTACTO no,
 // va completo). Cámbialos cuando tengas el dominio y el buzón definitivos.
 export const DOMINIO = 'chargerup-buse.vercel.app';
-export const EMAIL_CONTACTO = 'hola@chargeup.es';
+export const EMAIL_CONTACTO = 'atencioncliente.chargeup@gmail.com';
 
 // Teléfono de atención al cliente. TELEFONO_CONTACTO son solo los dígitos
 // nacionales (para mostrar); TELEFONO_TEL lleva el prefijo internacional
