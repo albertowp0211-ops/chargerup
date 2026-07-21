@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import { useSearch } from '../context/SearchContext.jsx';
-import { MARCA, EMAIL_CONTACTO } from '../config.js';
+import { MARCA, WHATSAPP_URL } from '../config.js';
 
 export default function Navbar() {
   const { count } = useCart();
@@ -26,7 +26,7 @@ export default function Navbar() {
         </Link>
         <div className="nav-links">
           <a href="/#catalogo">Catálogo</a>
-          <a href={`mailto:${EMAIL_CONTACTO}`}>Contacto</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Contacto</a>
         </div>
         <input
           className="nav-search"

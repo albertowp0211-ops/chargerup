@@ -18,6 +18,8 @@ export const EMAIL_CONTACTO = 'hola@chargeup.es';
 // para los enlaces tel: (así funciona al pulsarlo desde el móvil).
 export const TELEFONO_CONTACTO = '643 06 60 84';
 export const TELEFONO_TEL = '+34643066084';
+// Enlace de WhatsApp (wa.me usa el número internacional sin el signo +)
+export const WHATSAPP_URL = `https://wa.me/${TELEFONO_TEL.replace('+', '')}`;
 
 // ===== Datos legales del titular =====
 // OBLIGATORIO rellenar con los datos REALES antes de vender: la LSSI y el
