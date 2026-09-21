@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import { useSearch } from '../context/SearchContext.jsx';
-import { MARCA, WHATSAPP_URL } from '../config.js';
+import { WHATSAPP_URL } from '../config.js';
 
 export default function Navbar() {
   const { count } = useCart();
@@ -21,17 +21,16 @@ export default function Navbar() {
   return (
     <nav>
       <div className="container nav-inner">
-        <Link to="/" className="logo">
-          {MARCA} ⚡
-        </Link>
         <div className="nav-links">
+          <Link to="/">Inicio</Link>
           <a href="/#catalogo">Catálogo</a>
+          <a href="/#por-que">Por qué original</a>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">Contacto</a>
         </div>
         <input
           className="nav-search"
           type="text"
-          placeholder="🔍  Buscar cargadores..."
+          placeholder="🔍  Buscar..."
           aria-label="Buscar productos"
           value={busqueda}
           onChange={onBuscar}
@@ -57,7 +56,7 @@ export default function Navbar() {
         <div className="nav-search-mobile">
           <input
             type="text"
-            placeholder="🔍  Buscar cargadores..."
+            placeholder="🔍  Buscar..."
             aria-label="Buscar productos"
             value={busqueda}
             onChange={onBuscar}

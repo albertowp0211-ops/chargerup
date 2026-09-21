@@ -1,9 +1,10 @@
-import { ENVIO_GRATIS_DESDE } from '../config.js';
+import { COSTE_ENVIO, PLAZO_ENTREGA } from '../config.js';
 
 const FEATURES = [
-  { ico: '🚚', titulo: 'Envío a toda España', detalle: `Gratis a partir de ${ENVIO_GRATIS_DESDE} €` },
-  { ico: '🛡️', titulo: 'Garantía legal de 3 años', detalle: 'En todos los productos' },
-  { ico: '🔒', titulo: 'Pago seguro', detalle: 'Visa, Mastercard, Apple Pay' },
+  { ico: '🍎', titulo: 'Originales de Apple', detalle: 'Nada de réplicas ni compatibles' },
+  { ico: '🔋', titulo: 'Cuidan la batería', detalle: 'Carga negociada con tu iPhone' },
+  { ico: '🚚', titulo: 'Envío desde España', detalle: `${COSTE_ENVIO} € · entrega en ${PLAZO_ENTREGA}` },
+  { ico: '↩️', titulo: '14 días para devolverlo', detalle: 'Sin dar explicaciones' },
 ];
 
 export default function Features() {

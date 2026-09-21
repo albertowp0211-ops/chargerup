@@ -7,19 +7,19 @@ export default function Footer() {
     <footer>
       <div className="container footer-inner">
         <div>
-          <div className="logo">{MARCA} ⚡</div>
-          <p>
-            Cargadores y accesorios de carga rápida con envío desde España,
-            pago seguro con Stripe y garantía legal de 3 años.
+          <p className="footer-claim">
+            Accesorios de carga <b>originales de Apple</b>. Nada de réplicas:
+            el adaptador y el cable que Apple diseñó para tu iPhone, con envío
+            desde España y pago seguro con Stripe.
           </p>
         </div>
         <div>
           <h4>Tienda</h4>
           <ul>
-            <li><a href="/#catalogo">Cargadores USB-C</a></li>
-            <li><a href="/#catalogo">Inalámbricos</a></li>
-            <li><a href="/#catalogo">Powerbanks</a></li>
-            <li><a href="/#catalogo">Cables</a></li>
+            <li><a href="/#catalogo">Pack adaptador + cable</a></li>
+            <li><a href="/#catalogo">Adaptador 20W original</a></li>
+            <li><a href="/#catalogo">Cable USB-C de tela</a></li>
+            <li><a href="/#por-que">Por qué original</a></li>
           </ul>
         </div>
         <div>

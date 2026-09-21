@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
-import { ENVIO_GRATIS_DESDE, envioPara, MARCA } from '../config.js';
+import { COSTE_ENVIO, ENVIO_GRATIS_DESDE, envioPara, MARCA } from '../config.js';
 
 export default function CartPage() {
   const { items, setQty, removeItem, total, count, promo, descuento, aplicarPromo, quitarPromo } =
@@ -56,7 +56,7 @@ export default function CartPage() {
   }
 
   const envio = envioPara(total);
-  const falta = ENVIO_GRATIS_DESDE - total;
+  const falta = ENVIO_GRATIS_DESDE != null ? ENVIO_GRATIS_DESDE - total : 0;
 
   return (
     <div className="container page">

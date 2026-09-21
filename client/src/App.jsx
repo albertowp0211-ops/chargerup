@@ -4,7 +4,7 @@ import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import ProductPage from './pages/ProductPage.jsx';
-import { ENVIO_GRATIS_DESDE, MARCA } from './config.js';
+import { COSTE_ENVIO, MARCA } from './config.js';
 import { usePageMeta } from './hooks/usePageMeta.js';
 
 // Páginas secundarias cargadas bajo demanda: el panel de admin y el flujo
@@ -54,7 +54,7 @@ export default function App() {
   return (
     <>
       <div className="topbar">
-        🚚 <b>Envío gratis</b> en pedidos a partir de {ENVIO_GRATIS_DESDE}€ · Devoluciones en 14 días
+        🍎 Solo accesorios <b>originales de Apple</b> · Envío a toda España por {COSTE_ENVIO}€ · 14 días para devolver
       </div>
       <Navbar />
       <ScrollToTop />

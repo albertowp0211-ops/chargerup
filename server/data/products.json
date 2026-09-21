@@ -1,25 +1,25 @@
 [
   {
-    "id": 14,
-    "imagen": "🧵",
-    "tag": "Original",
-    "hot": false,
-    "nombre": "Cable USB-C original de tela 1 m (60W)",
-    "precio": 10,
-    "precioAntes": 14.99,
-    "categoria": "Cables",
-    "descripcion": "Cable USB-C a USB-C original de Apple, con acabado de tela trenzada de 1 metro y hasta 60W de potencia. El mismo cable que acompaña a los iPhone y iPad más recientes: flexible, resistente y sin enredos.",
+    "id": 16,
+    "imagen": "🎁",
+    "tag": "Pack completo",
+    "hot": true,
+    "nombre": "Pack original Apple: adaptador 20W + cable de tela USB-C",
+    "precio": 19.9,
+    "precioAntes": 39.99,
+    "categoria": "Carga original Apple",
+    "descripcion": "Todo lo necesario para la carga rápida original de Apple: el adaptador de corriente de 20W y el cable USB-C de tela de 1 metro (60W), juntos por menos que comprándolos por separado.",
     "caracteristicas": [
-      "Original de Apple",
-      "Tejido trenzado de 1 metro, flexible y duradero",
-      "Hasta 60W de potencia: carga rápida de iPhone y iPad",
-      "USB-C a USB-C, también para Mac y AirPods",
-      "Carga y transferencia de datos"
+      "Adaptador Apple 20W USB-C original",
+      "Cable USB-C a USB-C de tela, 1 metro (60W)",
+      "Carga rápida: 50% de iPhone en ~30 minutos",
+      "Compatible con iPhone, iPad y AirPods",
+      "Ahorra 5,10 € frente a comprarlos por separado"
     ],
     "imagenes": [
-      "/img/prod-14-1.jpg",
-      "/img/prod-14-2.svg",
-      "/img/prod-14-3.svg"
+      "/img/apple-pack-recorte.png",
+      "/img/apple-pack-glow.jpg",
+      "/img/apple-pack-detalle.jpg"
     ]
   },
   {
@@ -28,9 +28,9 @@
     "tag": "Original",
     "hot": false,
     "nombre": "Adaptador de corriente Apple 20W original (USB-C)",
-    "precio": 14,
+    "precio": 15,
     "precioAntes": 19.99,
-    "categoria": "USB-C",
+    "categoria": "Carga original Apple",
     "descripcion": "El adaptador de corriente USB-C de 20W original de Apple: carga rápida para iPhone (50% en unos 30 minutos) y iPad, en el tamaño compacto de siempre.",
     "caracteristicas": [
       "Original de Apple",
@@ -40,349 +40,32 @@
       "Enchufe europeo"
     ],
     "imagenes": [
-      "/img/prod-15-1.jpg",
-      "/img/prod-15-2.svg",
-      "/img/prod-15-3.svg"
+      "/img/apple-adaptador-recorte.png",
+      "/img/apple-adaptador-glow.jpg",
+      "/img/apple-adaptador-detalle.jpg"
     ]
   },
   {
-    "id": 16,
-    "imagen": "🎁",
-    "tag": "Pack",
-    "hot": true,
-    "nombre": "Pack original Apple: adaptador 20W + cable de tela USB-C",
-    "precio": 20,
-    "precioAntes": 39.99,
-    "categoria": "USB-C",
-    "descripcion": "Todo lo necesario para la carga rápida original de Apple: el adaptador de corriente de 20W y el cable USB-C de tela de 1 metro (60W), juntos por menos que comprándolos por separado.",
-    "caracteristicas": [
-      "Adaptador Apple 20W USB-C original",
-      "Cable USB-C a USB-C de tela, 1 metro (60W)",
-      "Carga rápida: 50% de iPhone en ~30 minutos",
-      "Compatible con iPhone, iPad y AirPods",
-      "Ahorra 4 € frente a comprarlos por separado"
-    ],
-    "imagenes": [
-      "/img/prod-16-1.jpg",
-      "/img/prod-16-2.svg",
-      "/img/prod-16-3.svg"
-    ]
-  },
-  {
-    "id": 3,
-    "imagen": "🧲",
-    "tag": "Oferta",
-    "hot": true,
-    "nombre": "Cable de carga magnética para Apple Watch (1 m)",
-    "rating": 5,
-    "reviews": 189,
-    "precio": 14.99,
-    "precioAntes": 29.99,
-    "categoria": "Inalámbricos",
-    "descripcion": "Carga tu Apple Watch sin complicaciones: acerca el reloj al disco magnético, se alinea solo y empieza a cargar. Cable de 1 metro con conector USB-A que puedes enchufar a cualquier cargador, ordenador o batería externa.",
-    "caracteristicas": [
-      "Cable de carga magnética de 1 metro con conector USB-A",
-      "Alineación magnética: apoya el reloj y empieza a cargar",
-      "Compatible con Apple Watch",
-      "Funciona con cualquier cargador USB, ordenador o powerbank",
-      "Certificaciones CE y RoHS"
-    ],
-    "imagenes": [
-      "/img/prod-3-1.jpg",
-      "/img/prod-3-2.jpg",
-      "/img/prod-3-3.jpg"
-    ]
-  },
-  {
-    "id": 4,
-    "imagen": "🚗",
-    "tag": "Nuevo",
+    "id": 14,
+    "imagen": "🧵",
+    "tag": "Original",
     "hot": false,
-    "nombre": "Cargador de coche dual 38W",
-    "rating": 4,
-    "reviews": 97,
-    "precio": 16.99,
-    "precioAntes": null,
-    "categoria": "Coche",
-    "descripcion": "Dos dispositivos cargando a la vez en el coche, con carga rápida de verdad en el puerto USB-C. Cuerpo de aluminio con LED tenue para encontrarlo de noche sin distracciones.",
+    "nombre": "Cable USB-C original de tela 1 m (60W)",
+    "precio": 10,
+    "precioAntes": 14.99,
+    "categoria": "Carga original Apple",
+    "descripcion": "Cable USB-C a USB-C original de Apple, con acabado de tela trenzada de 1 metro y hasta 60W de potencia. El mismo cable que acompaña a los iPhone y iPad más recientes: flexible, resistente y sin enredos.",
     "caracteristicas": [
-      "38W en total: USB-C 20W + USB-A 18W (QC 3.0)",
-      "Carga dos dispositivos simultáneamente",
-      "Para toma de mechero de 12/24V (coche y camión)",
-      "LED indicador de funcionamiento",
-      "Protección contra picos de tensión del vehículo"
-    ],
-    "imagenes": [
-      "/img/prod-4-1.jpg",
-      "/img/prod-4-2.svg",
-      "/img/prod-4-3.svg"
-    ]
-  },
-  {
-    "id": 12,
-    "imagen": "📍",
-    "tag": "Novedad",
-    "hot": true,
-    "nombre": "Localizador",
-    "rating": 5,
-    "reviews": 74,
-    "precio": 19.99,
-    "precioAntes": 29.99,
-    "categoria": "Localizadores",
-    "descripcion": "Nunca vuelvas a perder las llaves, la cartera o la maleta. Engánchalo a lo que quieras y míralo en el mapa en la app Buscar de tu iPhone, gracias a la enorme red Find My de Apple. Suena a todo volumen para encontrarlo al instante y te avisa si te alejas y te lo dejas olvidado. Solo compatible con iPhone.",
-    "caracteristicas": [
-      "Funciona con la red Buscar (Apple Find My): localízalo en el mapa en tiempo real",
-      "Solo compatible con iPhone (no funciona con Android)",
-      "Timbre de 90 dB para encontrarlo aunque esté bajo el sofá",
-      "Aviso automático en el iPhone si te alejas y lo olvidas",
-      "Batería reemplazable de hasta 1 año · Resistente al agua y al polvo (IP67)"
-    ],
-    "imagenes": [
-      "/img/prod-12-1.jpg",
-      "/img/prod-12-2.jpg",
-      "/img/prod-12-2.svg",
-      "/img/prod-12-3.svg"
-    ]
-  },
-  {
-    "id": 1,
-    "imagen": "🔌",
-    "tag": "Más vendido",
-    "hot": true,
-    "nombre": "Cargador 65W USB-C",
-    "rating": 5,
-    "reviews": 412,
-    "precio": 27.99,
-    "precioAntes": 39.99,
-    "categoria": "USB-C",
-    "descripcion": "Potencia de 65W con Power Delivery para cargar portátil, tablet y móvil a toda velocidad, con salida máxima de 3,25 A. Triple puerto en un tamaño de bolsillo que se calienta menos y cabe en cualquier parte.",
-    "caracteristicas": [
-      "65W de potencia máxima con Power Delivery (salida de hasta 3,25 A)",
-      "3 puertos: 2 USB-C + 1 USB-A",
-      "Carga un portátil o dos móviles a la vez",
-      "Compacto y sin sobrecalentamiento",
-      "Compatible con iPhone, Android, iPad, MacBook y más"
-    ],
-    "imagenes": [
-      "/img/prod-1-1.jpg",
-      "/img/prod-1-2.svg",
-      "/img/prod-1-3.svg"
-    ]
-  },
-  {
-    "id": 2,
-    "imagen": "⚡",
-    "tag": "Nuevo",
-    "hot": false,
-    "nombre": "Cargador rápido 20W iPhone",
-    "rating": 4,
-    "reviews": 238,
-    "precio": 14.99,
-    "precioAntes": 19.99,
-    "categoria": "USB-C",
-    "descripcion": "Carga rápida para iPhone: del 0 al 50% en unos 30 minutos. Combina Power Delivery y Quick Charge 3.0 en dos puertos, e incluye un cable USB-C a USB-C de 1 metro para empezar a cargar desde el primer día.",
-    "caracteristicas": [
-      "20W con Power Delivery y Quick Charge 3.0",
-      "Puerto USB-C + puerto USB-A",
-      "Cable USB-C a USB-C de 1 metro incluido",
-      "50% de batería en ~30 minutos (iPhone 13 o posterior)",
-      "Compatible también con Android y AirPods"
-    ],
-    "imagenes": [
-      "/img/prod-2-1.jpg",
-      "/img/prod-2-2.svg",
-      "/img/prod-2-3.svg"
-    ]
-  },
-  {
-    "id": 5,
-    "imagen": "🔋",
-    "tag": "Popular",
-    "hot": false,
-    "nombre": "Powerbank 20.000mAh PD",
-    "rating": 5,
-    "reviews": 523,
-    "precio": 32.99,
-    "precioAntes": 44.99,
-    "categoria": "Powerbanks",
-    "descripcion": "Batería de 20.000 mAh con cables integrados: sin llevar nada más encima. Hasta 4 cargas completas de móvil, carga rápida PD de 22,5W y pantalla LED que muestra el porcentaje exacto restante.",
-    "caracteristicas": [
-      "20.000 mAh: unas 4 cargas completas de un móvil",
-      "Carga rápida Power Delivery de 22,5W",
-      "Cables integrados: siempre listos, sin llevar accesorios",
-      "Pantalla LED con porcentaje de batería",
-      "Carga varios dispositivos a la vez · Apta para avión"
-    ],
-    "imagenes": [
-      "/img/prod-5-1.jpg",
-      "/img/prod-5-2.svg",
-      "/img/prod-5-3.svg"
-    ]
-  },
-  {
-    "id": 6,
-    "imagen": "🪢",
-    "tag": "Potente",
-    "hot": false,
-    "nombre": "Cable USB-C trenzado 2m 200W",
-    "rating": 4,
-    "reviews": 341,
-    "precio": 9.99,
-    "precioAntes": null,
-    "categoria": "Cables",
-    "descripcion": "Cable USB-C a USB-C de 2 metros con trenzado de nailon antienredos y hasta 200W de potencia con Power Delivery: sirve igual para el móvil que para un portátil exigente.",
-    "caracteristicas": [
-      "Hasta 200W con Power Delivery — apto para portátiles",
-      "2 metros de longitud",
-      "Nailon trenzado antienredos",
-      "Conectores reforzados de larga duración",
+      "Original de Apple",
+      "Tejido trenzado de 1 metro, flexible y duradero",
+      "Hasta 60W de potencia: carga rápida de iPhone y iPad",
+      "USB-C a USB-C, también para Mac y AirPods",
       "Carga y transferencia de datos"
     ],
     "imagenes": [
-      "/img/prod-6-1.jpg",
-      "/img/prod-6-2.svg",
-      "/img/prod-6-3.svg"
-    ]
-  },
-  {
-    "id": 7,
-    "imagen": "💻",
-    "tag": "Potente",
-    "hot": false,
-    "nombre": "Cargador USB-C 96W portátiles",
-    "rating": 5,
-    "reviews": 156,
-    "precio": 44.99,
-    "precioAntes": 59.99,
-    "categoria": "USB-C",
-    "descripcion": "Potencia de sobra para portátiles exigentes: 96W por USB-C con Power Delivery, ideal para MacBook Pro, MacBook Air y ultrabooks. Incluye cable USB-C a USB-C.",
-    "caracteristicas": [
-      "96W de potencia por USB-C con Power Delivery",
-      "Carga MacBook Pro, MacBook Air y portátiles con USB-C",
-      "Cable USB-C a USB-C incluido",
-      "También carga tablets y móviles a máxima velocidad",
-      "Protección contra sobrecarga y sobrecalentamiento"
-    ],
-    "imagenes": [
-      "/img/prod-7-1.jpg",
-      "/img/prod-7-2.svg",
-      "/img/prod-7-3.svg"
-    ]
-  },
-  {
-    "id": 8,
-    "imagen": "🛏️",
-    "tag": "Oferta",
-    "hot": true,
-    "nombre": "Base de carga 3 en 1 mesilla",
-    "rating": 4,
-    "reviews": 88,
-    "precio": 29.99,
-    "precioAntes": 39.99,
-    "categoria": "Inalámbricos",
-    "descripcion": "Móvil, reloj y auriculares cargando a la vez en un solo enchufe. Base plegable de hasta 15W con conexión USB-C: ocupa lo mínimo en la mesilla y viaja plana en la maleta.",
-    "caracteristicas": [
-      "Carga 3 dispositivos a la vez: móvil, smartwatch y auriculares",
-      "Hasta 15W de carga inalámbrica para el móvil",
-      "Plegable y compacta: ideal para viajes",
-      "Conexión USB-C",
-      "Compatible con iPhone y Android con carga inalámbrica"
-    ],
-    "imagenes": [
-      "/img/prod-8-1.jpg",
-      "/img/prod-8-2.svg",
-      "/img/prod-8-3.svg"
-    ]
-  },
-  {
-    "id": 9,
-    "imagen": "⌚",
-    "tag": "Oferta",
-    "hot": true,
-    "nombre": "Cargador inalámbrico 2 en 1 para móvil y reloj",
-    "precio": 19.99,
-    "precioAntes": 26.99,
-    "categoria": "Inalámbricos",
-    "descripcion": "Carga el móvil y el smartwatch a la vez, sin cables por medio. Diseño plegable de hasta 15W con conexión USB-C que cabe en cualquier maleta y deja el escritorio despejado.",
-    "caracteristicas": [
-      "Carga inalámbrica para móvil y reloj a la vez",
-      "Hasta 15W de potencia",
-      "Plegable y ligero: ideal para viajes",
-      "Conexión USB-C",
-      "Compatible con iPhone y Android con carga inalámbrica"
-    ],
-    "imagenes": [
-      "/img/prod-9-1.jpg",
-      "/img/prod-9-2.svg",
-      "/img/prod-9-3.svg"
-    ]
-  },
-  {
-    "id": 10,
-    "imagen": "🌍",
-    "tag": "Nuevo",
-    "hot": false,
-    "nombre": "Adaptador de viaje universal",
-    "precio": 24.99,
-    "precioAntes": 32.99,
-    "categoria": "USB-C",
-    "descripcion": "Un solo adaptador para más de 150 países. Convierte la toma de corriente a los formatos de Europa, Reino Unido, EE. UU. y Australia con un diseño compacto todo en uno, sin piezas sueltas.",
-    "caracteristicas": [
-      "Compatible con enchufes de EE. UU., Reino Unido, Europa y Australia",
-      "Válido en más de 150 países",
-      "Hasta 250V · 6A",
-      "Diseño compacto todo en uno, sin piezas sueltas",
-      "Adapta el enchufe (no convierte el voltaje)"
-    ],
-    "imagenes": [
-      "/img/prod-10-1.jpg",
-      "/img/prod-10-2.svg",
-      "/img/prod-10-3.svg"
-    ]
-  },
-  {
-    "id": 11,
-    "imagen": "🖥️",
-    "tag": "Potente",
-    "hot": false,
-    "nombre": "Regleta de carga 8 enchufes + 6 USB",
-    "precio": 39.99,
-    "precioAntes": 54.99,
-    "categoria": "USB-C",
-    "descripcion": "Carga toda la casa desde un solo punto: 8 enchufes y 6 puertos USB (2 USB-C + 4 USB-A) con hasta 2500W de potencia total, protección contra sobrecargas y cable de 3 metros.",
-    "caracteristicas": [
-      "8 enchufes + 6 puertos USB (2 USB-C y 4 USB-A)",
-      "Hasta 2500W de potencia total",
-      "Salida USB de 2,4 A para móviles y tablets",
-      "Cable de 3 metros con interruptor",
-      "Protección contra sobrecarga y material ignífugo"
-    ],
-    "imagenes": [
-      "/img/prod-11-1.jpg",
-      "/img/prod-11-2.svg",
-      "/img/prod-11-3.svg"
-    ]
-  },
-  {
-    "id": 13,
-    "imagen": "🛴",
-    "tag": "Nuevo",
-    "hot": false,
-    "nombre": "Cargador universal para patinete eléctrico 42V 2A",
-    "precio": 19.99,
-    "precioAntes": 29.99,
-    "categoria": "Patinetes",
-    "descripcion": "Recupera la batería de tu patinete o bici eléctrica con este cargador universal de 42V y 2A, con hasta 84W de potencia. Ligero, pequeño y seguro, con el conector DC estándar que usan la mayoría de patinetes.",
-    "caracteristicas": [
-      "Salida de 42V y 2A: hasta 84W de potencia",
-      "Para baterías de litio de 36V (tensión de carga 42V)",
-      "Conector DC de 5,5x2,1 mm, el estándar en patinetes y bicis eléctricas",
-      "Cable de 120 cm y enchufe europeo",
-      "Ligero, compacto y altamente eficiente"
-    ],
-    "imagenes": [
-      "/img/prod-13-1.jpg",
-      "/img/prod-13-2.jpg"
+      "/img/apple-cable-recorte.png",
+      "/img/apple-cable-glow.jpg",
+      "/img/apple-cable-detalle.jpg"
     ]
   }
 ]

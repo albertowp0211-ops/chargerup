@@ -1,19 +1,36 @@
+/* Paleta futurista: fondo profundo casi negro con acentos cian/violeta.
+   Los nombres de variable se conservan para no romper los 600 estilos
+   existentes (carrito, checkout, admin, legales): al cambiarlos aquí,
+   toda la tienda cambia de piel de forma coherente. */
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --dark: #0f172a;
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --accent: #f59e0b;
-  --success: #10b981;
-  --border: #e2e8f0;
+  --primary: #37E1FF;        /* cian eléctrico: acento principal */
+  --primary-dark: #7C5CFF;   /* violeta: segundo acento y degradados */
+  --dark: #05070E;           /* fondo más profundo */
+  --bg: #080B14;             /* fondo de página */
+  --card: #0F1422;           /* superficies */
+  --card-2: #151B2C;         /* superficies elevadas */
+  --text: #E8EEF9;
+  --muted: #8794AE;
+  --accent: #37E1FF;
+  --success: #3BE8B0;
+  --border: #1E2740;
+  --border-glow: rgba(55, 225, 255, 0.34);
   --radius: 16px;
+
+  --glow-cian: 0 0 0 1px rgba(55, 225, 255, .28), 0 0 34px -8px rgba(55, 225, 255, .55);
+  color-scheme: dark;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
 html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  /* halos de luz fijos que dan profundidad al fondo */
+  background-image:
+    radial-gradient(900px 520px at 78% -6%, rgba(124, 92, 255, .20), transparent 62%),
+    radial-gradient(760px 480px at 8% 4%, rgba(55, 225, 255, .14), transparent 60%);
+  background-attachment: fixed;
+}
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
 /* ===== Barra superior ===== */
@@ -49,7 +66,7 @@ nav {
 }
 .cart-badge {
   position: absolute; top: -6px; right: -6px;
-  background: var(--accent); color: #fff;
+  background: var(--accent); color: #04121A;
   font-size: 11px; font-weight: 700;
   min-width: 20px; height: 20px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center; padding: 0 5px;
@@ -57,29 +74,42 @@ nav {
 
 /* ===== Hero ===== */
 .hero {
-  background: linear-gradient(120deg, var(--dark) 40%, #1e3a8a);
+  background:
+    radial-gradient(1000px 520px at 76% 10%, rgba(124,92,255,.34), transparent 64%),
+    radial-gradient(760px 420px at 6% 90%, rgba(55,225,255,.22), transparent 62%),
+    linear-gradient(150deg, #05070E 30%, #0B1024 100%);
+  border-bottom: 1px solid var(--border);
   color: #fff; overflow: hidden;
 }
 .hero-inner { display: flex; align-items: center; gap: 40px; padding: 72px 24px; }
 .hero-text { flex: 1; }
 .hero-text .pill {
-  display: inline-block; background: rgba(255,255,255,.12);
+  display: inline-block; background: rgba(55,225,255,.10);
+  border: 1px solid var(--border-glow); color: #A9E9FF;
   padding: 6px 14px; border-radius: 20px;
   font-size: 13px; font-weight: 600; margin-bottom: 18px;
 }
 .hero-text h1 { font-size: 46px; line-height: 1.15; margin-bottom: 16px; }
-.hero-text h1 em { color: #60a5fa; font-style: normal; }
-.hero-text p { font-size: 17px; color: #94a3b8; margin-bottom: 28px; max-width: 480px; }
+.hero-text h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--primary), #8FD8FF 40%, var(--primary-dark));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-text p { font-size: 17px; color: var(--muted); margin-bottom: 28px; max-width: 480px; }
 .btn {
   display: inline-block; border: none; cursor: pointer;
   padding: 14px 28px; border-radius: 12px;
   font-size: 15px; font-weight: 700; text-decoration: none;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
 }
-.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), #67B4FF 55%, var(--primary-dark));
+  color: #04121A;
+  box-shadow: 0 10px 30px -12px rgba(55,225,255,.75);
+}
 .btn-primary:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px); box-shadow: 0 10px 22px rgba(37,99,235,.28);
+  transform: translateY(-2px); box-shadow: 0 14px 30px -10px rgba(124,92,255,.7);
 }
 .btn-primary:active { transform: translateY(0); }
 .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.3); margin-left: 12px; }
@@ -165,7 +195,7 @@ footer a:hover { color: #fff; }
   font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer;
 }
 .cat:hover { border-color: var(--primary); color: var(--primary); }
-.cat.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.cat.active { background: var(--primary); color: #04121A; border-color: var(--primary); }
 
 /* minmax(0, 1fr): sin el mínimo 0, el contenido de la tarjeta (precio + botón)
    fija un ancho mínimo y la cuadrícula desborda el viewport en móvil */
@@ -176,10 +206,13 @@ footer a:hover { color: #fff; }
   transition: transform .18s, box-shadow .18s;
   display: flex; flex-direction: column; min-width: 0;
 }
-.product:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(15,23,42,.09); }
+.product:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -18px rgba(0,0,0,.9); border-color: var(--border-glow); }
 .product .img {
-  height: 140px; border-radius: 12px;
-  background: linear-gradient(135deg, #eaf1ff 0%, #f8fafc 100%);
+  height: 180px; border-radius: 12px;
+  background:
+    radial-gradient(70% 70% at 50% 45%, rgba(55,225,255,.18), transparent 70%),
+    linear-gradient(160deg, #141B2C 0%, #0B0F1A 100%);
+  border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   font-size: 60px; margin-bottom: 14px;
   position: relative; overflow: hidden;
@@ -192,7 +225,9 @@ footer a:hover { color: #fff; }
 /* Foto real en la tarjeta: fondo blanco para que la imagen (cuadrada, fondo blanco) llene el marco sin franjas */
 .img-foto {
   width: 100%; height: 100%; object-fit: contain;
-  background: #fff; transition: transform .28s ease;
+  background: transparent; padding: 10px;
+  transition: transform .28s ease;
+  filter: drop-shadow(0 12px 22px rgba(0,0,0,.55));
 }
 .product:hover .img-foto { transform: scale(1.06); }
 .product.agotado .img-foto { filter: grayscale(1) opacity(.55); }
@@ -238,7 +273,7 @@ footer a:hover { color: #fff; }
 .price { font-size: 19px; font-weight: 800; }
 .price small { font-size: 13px; color: var(--muted); text-decoration: line-through; font-weight: 400; margin-left: 4px; }
 .add-btn {
-  background: var(--primary); color: #fff; border: none;
+  background: var(--primary); color: #04121A; border: none;
   padding: 9px 16px; border-radius: 10px;
   font-size: 13px; font-weight: 700; cursor: pointer;
   transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
@@ -459,21 +494,24 @@ footer a:hover { color: #fff; }
 .detail-galeria { position: sticky; top: 92px; }
 .detail-img {
   position: relative;
-  background: linear-gradient(135deg, #eaf1ff 0%, #f8fafc 100%);
+  background:
+    radial-gradient(65% 65% at 50% 45%, rgba(55,225,255,.20), transparent 70%),
+    linear-gradient(160deg, #141B2C 0%, #0B0F1A 100%);
+  border: 1px solid var(--border);
   border: 1px solid var(--border);
   border-radius: var(--radius); min-height: 340px;
   display: flex; align-items: center; justify-content: center;
   font-size: 140px; overflow: hidden;
 }
-.detail-img-foto { width: 100%; height: auto; max-height: 460px; object-fit: contain; display: block; background: #fff; }
+.detail-img-foto { width: 100%; height: auto; max-height: 460px; object-fit: contain; display: block; background: transparent; padding: 14px; filter: drop-shadow(0 18px 34px rgba(0,0,0,.6)); }
 .detail-thumbs { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
 .detail-thumb {
   width: 68px; height: 68px; padding: 0; cursor: pointer;
   border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-  background: #fff; transition: border-color .15s, box-shadow .15s;
+  background: var(--card-2); transition: border-color .15s, box-shadow .15s;
 }
 .detail-thumb:hover { border-color: var(--primary); }
-.detail-thumb.activa { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(37,99,235,.25); }
+.detail-thumb.activa { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(55,225,255,.35); }
 .detail-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .detail-img .img-emoji { filter: drop-shadow(0 12px 20px rgba(15,23,42,.14)); }
 .detail-img .dto-badge { top: 16px; left: 16px; font-size: 14px; padding: 5px 12px; }
@@ -492,7 +530,7 @@ footer a:hover { color: #fff; }
 .detail-buy .qty { align-self: flex-start; }
 .detail-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 .detail-cta { flex: 1 1 150px; text-align: center; padding-left: 16px; padding-right: 16px; }
-.btn-comprar { background: #059669; color: #fff; }
+.btn-comprar { background: linear-gradient(135deg, var(--success), #2BD1FF); color: #04121A; }
 .btn-comprar:hover {
   background: #047857;
   transform: translateY(-2px); box-shadow: 0 10px 22px rgba(5,150,105,.28);
@@ -666,4 +704,133 @@ footer a:hover { color: #fff; }
     transition-duration: .001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* =======================================================================
+   Tienda de carga original Apple — bloques nuevos
+   ======================================================================= */
+
+.eyebrow {
+  display: block;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--primary); margin-bottom: 10px;
+}
+
+/* ===== Hero ===== */
+.hero { position: relative; }
+
+/* retícula tenue en perspectiva: el toque "futurista" del fondo */
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(55,225,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(55,225,255,.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 60% at 50% 40%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 40%, #000 30%, transparent 100%);
+}
+.hero-inner { position: relative; z-index: 1; }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.hero-cta .btn-ghost { margin-left: 0; border-color: var(--border-glow); color: #BFE9FF; }
+.hero-cta .btn-ghost:hover { background: rgba(55,225,255,.08); }
+
+.hero-specs {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 14px 34px;
+  margin-top: 34px; padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.hero-specs b {
+  display: block; font-size: 24px; line-height: 1.1;
+  background: linear-gradient(100deg, var(--primary), #A9C7FF);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-specs small { color: var(--muted); font-size: 12.5px; }
+
+.hero-visual { position: relative; font-size: 0; filter: none; }
+.hero-halo {
+  position: absolute; inset: 6% ;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(55,225,255,.42), rgba(124,92,255,.22) 45%, transparent 70%);
+  filter: blur(26px);
+}
+.hero-foto {
+  position: relative; width: 100%; max-width: 470px; height: auto;
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.75)) drop-shadow(0 0 40px rgba(55,225,255,.30));
+}
+
+/* ===== Por qué un cargador original ===== */
+.porque { padding-top: 78px; }
+.porque-head { max-width: 640px; margin-bottom: 40px; }
+.porque-head h2 { font-size: 34px; line-height: 1.15; margin-bottom: 14px; }
+.porque-head h2 em {
+  font-style: normal;
+  background: linear-gradient(100deg, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.porque-head p { color: var(--muted); font-size: 16.5px; line-height: 1.65; }
+
+.porque-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px; margin-bottom: 44px;
+}
+.ventaja {
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, var(--card-2), var(--card));
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 26px 24px 24px;
+}
+/* filo luminoso superior */
+.ventaja::before {
+  content: ''; position: absolute; top: 0; left: 24px; right: 24px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: .6;
+}
+.ventaja-n {
+  font-size: 12px; font-weight: 700; letter-spacing: .16em;
+  color: var(--primary); display: block; margin-bottom: 12px;
+}
+.ventaja h3 { font-size: 19px; margin-bottom: 9px; }
+.ventaja p { color: var(--muted); font-size: 14.8px; line-height: 1.68; }
+
+/* ===== Comparativa ===== */
+.tabla-wrap { overflow-x: auto; }
+.comparativa {
+  width: 100%; border-collapse: collapse; min-width: 560px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+}
+.comparativa caption {
+  caption-side: top; text-align: left; padding: 0 0 14px;
+  font-size: 13px; color: var(--muted);
+}
+.comparativa th, .comparativa td {
+  padding: 15px 18px; text-align: left; font-size: 14.5px;
+  border-bottom: 1px solid var(--border);
+}
+.comparativa thead th {
+  font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); background: var(--card-2);
+}
+.comparativa thead th.col-ok { color: var(--primary); }
+.comparativa tbody th { font-weight: 600; color: var(--text); width: 42%; }
+.comparativa tbody tr:last-child th,
+.comparativa tbody tr:last-child td { border-bottom: 0; }
+.comparativa td.col-ok { color: var(--success); font-weight: 600; }
+.comparativa td.col-no { color: var(--muted); }
+
+/* ===== Catálogo de tres productos ===== */
+.grid.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+@media (max-width: 900px) {
+  .porque-grid { grid-template-columns: minmax(0, 1fr); }
+  .grid.grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-foto { max-width: 340px; }
+}
+@media (max-width: 620px) {
+  .grid.grid-3 { grid-template-columns: minmax(0, 1fr); }
+  .porque-head h2 { font-size: 27px; }
+  .hero-specs { gap: 12px 22px; }
+  .hero-specs b { font-size: 20px; }
 }

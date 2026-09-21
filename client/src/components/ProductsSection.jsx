@@ -8,7 +8,6 @@ export default function ProductsSection() {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
-  const [categoria, setCategoria] = useState('Todos');
   const { addItem } = useCart();
   const showToast = useToast();
   const { busqueda } = useSearch();
@@ -21,20 +20,14 @@ export default function ProductsSection() {
       .finally(() => setCargando(false));
   }, []);
 
-  const categorias = useMemo(
-    () => ['Todos', ...new Set(productos.map((p) => p.categoria))],
-    [productos]
-  );
-
   // La búsqueda cubre también descripción y características ("GaN", "MacBook"…)
   const termino = normalizar(busqueda.trim());
   const visibles = productos.filter(
     (p) =>
-      (categoria === 'Todos' || p.categoria === categoria) &&
-      (termino === '' ||
-        normalizar(
-          `${p.nombre} ${p.categoria} ${p.tag} ${p.descripcion ?? ''} ${(p.caracteristicas ?? []).join(' ')}`
-        ).includes(termino))
+      termino === '' ||
+      normalizar(
+        `${p.nombre} ${p.categoria} ${p.tag} ${p.descripcion ?? ''} ${(p.caracteristicas ?? []).join(' ')}`
+      ).includes(termino)
   );
 
   // Sugerencias cuando el filtro no devuelve nada: los más vendidos
@@ -102,23 +95,13 @@ export default function ProductsSection() {
     <section className="catalog container" id="catalogo">
       <div className="catalog-head">
         <div>
-          <h2>Nuestros cargadores</h2>
+          <span className="eyebrow">Catálogo</span>
+          <h2>Tres originales, nada más</h2>
           <p>
             {termino
               ? `Resultados para "${busqueda.trim()}" (${visibles.length})`
-              : 'Los más vendidos de esta semana'}
+              : 'El adaptador, el cable y el pack con los dos. Todo original de Apple.'}
           </p>
-        </div>
-        <div className="cats">
-          {categorias.map((c) => (
-            <button
-              key={c}
-              className={`cat ${c === categoria ? 'active' : ''}`}
-              onClick={() => setCategoria(c)}
-            >
-              {c}
-            </button>
-          ))}
         </div>
       </div>
 
@@ -130,7 +113,7 @@ export default function ProductsSection() {
 
       {cargando && !error && (
         <div className="grid" aria-hidden="true">
-          {Array.from({ length: 6 }, (_, i) => (
+          {Array.from({ length: 3 }, (_, i) => (
             <div className="product skeleton" key={i}>
               <div className="sk-img" />
               <div className="sk-line sk-tag" />
@@ -155,7 +138,7 @@ export default function ProductsSection() {
         </>
       )}
 
-      <div className="grid">{visibles.map(tarjeta)}</div>
+      <div className="grid grid-3">{visibles.map(tarjeta)}</div>
     </section>
   );
 }
