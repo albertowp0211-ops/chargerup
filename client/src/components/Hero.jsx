@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="hero-grid-lines" aria-hidden="true" />
       <div className="container hero-inner">
         <div className="hero-text">
-          <span className="pill">100 % originales de Apple · Nada de imitaciones</span>
+          <span className="pill">100 % originales de Apple</span>
           <h1>
             Carga tu iPhone con el cargador <em>que diseñó Apple</em>
           </h1>
