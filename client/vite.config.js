@@ -12,12 +12,12 @@ export default defineConfig({
       manifest: {
         name: 'ChargeUp',
         short_name: 'ChargeUp',
-        description: 'Cargadores rápidos USB-C, powerbanks y accesorios de carga con envío desde España.',
+        description: 'Adaptador de corriente Apple 20W y cable USB-C de tela, originales. Envío desde España.',
         lang: 'es',
         display: 'standalone',
         start_url: '/',
-        theme_color: '#0f172a',
-        background_color: '#f8fafc',
+        theme_color: '#080B14',
+        background_color: '#080B14',
         icons: [
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: '/icon-512.png', sizes: '512x512', type: 'image/png' },
