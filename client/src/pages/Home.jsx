@@ -2,6 +2,8 @@ import Hero from '../components/Hero.jsx';
 import Features from '../components/Features.jsx';
 import WhyOriginal from '../components/WhyOriginal.jsx';
 import ProductsSection from '../components/ProductsSection.jsx';
+import Faq from '../components/Faq.jsx';
+import BarraCompra from '../components/BarraCompra.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
 import { MARCA } from '../config.js';
 
@@ -15,8 +17,10 @@ export default function Home() {
     <>
       <Hero />
       <Features />
-      <WhyOriginal />
       <ProductsSection />
+      <WhyOriginal />
+      <Faq />
+      <BarraCompra />
     </>
   );
 }

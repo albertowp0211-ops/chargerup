@@ -3,7 +3,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
-import { COSTE_ENVIO, PLAZO_ENTREGA, MARCA } from '../config.js';
+import { COSTE_ENVIO, PLAZO_ENTREGA, STOCK_AVISO, MARCA } from '../config.js';
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -183,6 +183,15 @@ export default function ProductPage() {
             </div>
           ) : (
             <div className="detail-buy">
+              {Number.isInteger(p.stock) && p.stock <= STOCK_AVISO && p.stock > 0 && (
+                <p className="stock-aviso stock-aviso-grande">
+                  <span className="stock-punto" aria-hidden="true" />
+                  {p.stock === 1
+                    ? 'Queda 1 unidad en stock'
+                    : `Quedan ${p.stock} unidades en stock`}
+                </p>
+              )}
+
               <div className="qty">
                 <button aria-label="Reducir cantidad" onClick={() => setQty((q) => Math.max(1, q - 1))}>−</button>
                 <span>{qty}</span>

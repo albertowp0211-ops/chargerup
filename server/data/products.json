@@ -20,7 +20,8 @@
       "/img/apple-pack-recorte.png",
       "/img/apple-pack-glow.jpg",
       "/img/apple-pack-detalle.jpg"
-    ]
+    ],
+    "stock": 6
   },
   {
     "id": 15,
@@ -43,7 +44,8 @@
       "/img/apple-adaptador-recorte.png",
       "/img/apple-adaptador-glow.jpg",
       "/img/apple-adaptador-detalle.jpg"
-    ]
+    ],
+    "stock": 4
   },
   {
     "id": 14,
@@ -66,6 +68,7 @@
       "/img/apple-cable-recorte.png",
       "/img/apple-cable-glow.jpg",
       "/img/apple-cable-detalle.jpg"
-    ]
+    ],
+    "stock": 9
   }
 ]
