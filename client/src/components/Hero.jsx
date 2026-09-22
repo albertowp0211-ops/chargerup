@@ -1,4 +1,44 @@
+import { useEffect, useRef } from 'react';
+
 export default function Hero() {
+  const escenaRef = useRef(null);
+
+  // Ligero paralaje 3D siguiendo al puntero. Se desactiva si el sistema
+  // pide menos movimiento o si no hay ratón (móvil), donde estorbaría.
+  useEffect(() => {
+    const escena = escenaRef.current;
+    if (!escena) return;
+    const finoYconMovimiento =
+      window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!finoYconMovimiento) return;
+
+    let animando = false;
+    const alMover = (e) => {
+      if (animando) return;
+      animando = true;
+      requestAnimationFrame(() => {
+        const r = escena.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        escena.style.setProperty('--giro-y', `${x * 18}deg`);
+        escena.style.setProperty('--giro-x', `${-y * 12}deg`);
+        animando = false;
+      });
+    };
+    const alSalir = () => {
+      escena.style.setProperty('--giro-y', '0deg');
+      escena.style.setProperty('--giro-x', '0deg');
+    };
+
+    escena.addEventListener('pointermove', alMover);
+    escena.addEventListener('pointerleave', alSalir);
+    return () => {
+      escena.removeEventListener('pointermove', alMover);
+      escena.removeEventListener('pointerleave', alSalir);
+    };
+  }, []);
+
   return (
     <section className="hero">
       <div className="hero-grid-lines" aria-hidden="true" />
@@ -38,15 +78,32 @@ export default function Hero() {
           </ul>
         </div>
 
+        {/* Plató virtual: pedestal, foco, sombra de contacto y reflejo */}
         <div className="hero-visual">
-          <div className="hero-halo" aria-hidden="true" />
-          <img
-            className="hero-foto"
-            src="/img/apple-pack-recorte.png"
-            alt="Pack original de Apple: adaptador de corriente USB-C de 20 W y cable de tela USB-C de 1 metro"
-            width="520"
-            height="520"
-          />
+          <div className="escena3d" ref={escenaRef}>
+            <div className="escena-foco" aria-hidden="true" />
+            <div className="escena-pedestal" aria-hidden="true" />
+
+            <div className="escena-pieza">
+              <img
+                className="hero-foto"
+                src="/img/apple-pack-recorte.png"
+                alt="Pack original de Apple: adaptador de corriente USB-C de 20 W y cable de tela USB-C de 1 metro"
+                width="520"
+                height="520"
+              />
+              <img
+                className="hero-reflejo"
+                src="/img/apple-pack-recorte.png"
+                alt=""
+                aria-hidden="true"
+                width="520"
+                height="520"
+              />
+            </div>
+
+            <div className="escena-sombra" aria-hidden="true" />
+          </div>
         </div>
       </div>
     </section>
