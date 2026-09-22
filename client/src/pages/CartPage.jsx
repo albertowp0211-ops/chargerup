@@ -1,44 +1,16 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
 import { COSTE_ENVIO, PLAZO_ENTREGA, envioPara, MARCA } from '../config.js';
 
 export default function CartPage() {
-  const { items, setQty, removeItem, total, count, promo, descuento, aplicarPromo, quitarPromo } =
+  const { items, setQty, removeItem, total, count, promo, descuento } =
     useCart();
-  const [codigo, setCodigo] = useState('');
-  const [promoError, setPromoError] = useState('');
-  const [aplicando, setAplicando] = useState(false);
 
   usePageMeta(
     `Tu carrito — ${MARCA}`,
     `Revisa los productos de tu carrito y tramita tu pedido en ${MARCA}.`
   );
-
-  const onAplicarPromo = async (e) => {
-    e.preventDefault();
-    if (!codigo.trim()) return;
-    setAplicando(true);
-    setPromoError('');
-    try {
-      const res = await fetch('/api/promo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ codigo }),
-      });
-      // Parseamos antes de mirar res.ok: un 502 del proxy devuelve HTML
-      // y no queremos enseñar «Unexpected token '<'» al cliente
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error || 'Este código no es válido');
-      aplicarPromo(data);
-      setCodigo('');
-    } catch (err) {
-      setPromoError(err.message);
-    } finally {
-      setAplicando(false);
-    }
-  };
 
   if (items.length === 0) {
     return (
@@ -106,47 +78,6 @@ export default function CartPage() {
           <p className="envio-progreso">
             🚚 Envío a toda España por <b>{euros(COSTE_ENVIO)}</b> · entrega en {PLAZO_ENTREGA}
           </p>
-
-          {promo ? (
-            <div className="promo-aplicado">
-              <span>
-                🏷️ <b>{promo.codigo}</b> (−{promo.pct}%)
-              </span>
-              <button
-                type="button"
-                title="Quitar código"
-                aria-label={`Quitar el código ${promo.codigo}`}
-                onClick={quitarPromo}
-              >
-                ✕
-              </button>
-            </div>
-          ) : (
-            <form className="promo-form" onSubmit={onAplicarPromo}>
-              <label htmlFor="promo-input">¿Tienes un código promocional?</label>
-              <div className="promo-campos">
-                <input
-                  id="promo-input"
-                  placeholder="Código"
-                  value={codigo}
-                  onChange={(e) => {
-                    setCodigo(e.target.value);
-                    setPromoError('');
-                  }}
-                  maxLength={40}
-                  autoComplete="off"
-                />
-                <button
-                  type="submit"
-                  className="btn btn-outline"
-                  disabled={aplicando || !codigo.trim()}
-                >
-                  {aplicando ? '…' : 'Aplicar'}
-                </button>
-              </div>
-              {promoError && <p className="promo-error">⚠️ {promoError}</p>}
-            </form>
-          )}
 
           <div className="summary-row">
             <span>Subtotal</span>

@@ -92,14 +92,6 @@ export default function Hero() {
                 width="520"
                 height="520"
               />
-              <img
-                className="hero-reflejo"
-                src="/img/apple-pack-recorte.png"
-                alt=""
-                aria-hidden="true"
-                width="520"
-                height="520"
-              />
             </div>
 
             <div className="escena-sombra" aria-hidden="true" />
