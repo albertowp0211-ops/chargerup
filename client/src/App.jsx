@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import ProductPage from './pages/ProductPage.jsx';
 import { COSTE_ENVIO, MARCA } from './config.js';
+import { euros } from './context/CartContext.jsx';
 import { usePageMeta } from './hooks/usePageMeta.js';
 
 // Páginas secundarias cargadas bajo demanda: el panel de admin y el flujo
@@ -54,7 +55,7 @@ export default function App() {
   return (
     <>
       <div className="topbar">
-        🍎 Solo accesorios <b>originales de Apple</b> · Envío a toda España por {COSTE_ENVIO}€ · 14 días para devolver
+        🍎 Solo accesorios <b>originales de Apple</b> · Envío a toda España por {euros(COSTE_ENVIO)} · 14 días para devolver
       </div>
       <Navbar />
       <ScrollToTop />

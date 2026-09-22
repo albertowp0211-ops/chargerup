@@ -53,7 +53,7 @@ export const rellenarTokens = (texto) => {
 // cobra de verdad el envío); si cambias uno, cambia el otro.
 // Envío fijo: no hay umbral de envío gratis (null lo desactiva en toda la web).
 export const ENVIO_GRATIS_DESDE = null;
-export const COSTE_ENVIO = 6;
+export const COSTE_ENVIO = 5.9;
 export const PLAZO_ENTREGA = '24/48 horas';
 
 // Coste de envío que corresponde a un subtotal dado

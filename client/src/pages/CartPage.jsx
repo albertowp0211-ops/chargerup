@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { usePageMeta } from '../hooks/usePageMeta.js';
-import { COSTE_ENVIO, ENVIO_GRATIS_DESDE, envioPara, MARCA } from '../config.js';
+import { COSTE_ENVIO, PLAZO_ENTREGA, envioPara, MARCA } from '../config.js';
 
 export default function CartPage() {
   const { items, setQty, removeItem, total, count, promo, descuento, aplicarPromo, quitarPromo } =
@@ -56,7 +56,6 @@ export default function CartPage() {
   }
 
   const envio = envioPara(total);
-  const falta = ENVIO_GRATIS_DESDE != null ? ENVIO_GRATIS_DESDE - total : 0;
 
   return (
     <div className="container page">
@@ -104,27 +103,9 @@ export default function CartPage() {
         <aside className="cart-summary">
           <h3>Resumen</h3>
 
-          {falta > 0 ? (
-            <div className="envio-progreso">
-              <p>
-                Te faltan <b>{euros(falta)}</b> para el envío gratis
-              </p>
-              <div
-                className="progreso-barra"
-                role="progressbar"
-                aria-valuemin="0"
-                aria-valuemax={ENVIO_GRATIS_DESDE}
-                aria-valuenow={Math.min(total, ENVIO_GRATIS_DESDE)}
-              >
-                <div
-                  className="progreso-relleno"
-                  style={{ width: `${Math.min(100, (total / ENVIO_GRATIS_DESDE) * 100)}%` }}
-                />
-              </div>
-            </div>
-          ) : (
-            <p className="envio-progreso envio-conseguido">✅ Envío gratis conseguido</p>
-          )}
+          <p className="envio-progreso">
+            🚚 Envío a toda España por <b>{euros(COSTE_ENVIO)}</b> · entrega en {PLAZO_ENTREGA}
+          </p>
 
           {promo ? (
             <div className="promo-aplicado">

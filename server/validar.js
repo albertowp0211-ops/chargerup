@@ -68,9 +68,9 @@ export const validarPedido = (cliente = {}, items = [], catalogo = []) => {
   }
 
   const subtotal = +lineas.reduce((s, l) => s + l.subtotal, 0).toFixed(2);
-  // Envío fijo, igual que COSTE_ENVIO en client/src/config.js: si se
+  // Envío fijo de 5,90 €, igual que COSTE_ENVIO en client/src/config.js: si se
   // cambia aquí hay que cambiarlo también allí (y viceversa).
-  const envio = 6;
+  const envio = 5.9;
   const total = +(subtotal + envio).toFixed(2);
   return { lineas, subtotal, envio, total };
 };

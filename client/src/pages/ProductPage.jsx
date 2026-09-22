@@ -200,7 +200,7 @@ export default function ProductPage() {
           )}
 
           <p className="detail-envio">
-            🚚 Envío a toda España por {COSTE_ENVIO} € · ↩️ Devolución en 14 días · 🍎 Producto original de Apple
+            🚚 Envío a toda España por {euros(COSTE_ENVIO)} · ↩️ Devolución en 14 días · 🍎 Producto original de Apple
             <br />📦 Entrega estimada: {PLAZO_ENTREGA}
           </p>
         </div>

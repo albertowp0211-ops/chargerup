@@ -1,9 +1,10 @@
 import { COSTE_ENVIO, PLAZO_ENTREGA } from '../config.js';
+import { euros } from '../context/CartContext.jsx';
 
 const FEATURES = [
   { ico: '🍎', titulo: 'Originales de Apple', detalle: 'Nada de réplicas ni compatibles' },
   { ico: '🔋', titulo: 'Cuidan la batería', detalle: 'Carga negociada con tu iPhone' },
-  { ico: '🚚', titulo: 'Envío desde España', detalle: `${COSTE_ENVIO} € · entrega en ${PLAZO_ENTREGA}` },
+  { ico: '🚚', titulo: 'Envío desde España', detalle: `${euros(COSTE_ENVIO)} · entrega en ${PLAZO_ENTREGA}` },
   { ico: '↩️', titulo: '14 días para devolverlo', detalle: 'Sin dar explicaciones' },
 ];
 
