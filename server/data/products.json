@@ -5,8 +5,8 @@
     "tag": "Pack completo",
     "hot": true,
     "nombre": "Pack original Apple: adaptador 20W + cable de tela USB-C",
-    "precio": 19.9,
-    "precioAntes": 39.99,
+    "precio": 20,
+    "precioAntes": 45,
     "categoria": "Carga original Apple",
     "descripcion": "Todo lo necesario para la carga rápida original de Apple: el adaptador de corriente de 20W y el cable USB-C de tela de 1 metro (60W), juntos por menos que comprándolos por separado.",
     "caracteristicas": [
@@ -14,7 +14,7 @@
       "Cable USB-C a USB-C de tela, 1 metro (60W)",
       "Carga rápida: 50% de iPhone en ~30 minutos",
       "Compatible con iPhone, iPad y AirPods",
-      "Ahorra 5,10 € frente a comprarlos por separado"
+      "Ahorra 5 € frente a comprarlos por separado"
     ],
     "imagenes": [
       "/img/apple-pack-ficha.jpg",
@@ -30,7 +30,7 @@
     "hot": false,
     "nombre": "Adaptador de corriente Apple 20W original (USB-C)",
     "precio": 15,
-    "precioAntes": 19.99,
+    "precioAntes": 30,
     "categoria": "Carga original Apple",
     "descripcion": "El adaptador de corriente USB-C de 20W original de Apple: carga rápida para iPhone (50% en unos 30 minutos) y iPad, en el tamaño compacto de siempre.",
     "caracteristicas": [
@@ -54,7 +54,7 @@
     "hot": false,
     "nombre": "Cable USB-C original de tela 1 m (60W)",
     "precio": 10,
-    "precioAntes": 14.99,
+    "precioAntes": 25,
     "categoria": "Carga original Apple",
     "descripcion": "Cable USB-C a USB-C original de Apple, con acabado de tela trenzada de 1 metro y hasta 60W de potencia. El mismo cable que acompaña a los iPhone y iPad más recientes: flexible, resistente y sin enredos.",
     "caracteristicas": [

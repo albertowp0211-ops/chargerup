@@ -87,8 +87,8 @@ export default function Hero() {
             <div className="escena-pieza">
               <img
                 className="hero-foto"
-                src="/img/apple-pack-ficha.jpg"
-                alt="Pack original de Apple: adaptador de corriente USB-C de 20 W y cable de tela USB-C de 1 metro"
+                src="/img/apple-adaptador-ficha.jpg"
+                alt="Adaptador de corriente USB-C de 20 W original de Apple, en su caja precintada"
                 width="520"
                 height="520"
               />
