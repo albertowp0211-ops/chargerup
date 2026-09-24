@@ -54,11 +54,6 @@ export const rellenarTokens = (texto) => {
 // Envío fijo: no hay umbral de envío gratis (null lo desactiva en toda la web).
 export const ENVIO_GRATIS_DESDE = null;
 export const COSTE_ENVIO = 5.9;
-// Por debajo de estas unidades se avisa de "pocas unidades" en la web.
-// El número que se muestra es el stock REAL de server/data/products.json:
-// anunciar una escasez que no existe es práctica comercial engañosa.
-export const STOCK_AVISO = 5;
-
 export const PLAZO_ENTREGA = '24/48 horas';
 
 // Coste de envío que corresponde a un subtotal dado

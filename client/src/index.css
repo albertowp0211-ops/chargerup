@@ -836,31 +836,8 @@ footer a:hover { color: #fff; }
 }
 
 /* =======================================================================
-   Aviso de stock, dudas frecuentes y barra de compra
+   Dudas frecuentes y barra de compra
    ======================================================================= */
-
-/* ---- aviso de unidades restantes (stock REAL, nunca inventado) ---- */
-.stock-aviso {
-  display: flex; align-items: center; gap: 8px;
-  margin: 10px 0 0;
-  font-size: 13px; font-weight: 600;
-  color: #FFBB5C;
-}
-.stock-aviso-grande { font-size: 15px; margin: 4px 0 16px; }
-
-.stock-punto {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #FFBB5C; flex: none;
-  box-shadow: 0 0 0 0 rgba(255, 187, 92, .7);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .stock-punto { animation: latido 2.2s ease-out infinite; }
-  @keyframes latido {
-    0%   { box-shadow: 0 0 0 0 rgba(255, 187, 92, .7); }
-    70%  { box-shadow: 0 0 0 9px rgba(255, 187, 92, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 187, 92, 0); }
-  }
-}
 
 /* ---- dudas frecuentes ---- */
 .faq { padding-top: 78px; padding-bottom: 20px; }
@@ -931,10 +908,6 @@ footer a:hover { color: #fff; }
 .barra-texto b {
   display: block; font-size: 14.5px; font-weight: 600;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.barra-stock {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-size: 12.5px; font-weight: 600; color: #FFBB5C;
 }
 .barra-precio {
   font-size: 20px; font-weight: 800; white-space: nowrap;
@@ -1111,3 +1084,47 @@ footer { padding-bottom: 82px; }
   background: rgba(124, 92, 255, .18);
   border-color: rgba(124, 92, 255, .42);
 }
+
+/* =======================================================================
+   Fotos reales de producto
+   Las fotos nuevas traen su propio fondo (mesa oscura, terciopelo,
+   escritorio claro), así que ya no hace falta lámina blanca: se enmarcan
+   y se dejan respirar.
+   ======================================================================= */
+
+.hero-foto {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  background: none;
+  border: 1px solid rgba(55, 225, 255, .30);
+  padding: 0;
+  filter: none;
+  box-shadow:
+    0 30px 64px -26px rgba(0, 0, 0, .9),
+    0 0 60px -14px rgba(55, 225, 255, .34);
+}
+
+/* el plató ya no sostiene un objeto recortado: solo inclina la foto */
+.escena-foco, .escena-pedestal, .escena-sombra { display: none; }
+.escena3d { aspect-ratio: auto; max-width: 560px; }
+.escena-pieza { position: static; width: auto; transform: none; }
+
+/* tarjetas: la foto llena el marco, sin franjas */
+.product .img {
+  background: linear-gradient(160deg, #141B2C 0%, #0B0F1A 100%);
+  border-color: var(--border);
+}
+.img-foto { object-fit: cover; padding: 0; filter: none; }
+
+/* ficha: se ve el producto entero sobre fondo oscuro */
+.detail-img {
+  background: linear-gradient(160deg, #141B2C 0%, #0B0F1A 100%);
+  border-color: var(--border);
+}
+.detail-img-foto { object-fit: contain; padding: 0; filter: none; }
+.detail-thumb { background: #0B0F1A; }
+
+/* la barra de compra muestra la miniatura recortada, no encajada */
+.barra-foto { object-fit: cover; padding: 0; }

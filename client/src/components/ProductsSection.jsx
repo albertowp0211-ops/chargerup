@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
 import { useSearch, normalizar } from '../context/SearchContext.jsx';
-import { STOCK_AVISO } from '../config.js';
 
 export default function ProductsSection() {
   const [productos, setProductos] = useState([]);
@@ -64,13 +63,6 @@ export default function ProductsSection() {
         <h3>{p.nombre}</h3>
         {p.descripcion && <p className="product-desc">{p.descripcion}</p>}
       </Link>
-      {!agotado && Number.isInteger(p.stock) && p.stock <= STOCK_AVISO && (
-        <p className="stock-aviso">
-          <span className="stock-punto" aria-hidden="true" />
-          {p.stock === 1 ? 'Queda 1 unidad' : `Quedan ${p.stock} unidades`}
-        </p>
-      )}
-
       <div className="price-row">
         <div className="price">
           {euros(p.precio)}

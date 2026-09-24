@@ -81,20 +81,13 @@ export default function Hero() {
         {/* Plató virtual: pedestal, foco, sombra de contacto y reflejo */}
         <div className="hero-visual">
           <div className="escena3d" ref={escenaRef}>
-            <div className="escena-foco" aria-hidden="true" />
-            <div className="escena-pedestal" aria-hidden="true" />
-
-            <div className="escena-pieza">
-              <img
-                className="hero-foto"
-                src="/img/apple-adaptador-ficha.jpg"
-                alt="Adaptador de corriente USB-C de 20 W original de Apple, en su caja precintada"
-                width="520"
-                height="520"
-              />
-            </div>
-
-            <div className="escena-sombra" aria-hidden="true" />
+            <img
+              className="hero-foto"
+              src="/img/apple-uso-escritorio.jpg"
+              alt="Adaptador de corriente Apple de 20 W cargando un iPhone sobre una mesa"
+              width="1100"
+              height="481"
+            />
           </div>
         </div>
       </div>

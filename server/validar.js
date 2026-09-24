@@ -55,14 +55,8 @@ export const validarPedido = (cliente = {}, items = [], catalogo = []) => {
       return { error: 'Producto o cantidad no válidos' };
     }
     // Un producto marcado como no disponible no se puede comprar.
-    if (producto.disponible === false || producto.stock === 0) {
+    if (producto.disponible === false) {
       return { error: `"${producto.nombre}" está agotado ahora mismo` };
-    }
-    // No se puede pedir más unidades de las que quedan en almacén.
-    if (Number.isInteger(producto.stock) && cantidad > producto.stock) {
-      return {
-        error: `Solo quedan ${producto.stock} unidades de "${producto.nombre}"`,
-      };
     }
     lineas.push({
       id,

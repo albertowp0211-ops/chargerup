@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCart, euros } from '../context/CartContext.jsx';
 import { useToast } from '../context/ToastContext.jsx';
-import { STOCK_AVISO } from '../config.js';
 
 /**
  * Barra fija inferior con la oferta principal. Aparece cuando el visitante
@@ -35,13 +34,12 @@ export default function BarraCompra({ destacadoId = 16 }) {
     return () => window.removeEventListener('scroll', alScroll);
   }, []);
 
-  if (!producto || producto.disponible === false || producto.stock === 0) return null;
+  if (!producto || producto.disponible === false) return null;
 
   const dto =
     producto.precioAntes && producto.precioAntes > producto.precio
       ? Math.round((1 - producto.precio / producto.precioAntes) * 100)
       : 0;
-  const pocas = Number.isInteger(producto.stock) && producto.stock <= STOCK_AVISO;
 
   return (
     <div className={`barra-compra ${visible ? 'visible' : ''}`}>
@@ -50,12 +48,6 @@ export default function BarraCompra({ destacadoId = 16 }) {
 
         <div className="barra-texto">
           <b>{producto.nombre}</b>
-          {pocas && (
-            <span className="barra-stock">
-              <span className="stock-punto" aria-hidden="true" />
-              {producto.stock === 1 ? 'Queda 1 unidad' : `Quedan ${producto.stock} unidades`}
-            </span>
-          )}
         </div>
 
         <div className="barra-precio">
