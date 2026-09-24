@@ -96,12 +96,9 @@ export default function ProductsSection() {
       <div className="catalog-head">
         <div>
           <span className="eyebrow">Catálogo</span>
-          <h2>Tres originales, nada más</h2>
-          <p>
-            {termino
-              ? `Resultados para "${busqueda.trim()}" (${visibles.length})`
-              : 'El adaptador, el cable y el pack con los dos. Todo original de Apple.'}
-          </p>
+          {termino && (
+            <p>{`Resultados para "${busqueda.trim()}" (${visibles.length})`}</p>
+          )}
         </div>
       </div>
 
