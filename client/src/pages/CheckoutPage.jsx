@@ -201,8 +201,9 @@ export default function CheckoutPage() {
           <h3>Tu pedido</h3>
           {items.map((i) => (
             <div className="summary-row" key={i.id}>
-              <span>
-                {i.imagen} {i.nombre} × {i.qty}
+              <span className="resumen-linea">
+                {i.foto && <img className="resumen-foto" src={i.foto} alt="" loading="lazy" />}
+                {i.nombre} × {i.qty}
               </span>
               <span>{euros(i.precio * i.qty)}</span>
             </div>

@@ -49,6 +49,7 @@ export function CartProvider({ children }) {
           nombre: producto.nombre,
           precio: producto.precio,
           imagen: producto.imagen,
+          foto: producto.imagenes?.[0] ?? null,
           qty: 1,
         },
       ];

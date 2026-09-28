@@ -1128,3 +1128,27 @@ footer { padding-bottom: 82px; }
 
 /* la barra de compra muestra la miniatura recortada, no encajada */
 .barra-foto { object-fit: cover; padding: 0; }
+
+/* =======================================================================
+   Encuadre uniforme y fotos en carrito y pago
+   ======================================================================= */
+
+/* Todas las fotos principales son 4:3, así que el marco también: así no
+   se recorta producto ni quedan franjas. */
+.product .img { height: auto; aspect-ratio: 4 / 3; }
+
+/* El carrito enseñaba un emoji; ahora enseña lo que se compra. */
+.cart-img {
+  overflow: hidden;
+  padding: 0;
+  background: linear-gradient(160deg, #141B2C 0%, #0B0F1A 100%);
+  border: 1px solid var(--border);
+}
+.cart-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.resumen-linea { display: inline-flex; align-items: center; gap: 10px; }
+.resumen-foto {
+  width: 34px; height: 34px; flex: none;
+  border-radius: 8px; object-fit: cover;
+  border: 1px solid var(--border);
+}

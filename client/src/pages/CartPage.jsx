@@ -39,7 +39,9 @@ export default function CartPage() {
         <div className="cart-items">
           {items.map((i) => (
             <div className="cart-item" key={i.id}>
-              <div className="cart-img">{i.imagen}</div>
+              <div className="cart-img">
+                  {i.foto && <img src={i.foto} alt="" loading="lazy" />}
+                </div>
               <div className="cart-info">
                 <h3>{i.nombre}</h3>
                 <small>{euros(i.precio)} / unidad</small>
